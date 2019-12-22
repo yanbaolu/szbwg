@@ -45,9 +45,8 @@
                 opt.conBox.stop();
                 opt.dateBox.stop();
                 opt.conBox.animate({left:-(opt.w*opt.n+(opt.n*50))+'px'},300);
-                opt.dateBox.animate({left:-((90)*opt.n+(opt.n*50))+'px'},300);
+                opt.dateBox.animate({left:-((84)*opt.n+(opt.n*50))+'px'},300);
                 $(opt.dateArr[opt.n]).addClass("year-active").siblings().removeClass("year-active");
-                console.log(opt.n)
             }
         });
     }

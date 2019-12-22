@@ -60,8 +60,8 @@ export default {
 <style scoped>
 .time_line {width: 1200px;height:200px;margin: 0 auto;overflow: hidden;}
 *{margin: 0;padding: 0;}
-#timeLine{width: 1000px;margin:50px auto;overflow:hidden;}
-#yearList{width:10000px;list-style: none;position: relative;margin-left: 457px;}
+#timeLine{width: 1200px;margin:0 auto;}
+#yearList{width:10000px;list-style: none;position: relative;margin-left:490px;position:relative;margin-top:50px;}
 #yearList:after,.container-li:after{content: "";display: table;clear: both;}
 #yearList li{float: left;cursor: pointer;text-align: center;font-size: 21px;padding: 10px 20px;width:84px;height:44px;margin-left:50px;background:#fff;border-radius:10px;}
 .dotted-line{border-bottom: dashed 2px  #7b7d7b;position: relative;top: -22px;z-index: -1;}
@@ -75,7 +75,8 @@ export default {
 .container-li{width: 100%;padding: 20px 50px;box-sizing: border-box;-webkit-box-sizing: border-box;border: solid 1px #434343;}
 .c-li-left{width: 40%;float: left;}
 .c-li-right{width: 60%;float: right;}
-.year-active{color: red;}
+.year-active{color: red;width:120px!important;height:120px!important;border-radius:50%!important;line-height:100px!important;position:absolute;top:-40px;}
 .year-active i{background-color: red;}
+.year-active + li{margin-left:220px!important;}
 .center{width:10px;height:10px;background:red;position: absolute;left:50%;margin-left:-5px;}
 </style>
