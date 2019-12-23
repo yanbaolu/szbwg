@@ -8,16 +8,14 @@
                     <!--首页开始-->
                     <div class="swiper-slide  sw-index bg_color">
                         <ul class="sw_indexbox">
-                            <li class="" style="background-image: url('https://www.shenzhenmuseum.com/p/resize_1920x1080/userfiles/uploadFile/20191205165230.jpg');">
-                                <a href="exhibition/detail?resType=CmsExhibition&amp;resId=c317554ab3cc48a292100cdc2846f854" class="sw_a"></a>
-                            </li>
-                            <li class="" style="background-image: url('https://www.shenzhenmuseum.com/p/resize_1920x1080/userfiles/uploadFile/20181031180631.jpg');">
-                                <a href="exhibition/detail?resType=CmsExhibition&amp;resSubType=1&amp;resId=a422dee4c1304050abbd8bd31fc3857e" class="sw_a"></a>
+                            <li class="" v-for="item in swiperImg" :style="{ 'background-image': 'url(' + item.thumbPic+ ')' }">
+                                <a href="#" class="sw_a"></a>
                             </li>
                         </ul>
-                        <div class="navBox ">
+                        <div class="navBox">
                             <ul class="clears navLi">
                                 <li class="allIco action"></li>
+                                <li class="allIco"></li>
                                 <li class="allIco"></li>
                                 <li class="allIco"></li>
                                 <li class="allIco"></li>
@@ -95,39 +93,40 @@
                                     <i class="often_ico">
                                     </i>推荐
                                 </p>
-                            </div>ze
-                            <p class="title">深圳前世今生</p>
+                                <dl class="tjlist" v-for="item in tuijian">
+                                    <dt class="listImg"><img :src="item.thumbPic" alt=""></dt>
+                                    <dd class="imgTitle">{{item.name}}</dd>
+                                </dl>
+                            </div>
                         </a>
                         <div class="centerBox sw_odl">
-                            <a href='#' class="item">
-                                <dl style="background-image: url('p/userfiles/uploadFile/20181217144301.jpg');">
-                                    <dt></dt>
-                                    <dd>习近平在广东考察时强调 高举新时代改革开放旗帜 把改革开放不断推向深入</dd>
-                                </dl>
-                            </a>
-                            <a href='#' class="item">
-                                <dl style="background-image: url('p/userfiles/uploadFile/20190617164220.jpg');">
-                                    <dt></dt>
-                                    <dd>深圳改革开放藏品征集公告</dd>
-                                </dl>
-                            </a>
-                            <a href='#' class="item">
-                                <dl style="background-image: url('p/userfiles/uploadFile/20190329142231.jpg');">
-                                    <dt></dt>
-                                    <dd>深圳博物馆自然标本信息征集公告</dd>
-                                </dl>
-                            </a>
+                            <div class="content content_news" style="background:rgba(145,163,140,1);border-radius:0 20px 0 20px;">
+                                <p class="title ">
+                                    <i class="allIco ico" style="background-position:-9px -16px;"></i>
+                                    <span class="maxTitle1">通知公告</span>
+                                    <a href="#">更多</a>
+                                </p>
+                                <p class="ol">
+                                    <a href="#">习近平在广东考察时强调 高举新时代改革开放旗帜 把改革开放不断推向深入</a>
+                                    <span>2015.12.6</span>
+                                </p>
+                                <p class="ol">
+                                    <a href="#">&ldquo;大潮起珠江&mdash;&mdash;广东改革开放40周年展览&rdquo;荣获&ldquo;第十六届（2018年度）全国博物馆十大陈列展览精品特别奖&rdquo;</a>
+                                    <span>2015</span>
+                                </p>
+                            </div>
                         </div>
                         <div class="rightBox">
-                            <div class="op">
-                                <div class="content content_news">
+                            <div class="op" style="height:73%;">
+                                <div class="content content_news" style="background:rgba(153,184,196,1);">
                                     <p class="title ">
                                         <i class="allIco ico"></i>
                                         <span class="maxTitle1">新闻资讯</span>
-                                        <a href="#">查看更多</a>
+                                        <a href="#">更多</a>
                                     </p>
                                     <p class="ol">
                                         <a href="#">习近平在广东考察时强调 高举新时代改革开放旗帜 把改革开放不断推向深入</a>
+                                        <span>2015.12.6</span>
                                     </p>
                                     <p class="ol">
                                         <a href="#">&ldquo;大潮起珠江&mdash;&mdash;广东改革开放40周年展览&rdquo;荣获&ldquo;第十六届（2018年度）全国博物馆十大陈列展览精品特别奖&rdquo;</a>
@@ -146,28 +145,17 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="op">
-                                <div class="content content_news">
-                                    <p class="title "><i class="allIco ico icos"></i><span class="maxTitle1">通知公告</span>
-                                        <a href="intangible/intangibleNotice?pLm=L01&amp;lmType=L11&amp;lx=0">查看更多</a>
+                            <div class="op" style="height:25.98%;">
+                                <div class="content content_news" style="background:rgba(197,176,152,1);">
+                                    <p class="title "><i class="allIco ico icos"></i><span class="maxTitle1">接待信息</span>
+                                        <a href="intangible/intangibleNotice?pLm=L01&amp;lmType=L11&amp;lx=0">更多</a>
                                     </p>
                                     <p class="ol">
                                         <a href="intangible/newsDetail?resType=CmsInformation&amp;resId=de57acf65e234d65adca80ce595b2471&amp;pLm=L01&amp;lmType=L11&amp;lx=0">关于进一步规范社会人士在深圳博物馆开展讲解、写生和教育活动的通知</a>
+                                        <span>2015.12.6</span>
                                     </p>
                                     <p class="ol">
                                         <a href="intangible/newsDetail?resType=CmsInformation&amp;resId=77ab33d90b724cb19a0fd4927c0d3c6d&amp;pLm=L01&amp;lmType=L11&amp;lx=0">深圳博物馆藏品总目</a>
-                                    </p>
-                                    <p class="ol">
-                                        <a href="intangible/newsDetail?resType=CmsInformation&amp;resId=1ef5b00c08734f6dae8adfbcedb86256&amp;pLm=L01&amp;lmType=L11&amp;lx=0">&ldquo;北撤烟台&rdquo;东江纵队数字漫画制作及网络互动推广服务项目中标公告</a>
-                                    </p>
-                                    <p class="ol">
-                                        <a href="intangible/newsDetail?resType=CmsInformation&amp;resId=200efa71c57f4a7288c09c342f5a8147&amp;pLm=L01&amp;lmType=L11&amp;lx=0">深圳博物馆2019年自然标本采购（水生动物标本）中标公告</a>
-                                    </p>
-                                    <p class="ol">
-                                        <a href="intangible/newsDetail?resType=CmsInformation&amp;resId=c3e49b84022b411980913d8b6b4fb348&amp;pLm=L01&amp;lmType=L11&amp;lx=0">《北撤烟台&mdash;&mdash;东江纵队革命历史图片展》图录设计印刷项目中标公告</a>
-                                    </p>
-                                    <p class="ol">
-                                        <a href="intangible/newsDetail?resType=CmsInformation&amp;resId=f21718a8ebd7495a809dfdafa40dc12b&amp;pLm=L01&amp;lmType=L11&amp;lx=0">&ldquo;北撤烟台&rdquo;东江纵队数字漫画制作及网络互动推广服务项目招标公告</a>
                                     </p>
                                 </div>
                             </div>
@@ -372,8 +360,8 @@
                                 <!--轮播图-->
                                 <ul class="clears oul">
                                     <li class="bg_color" style="background-image:url('http://localhost:8888/p/userfiles/uploadFile/20191115171829.jpg')" txt="传承之道&mdash;&mdash;深圳博物馆藏史部古籍善本（上）" links="/exhibition/detail?resType=CmsExhibition&resId=c317554ab3cc48a292100cdc2846f854"><a class="sw_a" href="exhibition/detail?resType=CmsExhibition&amp;resId=c317554ab3cc48a292100cdc2846f854"></a></li>
-                                     <li class="bg_color" style="background-image:url('http://localhost:8888/p/userfiles/uploadFile/20191115171829.jpg')" txt="传承之道&mdash;&mdash;深圳博物馆藏史部古籍善本（上）" links="/exhibition/detail?resType=CmsExhibition&resId=c317554ab3cc48a292100cdc2846f854"><a class="sw_a" href="exhibition/detail?resType=CmsExhibition&amp;resId=c317554ab3cc48a292100cdc2846f854"></a></li>
-                                     <li class="bg_color" style="background-image:url('http://localhost:8888/p/userfiles/uploadFile/20191115171829.jpg')" txt="传承之道&mdash;&mdash;深圳博物馆藏史部古籍善本（上）" links="/exhibition/detail?resType=CmsExhibition&resId=c317554ab3cc48a292100cdc2846f854"><a class="sw_a" href="exhibition/detail?resType=CmsExhibition&amp;resId=c317554ab3cc48a292100cdc2846f854"></a></li>
+                                    <li class="bg_color" style="background-image:url('http://localhost:8888/p/userfiles/uploadFile/20191115171829.jpg')" txt="传承之道&mdash;&mdash;深圳博物馆藏史部古籍善本（上）" links="/exhibition/detail?resType=CmsExhibition&resId=c317554ab3cc48a292100cdc2846f854"><a class="sw_a" href="exhibition/detail?resType=CmsExhibition&amp;resId=c317554ab3cc48a292100cdc2846f854"></a></li>
+                                    <li class="bg_color" style="background-image:url('http://localhost:8888/p/userfiles/uploadFile/20191115171829.jpg')" txt="传承之道&mdash;&mdash;深圳博物馆藏史部古籍善本（上）" links="/exhibition/detail?resType=CmsExhibition&resId=c317554ab3cc48a292100cdc2846f854"><a class="sw_a" href="exhibition/detail?resType=CmsExhibition&amp;resId=c317554ab3cc48a292100cdc2846f854"></a></li>
                                 </ul>
                                 <!--轮播导航-->
                                 <div class="navBox ">
@@ -656,7 +644,7 @@
                         </div>
                     </div>
                 </div>
-                 <!-- footer -->
+                <!-- footer -->
                 <div class="swiper_footer">
                     <div class="swfooter_box p_center">
                         <p class="sw_m sw_ts sw_sizes" id="numbersw" style="margin-right:150px;display:inline-block;">网站浏览最低分辨率1280*1080</p>
@@ -701,11 +689,21 @@ import * as API from 'api/demo';
 export default {
     data() {
         return {
+            //是否显示banner图 ==>类目的banner
             isBanner: false,
-            swiper:null
+            //轮播的数据
+            swiperImg: null,
+            //推荐
+            tuijian:null
         }
     },
     mounted() {
+        //侧边栏下载导航
+        $(".icon_nav dl dt").hover(function() {
+            $(this).next().show();
+        }, function(event) {
+            $(this).next().hide();
+        });
         /*页面轮播*/
         var num = 0,
             mouse = 0,
@@ -916,8 +914,6 @@ export default {
             $('.sw-special .oul li').css('display', 'none').eq(oftenNum).css('display', 'block');
             $('.sw-special .navBox li').removeClass('action').eq(oftenNum).addClass('action');
 
-
-
         }
         if (oftenNuml > 1) {
 
@@ -1080,9 +1076,36 @@ export default {
         $('.sw-activity').on('click', '.oa', function() {
             window.location.href = $(this).attr('links');
         })
-            
+
+        //数据获取 
+        //轮播图
+        this.swiperData()
+        //推荐
+        this.Tjian()
     },
     methods: {
+        //轮播图
+        swiperData() {
+            API.get('slidePic/page/L0101').then(res => {
+                if (res.code == 200) {
+                    this.swiperImg = res.data.list;
+                    //console.log(res)
+                }
+            }).catch(err => {
+                
+            })
+        },
+        //推荐
+        Tjian(){
+            API.get('recommend/page/L0102').then(res=>{
+                if (res.code==200) {
+                    this.tuijian=res.data.list;
+                    console.log(res)
+                }
+            }).catch(err => {
+
+            })
+        }
 
     },
     components: {

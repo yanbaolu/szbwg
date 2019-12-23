@@ -8,7 +8,7 @@ const service = axios.create({
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         "X-Requested-With": "XMLHttpRequest",
     },
-    baseURL: 'http://112.5.154.242:61900',
+    baseURL: 'http://192.168.64.150:7000/szbwg/api',
 });
 const serviceForm = axios.create({
     timeout: 60000,
@@ -16,7 +16,7 @@ const serviceForm = axios.create({
         'Content-Type': 'multipart/form-data; charset=UTF-8',
         "X-Requested-With": "XMLHttpRequest",
     },
-    baseURL: 'http://112.5.154.242:61900',
+    baseURL: 'http://192.168.64.150:7000/szbwg/api',
 });
 //http request 拦截器
 let request = function (config) {

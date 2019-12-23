@@ -1,5 +1,4 @@
 .bg_color {
-  background-color: #ddd;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -334,7 +333,17 @@ body {
   line-height: 64px;
 }
 .swiper-wrapper .content_news .ol a {
+  display:inline-block;
+  width:70%;
   color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position:relative;
+}
+.swiper-wrapper .content_news .ol span{
+    position: absolute;
+    right: 0px;
+    line-height:64px;
 }
 .swiper-wrapper .content_news .ol:nth-child(2) {
   border: none;
@@ -562,10 +571,13 @@ body {
   background-repeat:no-repeat;
   margin-top:-23px;
 }
+.sw-recommend{
+  background:rgba(241,241,241,1);
+}
 .sw-recommend .leftBox {
   overflow: hidden;
-  padding-top: 70px;
-  width: 50%;
+  padding-top: 90px;
+  width: 40%;
   height: 100%;
   float: left;
   position: relative;
@@ -575,7 +587,9 @@ body {
 }
 .sw-recommend .leftBox .bg {
   height: 100%;
-
+  position:relative;
+  display: flex;
+  flex-wrap:wrap;
 }
 .sw-recommend .leftBox .title {
   position: absolute;
@@ -594,16 +608,45 @@ body {
 }
 .sw-recommend .leftBox .ico_p{
   font-size: 36px;
-  padding: 40px 0 0 60px;
+  position:absolute;
+  top:40px;
+  left:60px;
+  z-index: 9;
+}
+.sw-recommend .leftBox .tjlist{
+    width:46%;
+    height:49%;
+    margin-left:3.5%;
+    position:relative;
+}
+.sw-recommend .leftBox .tjlist .listImg{
+    width: 100%;
+    height:100%;
+}
+.sw-recommend .leftBox .tjlist .listImg img{
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+}
+.sw-recommend .leftBox .tjlist .imgTitle{
+    width:100%;
+    position: absolute;
+    bottom: 0;
+    height:46px;
+    line-height:46px;
+    text-indent:20px;
+    color:#fff;
+    background:rgba(0,0,0,0.5);
 }
 .sw-recommend .leftBox .ico_p .often_ico{
   margin: 4px 20px 0 0;
 }
 .sw-recommend .centerBox {
-  width: 18%;
+  width:35%;
   padding:90px 20px 0;
-  height: 100%;
+  height:99%;
   float: left;
+  border-radius:0 20px 0 20px;
 }
 .sw-recommend .centerBox .item {
   display: block;
@@ -645,7 +688,7 @@ body {
   padding-top: 90px;
   padding-right: 20px;
   height: 100%;
-  width: 32%;
+  width:25%;
   float: left;
 }
 .sw-recommend .rightBox .op {
