@@ -13,8 +13,8 @@
             			<ul class="nav-first">
 		                    <li><router-link :to="{path:'/'}">首页</router-link></li>
 		                    <li><router-link :to="{path:'exhibition'}">展馆</router-link></li>
-		                    <li><a href="#" class="exhibi_c">展览</a></li>
-		                    <li><a href="#" class="collect_c">典藏</a></li>
+		                    <li><router-link :to="{path:'exhlist'}">展览</router-link></li>
+		                    <li><router-link :to="{path:'collection'}" class="collect_c">典藏</router-link></li>
 		                    <li><a href="#" class="intang_c">非遗</a></li>
 		                    <li><a href="#" class="social_c">社教</a></li>
 		                    <li><a href="#" class="acade_c">学术</a></li>
@@ -30,10 +30,10 @@
 		                    	
 		                    </li>
 		                    <li class="" style="margin-left:16px;">
-		                        <a href="#">常设展览</a><span></span>
-		                        <a href="#">专题展览</a><span></span>
-		                        <a href="#">展览回顾</a><span></span>
-		                        <a href="#">虚拟展厅</a>
+		                        <a href="/exhlist#exhlist">常设展览</a><span></span>
+		                       <router-link :to="{path:'topicexhibition'}">专题展览</router-link><span></span>
+		                        <a href="/exhlist#review">展览回顾</a><span></span>
+		                       <router-link :to="{path:'vexhibition'}">虚拟展厅</router-link>
 		                    </li>
 		                    <li class="" style="margin-left:-48px;">
 		                        <a href="#">改革开放史</a><span></span>

@@ -1,8 +1,8 @@
 
-/*闂傚倷鑳堕…鍫澝瑰璺虹婵炲棙鎸搁惌妤呮煥閻斿搫孝闁告劧鎷烽柣搴ｆ嚀鐎氼厽绔熼崱娆愬厹闁跨噦鎷�*/
+
 *{font-family: Arial,Helvetica,"PingFang SC","Microsoft Yahei","Microsoft Yahei"!important;padding:0;margin:0;}
 
-body{background:rgba(240,240,240,1)!important; font-family: Arial,Helvetica,"PingFang SC","Microsoft Yahei","Microsoft Yahei"!important;color:#666;}
+body{/*background:rgba(240,240,240,1)!important;*/ font-family: Arial,Helvetica,"PingFang SC","Microsoft Yahei","Microsoft Yahei"!important;color:#666;}
 p,span{font-family: "Microsoft Yahei", "Microsoft Yahei"!important;}
 .comWidth{width:1250px; margin:0 auto; }
 .logoWidth{width:1200px; margin:0 auto; }

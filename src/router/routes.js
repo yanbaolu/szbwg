@@ -32,15 +32,37 @@ const routes = [
         name: 'exhlist',
         component: load('exhibition/exhlist'),
         meta: {
-            title: '展馆详情'
+            title: '展览'
         }
     },
     {
-        path: '/review',
-        name: 'review',
-        component: load('exhibition/review'),
+        path: '/topicexhibition',
+        name: 'topicexhibition',
+        component: load('exhibition/topicexhibition'),
         meta: {
-            title: '展馆详情'
+            title: '专题展览'
+        }
+    },
+    {
+        path: '/vexhibition',
+        name: 'vexhibition',
+        component: load('exhibition/vexhibitionlist'),
+        meta: {
+            title: '虚拟展厅'
+        }
+    }, {
+        path: '/collection',
+        name: 'collection',
+        component: load('collection/collection'),
+        meta: {
+            title: '典藏-深圳博物馆藏品总目'
+        }
+    }, {
+        path: '/collectionList',
+        name: 'collectionList',
+        component: load('collection/collectionList'),
+        meta: {
+            title: '典藏-改革开放'
         }
     },
     {
