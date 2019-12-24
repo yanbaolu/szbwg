@@ -15,6 +15,7 @@ const router = new Router({
          return {x: 0, y: 0};
       }
    }
+ 
 });
 
 router.beforeEach((to, from, next) => {
