@@ -14,7 +14,7 @@
 		                    <li><router-link :to="{path:'/'}">首页</router-link></li>
 		                    <li><router-link :to="{path:'exhibition'}">展馆</router-link></li>
 		                    <li><router-link :to="{path:'exhlist'}">展览</router-link></li>
-		                    <li><router-link :to="{path:'collection'}" class="collect_c">典藏</router-link></li>
+		                    <li><router-link :to="{path:'collection'}">典藏</router-link></li>
 		                    <li><a href="#" class="intang_c">非遗</a></li>
 		                    <li><a href="#" class="social_c">社教</a></li>
 		                    <li><a href="#" class="acade_c">学术</a></li>
