@@ -99,6 +99,13 @@ const routes = [
         meta: {
             title: '典藏-改革开放'
         }
+    }, {
+        path: '/collectiondetial',
+        name: 'collectiondetial',
+        component: load('collection/collectiondetial'),
+        meta: {
+            title: '典藏底层页面'
+        }
     },
     {
         path: '*',

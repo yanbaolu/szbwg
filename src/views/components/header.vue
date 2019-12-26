@@ -36,10 +36,10 @@
 		                       <router-link :to="{path:'vexhibition'}">虚拟展厅</router-link>
 		                    </li>
 		                    <li class="" style="margin-left:-48px;">
-		                        <a href="#">改革开放史</a><span></span>
-		                        <a href="#">古代艺术</a><span></span>
-		                        <a href="#">深圳历史文化</a><span></span>
-		                        <a href="#">自然标本</a>
+		                        <router-link :to="{path:'collectionList'}">改革开放史</router-link><span></span>
+		                        <router-link :to="{path:'collectionList'}">古代艺术</router-link><span></span>
+		                        <router-link :to="{path:'collectionList'}">深圳历史文化</router-link><span></span>
+		                        <router-link :to="{path:'collectionList'}">自然标本</router-link>
 		                    </li>
 		                    <li  class="" style="margin-left:-80px;">
 		                        <a href="#">新闻资讯</a><span></span>
