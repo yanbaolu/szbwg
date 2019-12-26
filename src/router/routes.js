@@ -36,12 +36,47 @@ const routes = [
         }
     },
     {
+        path: '/exhibitiondetail',
+        name: 'exhibitiondetail',
+        component: load('exhibition/detail'),
+        meta: {
+            title: '展览'
+        }
+    },{
+        path: '/exhibitionMore',
+        name: 'exhlist',
+        component: load('exhibition/exhibitionMore'),
+        meta: {
+            title: '展览照片'
+        }
+    },{
+        path: '/detailByView',
+        name: 'detailByView',
+        component: load('exhibition/detailByView'),
+        meta: {
+            title: '展览照片'
+        }
+    },
+    {
         path: '/topicexhibition',
         name: 'topicexhibition',
         component: load('exhibition/topicexhibition'),
         meta: {
             title: '专题展览'
         }
+    },
+    {
+        path: '/topicdetialByView',
+        name: 'topicdetialByView',
+        component: load('exhibition/topicdetialByView'),
+        meta: {
+            title: '专题展览照片底层'
+        }
+    },
+    {
+        path:'/topicExMore',
+        name:'topicExMore',
+        component:load('exhibition/topicExMore'),
     },
     {
         path: '/vexhibition',
@@ -63,6 +98,13 @@ const routes = [
         component: load('collection/collectionList'),
         meta: {
             title: '典藏-改革开放'
+        }
+    }, {
+        path: '/collectiondetial',
+        name: 'collectiondetial',
+        component: load('collection/collectiondetial'),
+        meta: {
+            title: '典藏底层页面'
         }
     },
     {

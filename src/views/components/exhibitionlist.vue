@@ -3,7 +3,7 @@
     <div class="imgList4">
       <ul class="clear">
         <li class="item">
-          <a href="#">
+          <router-link :to="{name:'exhibitiondetail',params:{type:'0'}}">
             <div class="itemImg">
               <img
                 src="https://www.shenzhenmuseum.com/p/resize_600x448/userfiles//pf//2017/11/21/20171121060610577.jpg"
@@ -18,10 +18,10 @@
                 </p>
               </div>
             </div>
-          </a>
+           </router-link>
         </li>
         <li class="item">
-          <a href="#">
+          <router-link :to="{name:'exhibitiondetail',params:{type:'1'}}">
             <div class="itemImg">
               <img
                 src="https://www.shenzhenmuseum.com/p/resize_600x448/userfiles//pf//2017/11/21/20171121060610577.jpg"
@@ -36,7 +36,7 @@
                 </p>
               </div>
             </div>
-          </a>
+          </router-link>
         </li>
         <li class="item">
           <a href="#">

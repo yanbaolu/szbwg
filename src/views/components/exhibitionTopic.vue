@@ -2,7 +2,7 @@
   <div class="comWidth">
   <div id="content">
     <!-- 显示日期详情 -->
-    <div id="detail">
+    <div id="detail" style="display:none">
         <div id="date_content"></div>
         <div id="animal_year" style="display:none;"></div>
           <!-- 显示时钟 -->
@@ -126,55 +126,55 @@ export default {
 	};
   },
   mounted() {
-var Num; //Num计算出日期位置
-    for(let i=0;i<6;i++) {
-        document.write('<table id="cal-content"><tr>');
-      for(let j=0;j<7;j++) {
-        Num = i*7+j;
-        document.write('<td id="SD' + Num +'" onclick="addDay(' + Num +')" ');
-  //周六 周日 假期样式设定
-      if(j == 0|| j == 6)
-      {
-            document.write(' class="aorange"');
-        }else{
-            document.write(' class="one"');
-      }
-            document.write('title=""> </td>')
-      }
+// var Num; //Num计算出日期位置
+//     for(let i=0;i<6;i++) {
+//         document.write('<table id="cal-content"><tr>');
+//       for(let j=0;j<7;j++) {
+//         Num = i*7+j;
+//         document.write('<td id="SD' + Num +'" onclick="addDay(' + Num +')" ');
+//        //周六 周日 假期样式设定
+//       if(j == 0|| j == 6)
+//       {
+//             document.write(' class="aorange"');
+//         }else{
+//             document.write(' class="one"');
+//       }
+//             document.write('title=""> </td>')
+//       }
 
-        document.write('</tr></table></td></tr><tr><td><table style="width:399;"><tr style="text-align:center"> ');
-    //农历
-    for(let j=0;j<7;j++) {
-      Num = i*7+j;
-      document.write('<td id="LD' + Num +'" onclick="addDay(' + Num +')" class="bs" title=""> </td>')
-    }
-      document.write('</tr></table></td></tr>');
+//         document.write('</tr></table></td></tr><tr><td><table style="width:399;"><tr style="text-align:center"> ');
+//     //农历
+//     for(let j=0;j<7;j++) {
+//       Num = i*7+j;
+//       document.write('<td id="LD' + Num +'" onclick="addDay(' + Num +')" class="bs" title=""> </td>')
+//     }
+//       document.write('</tr></table></td></tr>');
     
-  }
-for(let i=1900;i<2050;i++) {
-  $('.syear').html('<option>'+i+"年")
-}
- for(let i=1;i<13;i++){
-   $('.smonth').html('<option>'+i+"月")
+//   }
+// for(let i=1900;i<2050;i++) {
+//   $('.syear').html('<option>'+i+"年")
+// }
+//  for(let i=1;i<13;i++){
+//    $('.smonth').html('<option>'+i+"月")
 
- }
-var solar_fes=[];
-	initExhibit();
-	function initExhibit(){
-		var yE = new Date().getFullYear();
-		queryDateStatus(yE+"-01-01",yE+'-12-31');
-	}
-	function chaCld() {
-		   var y,m;
-		   y=calender_content.SY.selectedIndex+1900;
-		   m=calender_content.SM.selectedIndex;
-		   setCld(y,m);
-		   queryDateStatus(y+"-01-01",y+'-12-31');
-		   console.log(y)
-		   solar_fes =[];
+//  }
+// var solar_fes=[];
+// 	initExhibit();
+// 	function initExhibit(){
+// 		var yE = new Date().getFullYear();
+// 		queryDateStatus(yE+"-01-01",yE+'-12-31');
+// 	}
+// 	function chaCld() {
+// 		   var y,m;
+// 		   y=calender_content.SY.selectedIndex+1900;
+// 		   m=calender_content.SM.selectedIndex;
+// 		   setCld(y,m);
+// 		   queryDateStatus(y+"-01-01",y+'-12-31');
+// 		   console.log(y)
+// 		   solar_fes =[];
 		   
-		}
-		var dateObj='';	     
+// 		}
+// 		var dateObj='';	     
 	   //查询时间段内的日期是否有闭馆
 	     function queryDateStatus(startDate, endDate) {
 		        // $.ajax(

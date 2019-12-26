@@ -1,10 +1,8 @@
 <template>
-  <div class="imgList7">
+  <div class="imgList7" >
     <ul class="clear">
       <li class="item">
-        <a
-          href="/webCollection/collectionDetail?lmType=L0302&amp;resId=ec843753f9d94f8fb9426b849aea0d29"
-        >
+       <router-link :to="{path:'collectiondetial'}">
           <div class="itemImg L0302">
             <img
               src="https://www.shenzhenmuseum.com/p/resize_500x500/userfiles//pf//2017/09/23/20170923113549307.jpg"
@@ -15,12 +13,10 @@
               <h3>1987年深圳土地有偿使用拍卖槌</h3>
             </div>
           </div>
-        </a>
+       </router-link>
       </li>
       <li class="item">
-        <a
-          href="/webCollection/collectionDetail?lmType=L0302&amp;resId=f10f66e406a84df09c3829994f14d5c8"
-        >
+        <router-link :to="{path:'collectiondetial'}">
           <div class="itemImg L0302">
             <img
               src="https://www.shenzhenmuseum.com/p/resize_500x500/userfiles//pf//2017/10/30/20171030020008453.jpg"
@@ -31,12 +27,10 @@
               <h3>1984年邓小平视察深圳时所乘的丰田中巴车</h3>
             </div>
           </div>
-        </a>
+        </router-link>
       </li>
       <li class="item">
-        <a
-          href="/webCollection/collectionDetail?lmType=L0302&amp;resId=0080c48d427042729862613dbffde8f6"
-        >
+      <router-link :to="{path:'collectiondetial'}">
           <div class="itemImg L0302">
             <img
               src="https://www.shenzhenmuseum.com/p/resize_500x500/userfiles//pf//2017/09/18/20170918042452276.jpg"
@@ -47,12 +41,10 @@
               <h3>1964年马思聪在深圳演出时用“依巴赫”三角钢琴</h3>
             </div>
           </div>
-        </a>
+        </router-link>
       </li>
       <li class="item">
-        <a
-          href="/webCollection/collectionDetail?lmType=L0302&amp;resId=17bc78b27bda43268560b579022edf3d"
-        >
+       <router-link :to="{path:'collectiondetial'}">
           <div class="itemImg L0302">
             <img
               src="https://www.shenzhenmuseum.com/p/resize_500x500/userfiles//pf//2017/10/30/20171030015315659.jpg"
@@ -63,7 +55,7 @@
               <h3>国际贸易中心主楼施工日志</h3>
             </div>
           </div>
-        </a>
+         </router-link>
       </li>
     </ul>
      <!--page-->

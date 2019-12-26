@@ -12,14 +12,13 @@
       <!-- 筛选框 -->
       <div class="selectBox">
 				<ul class="select-tabs" id="ul1">
-          <li class="active"><a href="javascript:;" class="active">全部</a></li>
-          <li class="active"><a href="javascript:;" class="">文件</a></li>
-          <li class="active"><a href="javascript:;" class="">实物</a></li>
+          <li v-for="(item,index) in tabtitle" :key="index" @click="num = index" :class="{active:num ==index}">{{item}}</li>
         </ul>
 			</div>
-         <div class="mt50">
+         <div class="mt50" v-for="(item,index) in tabtitle" :key="index" v-show="num ==index">{{item}}------此处文字是为了显示切换效果可删除
             <collection-list :isPage="isPage"></collection-list>
          </div>
+        
         </div>
       </div>
       
@@ -37,7 +36,9 @@ export default {
     return {
       isBanner: false,
       isPage: false,
-      totlePage: 1
+      totlePage: 1,
+      tabtitle:['全部','文件','实物'],
+      num:0
     };
   },
   mounted() {this.totlePage<=10?this.isPage = false :this.isPage =true;},
@@ -56,7 +57,6 @@ export default {
 
 .collectionDetailWrap{background:#ffffff;min-height: 100%;}
 
-/*瀵艰埅鏍峰紡*/
 .collect_c{opacity:0.6;}
 
 .mainCon{width:1082px; margin: 0 auto; overflow: hidden;height: 632px;    position: relative;
@@ -105,9 +105,8 @@ export default {
 
 .selectBox .select-tabs{}
 
-.selectBox .select-tabs li{line-height: 54px;margin-left: 30px;display: inline-block;font-size: 0;}
-.selectBox .select-tabs a{font-size: 14px;color:#999999;line-height: 30px;border-bottom:1px solid transparent;display: inline-block;}
-.selectBox .select-tabs a.active,.selectBox .select-tabs a:hover{border-bottom-color:#333333;color:#333333;}
+.selectBox .select-tabs li{line-height: 54px;margin-left: 30px;display: inline-block;font-size: 0;font-size: 14px;color:#999999;line-height: 30px;border-bottom:1px solid transparent; cursor: pointer;}
+.selectBox .select-tabs li.active,.selectBox .select-tabs li:hover{border-bottom-color:#333333;color:#333333;}
 .select-tabs-item{background-color:#eeeeee;}
 .select-tabs-item li{line-height: 60px;margin-left:30px;display:none;font-size: 0;}
 .select-tabs-item li.active{display: block;}
