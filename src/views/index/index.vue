@@ -95,7 +95,7 @@
                                 </p>
                                 <dl class="tjlist" v-for="item in tuijian">
                                     <dt class="listImg"><img :src="item.thumbPic" alt=""></dt>
-                                    <dd class="imgTitle">{{item.name}}</dd>
+                                    <dd class="imgTitle" v-show="item.name">{{item.name}}</dd>
                                 </dl>
                             </div>
                         </a>
@@ -106,13 +106,9 @@
                                     <span class="maxTitle1">通知公告</span>
                                     <a href="#">更多</a>
                                 </p>
-                                <p class="ol">
-                                    <a href="#">习近平在广东考察时强调 高举新时代改革开放旗帜 把改革开放不断推向深入</a>
-                                    <span>2015.12.6</span>
-                                </p>
-                                <p class="ol">
-                                    <a href="#">&ldquo;大潮起珠江&mdash;&mdash;广东改革开放40周年展览&rdquo;荣获&ldquo;第十六届（2018年度）全国博物馆十大陈列展览精品特别奖&rdquo;</a>
-                                    <span>2015</span>
+                                <p class="ol" v-for="(item,index) in notice" :key="index">
+                                    <a href="#">{{item.name}}</a>
+                                    <span>{{item.dateStr}}</span>
                                 </p>
                             </div>
                         </div>
@@ -124,24 +120,9 @@
                                         <span class="maxTitle1">新闻资讯</span>
                                         <a href="#">更多</a>
                                     </p>
-                                    <p class="ol">
-                                        <a href="#">习近平在广东考察时强调 高举新时代改革开放旗帜 把改革开放不断推向深入</a>
-                                        <span>2015.12.6</span>
-                                    </p>
-                                    <p class="ol">
-                                        <a href="#">&ldquo;大潮起珠江&mdash;&mdash;广东改革开放40周年展览&rdquo;荣获&ldquo;第十六届（2018年度）全国博物馆十大陈列展览精品特别奖&rdquo;</a>
-                                    </p>
-                                    <p class="ol">
-                                        <a href="#">武警部队一行参观&ldquo;大潮起珠江&mdash;&mdash;广东改革开放40周年展览&rdquo;</a>
-                                    </p>
-                                    <p class="ol">
-                                        <a href="#">我馆向先科原职员成功征集 823件（套）珍贵老物件</a>
-                                    </p>
-                                    <p class="ol">
-                                        <a href="#">民俗与旅游&mdash;&mdash;广东民俗学术会议（2019） 在深圳召开</a>
-                                    </p>
-                                    <p class="ol">
-                                        <a href="#">&ldquo;礼赞新中国&middot;奋进新时代&mdash;&mdash;第三届深圳民间工艺精品展&rdquo;在深圳博物馆开幕</a>
+                                    <p class="ol" v-for="(item,index) in news" :key="index">
+                                        <a href="#">{{item.name}}</a>
+                                        <span>{{item.dateStr}}</span>
                                     </p>
                                 </div>
                             </div>
@@ -150,12 +131,9 @@
                                     <p class="title "><i class="allIco ico icos"></i><span class="maxTitle1">接待信息</span>
                                         <a href="intangible/intangibleNotice?pLm=L01&amp;lmType=L11&amp;lx=0">更多</a>
                                     </p>
-                                    <p class="ol">
-                                        <a href="intangible/newsDetail?resType=CmsInformation&amp;resId=de57acf65e234d65adca80ce595b2471&amp;pLm=L01&amp;lmType=L11&amp;lx=0">关于进一步规范社会人士在深圳博物馆开展讲解、写生和教育活动的通知</a>
+                                    <p class="ol" v-for="(item,index) in reverse" :key="index">
+                                        <a href="#" lx="0">关于进一步规范社会人士在深圳博物馆开展讲解、写生和教育活动的通知</a>
                                         <span>2015.12.6</span>
-                                    </p>
-                                    <p class="ol">
-                                        <a href="intangible/newsDetail?resType=CmsInformation&amp;resId=77ab33d90b724cb19a0fd4927c0d3c6d&amp;pLm=L01&amp;lmType=L11&amp;lx=0">深圳博物馆藏品总目</a>
                                     </p>
                                 </div>
                             </div>
@@ -176,46 +154,11 @@
                                 <i>活动</i> <a href="#">查看更多</a>
                             </div>
                             <ul class="list-box">
-                                <li class="list">
+                                <li class="list" v-for="(item,index) in huodong" :key="index">
                                     <dl class="over">
-                                        <dt><i>已结束</i><span class="over"><a href="#">活动预告：《传承之道&mdash;&mdash;深圳博物馆藏史部古籍善本（上）》策展人导赏</a></span></dt>
-                                        <dd class="t">活动时间：2019年11月17日(周日)下午15:30-16:30</dd>
-                                        <dd class="a">活动地点：深圳博物馆历史民俗馆（市民中心A区）二楼专题展厅</dd>
-                                    </dl>
-                                </li>
-                                <li class="list">
-                                    <dl class="over">
-                                        <dt><i>已结束</i><span class="over"><a href="#">清秋画扇（第四期）</a></span></dt>
-                                        <dd class="t">活动时间：2019年11月9日（周六）14:30-16:30</dd>
-                                        <dd class="a">活动地点：深圳博物馆历史民俗馆（市民中心A区）一楼活动中心</dd>
-                                    </dl>
-                                </li>
-                                <li class="list">
-                                    <dl class="over">
-                                        <dt><i>已结束</i><span class="over"><a href="#">《传承之道&mdash;&mdash;深圳博物馆藏史部古籍善本（上）》策展人导赏</a></span></dt>
-                                        <dd class="t">活动时间：2019年11月9日（周六）下午15:30-16:30</dd>
-                                        <dd class="a">活动地点：深圳博物馆历史民俗馆（市民中心A区）二楼专题展厅</dd>
-                                    </dl>
-                                </li>
-                                <li class="list">
-                                    <dl class="over">
-                                        <dt><i>已结束</i><span class="over"><a href="#">雕版印刷体验活动</a></span></dt>
-                                        <dd class="t">活动时间：2019年11月2日（周六）下午14:30-16:30</dd>
-                                        <dd class="a">活动地点：深圳博物馆历史民俗馆（市民中心A区）一楼活动中心</dd>
-                                    </dl>
-                                </li>
-                                <li class="list">
-                                    <dl class="over">
-                                        <dt><i>已结束</i><span class="over"><a href="#">清秋画扇</a></span></dt>
-                                        <dd class="t">活动时间：2019年11月3日（周日）下午14:30-16:30</dd>
-                                        <dd class="a">活动地点：深圳博物馆历史民俗馆（市民中心A区）一楼活动中心</dd>
-                                    </dl>
-                                </li>
-                                <li class="list">
-                                    <dl class="over">
-                                        <dt><i>已结束</i><span class="over"><a href="#">清秋画扇</a></span></dt>
-                                        <dd class="t">活动时间：10月26日（周六）下午14:30-16:30</dd>
-                                        <dd class="a">活动地点：深圳博物馆历史民俗馆（市民中心A区）一楼活动中心</dd>
+                                        <dt><i v-show="item.isOver">已结束</i><span class="over"><a href="#">活动预告：{{item.name}}</a></span></dt>
+                                        <dd class="t">活动时间：{{item.dateStr}}</dd>
+                                        <dd class="a">活动地点：{{item.address}}</dd>
                                     </dl>
                                 </li>
                             </ul>
@@ -223,92 +166,21 @@
                         <div class="activity-c"><i class="k k1"></i>
                             <i class="k k2"></i>
                             <ul class="list-box">
-                                <li class="list">
+                                <li class="list" v-for="(item,index) in jiangzuo" :key="index">
                                     <a href="#" class="a">
                                         <i class="kk kk1"></i>
                                         <i class="kk kk2"></i>
-                                        <dl class="over">
-                                            <dt class="bg" style="background-image: url('https://www.shenzhenmuseum.com/p/userfiles/uploadFile/20191203143210.jpg')"></dt>
+                                        <dl :class="{ over: item.isOver }">
+                                            <dt class="bg" :style="{ 'background-image': 'url(' + item.thumbPic+ ')' }"></dt>
                                             <dd>
-                                                <p class="n">讲座预告：手工剪纸的独特个性</p>
-                                                <p class="t">活动时间：2019年11月16日（星期六）上午10:00～11:30</p>
-                                                <p class="t">活动地点：深圳博物馆历史民俗馆（市民中心A区）三楼报告厅</p>
-                                            </dd>
-                                        </dl>
-                                    </a>
-                                </li>
-                                <li class="list">
-                                    <a href="#" class="a">
-                                        <i class="kk kk1"></i>
-                                        <i class="kk kk2"></i>
-                                        <dl class="over">
-                                            <dt class="bg" style="background-image: url('https://www.shenzhenmuseum.com/p/userfiles/uploadFile/20191113113810.jpg')"></dt>
-                                            <dd>
-                                                <p class="n">讲座预告：《浅尚古籍》</p>
-                                                <p class="t">活动时间：2019年11月2日（周六） 上午 10:30&mdash;12:00</p>
-                                                <p class="t">活动地点：深圳博物馆历史民俗馆（市民中心A区）一楼活动中心</p>
-                                            </dd>
-                                        </dl>
-                                    </a>
-                                </li>
-                                <li class="list">
-                                    <a href="#" class="a">
-                                        <i class="kk kk1"></i>
-                                        <i class="kk kk2"></i>
-                                        <dl class="over">
-                                            <dt class="bg" style="background-image: url('https://www.shenzhenmuseum.com/p/userfiles/uploadFile/20191203143210.jpg')"></dt>
-                                            <dd>
-                                                <p class="n">讲座预告：展览是怎样炼成的？</p>
-                                                <p class="t">活动时间：2019年10月27日（周日）下午 14:30-16:30</p>
-                                                <p class="t">活动地点：深圳博物馆历史民俗馆（市民中心A区）三楼报告厅</p>
-                                            </dd>
-                                        </dl>
-                                    </a>
-                                </li>
-                                <li class="list">
-                                    <a href="#" class="a">
-                                        <i class="kk kk1"></i>
-                                        <i class="kk kk2"></i>
-                                        <dl class="over">
-                                            <dt class="bg" style="background-image: url('https://www.shenzhenmuseum.com/p/userfiles/uploadFile/20191203143210.jpg')"></dt>
-                                            <dd>
-                                                <p class="n">讲座预告：吴昌硕的艺术世界</p>
-                                                <p class="t">活动时间：2019年10月13日（周日） 10:30-12:30</p>
-                                                <p class="t">活动地点：深圳博物馆历史民俗馆（市民中心A区）三楼报告厅</p>
-                                            </dd>
-                                        </dl>
-                                    </a>
-                                </li>
-                                <li class="list">
-                                    <a href="#" class="a">
-                                        <i class="kk kk1"></i>
-                                        <i class="kk kk2"></i>
-                                        <dl class="over">
-                                            <dt class="bg" style="background-image: url('https://www.shenzhenmuseum.com/p/userfiles/uploadFile/20191113113810.jpg')"></dt>
-                                            <dd>
-                                                <p class="n">讲座预告：这么近，那么远&mdash;&mdash;你不知道的太阳 【&ldquo;聆听宇宙&rdquo;系列天文讲座】</p>
-                                                <p class="t">活动时间：2019年9月1日（周日）下午 14:30-16:30</p>
-                                                <p class="t">活动地点：深圳博物馆历史民俗馆（市民中心A区）三楼报告厅</p>
-                                            </dd>
-                                        </dl>
-                                    </a>
-                                </li>
-                                <li class="list">
-                                    <a href="#" class="a">
-                                        <i class="kk kk1"></i>
-                                        <i class="kk kk2"></i>
-                                        <dl class="over">
-                                            <dt class="bg" style="background-image: url('https://www.shenzhenmuseum.com/p/userfiles/uploadFile/20191113113810.jpg')"></dt>
-                                            <dd>
-                                                <p class="n">讲座预告：月球探秘【&ldquo;聆听宇宙&rdquo;系列天文讲座】</p>
-                                                <p class="t">活动时间：2019年9月15日（周日）下午 14:30-16:30</p>
-                                                <p class="t">活动地点：深圳博物馆历史民俗馆（市民中心A区）三楼报告厅</p>
+                                                <p class="n">讲座预告：{{item.name}}</p>
+                                                <p class="t">活动时间：{{item.dateStr}}</p>
+                                                <p class="t">活动地点：{{item.address}}</p>
                                             </dd>
                                         </dl>
                                     </a>
                                 </li>
                             </ul>
-                            </p>
                         </div>
                     </div>
                     <!--常设展览-->
@@ -317,20 +189,20 @@
                             <div class="carouselBox">
                                 <!--轮播图-->
                                 <ul class="clears oul">
-                                    <li class="bg_color" style="background-image:url('https://www.shenzhenmuseum.com/p/userfiles/uploadFile/20190126095042.jpg')" txt="近代深圳" links="/exhibition/detail?resType=CmsExhibition&resSubType=1&resId=530ec1a00cf54b1d92b30d5e6c885a17"><a class="sw_a" href="exhibition/detail?resType=CmsExhibition&amp;resSubType=1&amp;resId=530ec1a00cf54b1d92b30d5e6c885a17"></a></li>
-                                    <li class="bg_color" style="background-image:url('https://www.shenzhenmuseum.com/p/userfiles/uploadFile/20190126095022.jpg')" txt="古代深圳" links="/exhibition/detail?resType=CmsExhibition&resSubType=1&resId=1c131aeac07542cfb10de015a5a94e08"><a class="sw_a" href="exhibition/detail?resType=CmsExhibition&amp;resSubType=1&amp;resId=1c131aeac07542cfb10de015a5a94e08"></a></li>
-                                    <li class="bg_color" style="background-image:url('https://www.shenzhenmuseum.com/p/userfiles/uploadFile/20190126095022.jpg')" txt="深圳改革开放史" links="/exhibition/detail?resType=CmsExhibition&resSubType=1&resId=e5bb2ed011be44ebb62624238f454c48"><a class="sw_a" href="exhibition/detail?resType=CmsExhibition&amp;resSubType=1&amp;resId=e5bb2ed011be44ebb62624238f454c48"></a></li>
+                                    <li class="bg_color" v-for="(item,index) in often" :style="{ 'background-image': 'url(' + item.thumbPic+ ')' }">
+                                        <span class="texts" style="color:transparent;">{{item.name}}</span>
+                                        <a class="sw_a" href=""></a>
+                                    </li>
                                 </ul>
                                 <!--轮播导航-->
-                                <div class="navBox ">
+                                <div class="navBox">
                                     <ul class="clears navLi">
                                         <li class="allIco action"></li>
-                                        <li class="allIco action"></li>
-                                        <li class="allIco action"></li>
-                                        <li class="allIco action"></li>
-                                        <li class="allIco action"></li>
-                                        <li class="allIco action"></li>
-                                        <li class="allIco action"></li>
+                                        <li class="allIco"></li>
+                                        <li class="allIco"></li>
+                                        <li class="allIco"></li>
+                                        <li class="allIco"></li>
+                                        <li class="allIco"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -339,10 +211,10 @@
                                 </i>
                                 <ul class="oli">
                                     <li class="action">
-                                        <a href="exhibition/index#permanent">常设展览</a>
+                                        <a href="#">常设展览</a>
                                     </li>
                                     <li>
-                                        <a href="intangible/newsDetail?lmType=L0806&amp;pLm=:L08:L0801&amp;lx=3&amp;resId=&quot;+data.entitys[i].resId+&quot;#" class="sw_links">近代深圳</a>
+                                        <a href="#" class="sw_links">{{often_name}}</a>
                                     </li>
                                 </ul>
                                 <!--查看全部-->
@@ -359,14 +231,11 @@
                             <div class="carouselBox">
                                 <!--轮播图-->
                                 <ul class="clears oul">
-                                    <li class="bg_color" style="background-image:url('http://localhost:8888/p/userfiles/uploadFile/20191115171829.jpg')" txt="传承之道&mdash;&mdash;深圳博物馆藏史部古籍善本（上）" links="/exhibition/detail?resType=CmsExhibition&resId=c317554ab3cc48a292100cdc2846f854"><a class="sw_a" href="exhibition/detail?resType=CmsExhibition&amp;resId=c317554ab3cc48a292100cdc2846f854"></a></li>
-                                    <li class="bg_color" style="background-image:url('http://localhost:8888/p/userfiles/uploadFile/20191115171829.jpg')" txt="传承之道&mdash;&mdash;深圳博物馆藏史部古籍善本（上）" links="/exhibition/detail?resType=CmsExhibition&resId=c317554ab3cc48a292100cdc2846f854"><a class="sw_a" href="exhibition/detail?resType=CmsExhibition&amp;resId=c317554ab3cc48a292100cdc2846f854"></a></li>
-                                    <li class="bg_color" style="background-image:url('http://localhost:8888/p/userfiles/uploadFile/20191115171829.jpg')" txt="传承之道&mdash;&mdash;深圳博物馆藏史部古籍善本（上）" links="/exhibition/detail?resType=CmsExhibition&resId=c317554ab3cc48a292100cdc2846f854"><a class="sw_a" href="exhibition/detail?resType=CmsExhibition&amp;resId=c317554ab3cc48a292100cdc2846f854"></a></li>
+                                    <li class="bg_color" v-for="(item,index) in special" :style="{ 'background-image': 'url(' + item.thumbPic+ ')' }"></li>
                                 </ul>
                                 <!--轮播导航-->
                                 <div class="navBox ">
                                     <ul class="clears navLi">
-                                        <li class="allIco action"></li>
                                         <li class="allIco action"></li>
                                         <li class="allIco action"></li>
                                     </ul>
@@ -388,8 +257,8 @@
                         </div>
                     </div>
                     <!--虚拟展厅-->
-                    <div class="swiper-slide sw-virtual clears">
-                        <a href="v/wcs/index.html" class="leftBox bg_color" style="background-image: url('https://www.shenzhenmuseum.com/p/userfiles/uploadFile/20190920101632.jpg');">
+                    <div class="swiper-slide sw-virtual clears" v-if="fictitious">
+                        <a href="#" class="leftBox bg_color" :style="{ 'background-image': 'url(' +fone[0].thumbPic+ ')' }" >
                         </a>
                         <div class="rightBox">
                             <div class="title clears">
@@ -399,41 +268,41 @@
                             </div>
                             <div class="maxBox clears sw_odl">
                                 <a href="v/cczdsbgj/index.html" class="max">
-                                    <dl class="bg_color" style="background-image: url('https://www.shenzhenmuseum.com/p/resize_500x500/userfiles/uploadFile/20191115172622.jpg');">
+                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +ftow[0].thumbPic+')' }">
                                         <dt></dt>
-                                        <dd>传承之道&mdash;&mdash;深圳博物馆藏史部古籍善本（上）</dd>
+                                        <dd>{{ftow[0].name}}</dd>
                                     </dl>
                                 </a>
                                 <a href="v/sgxz/tour.html" class="min">
-                                    <dl class="bg_color" style="background-image: url('https://www.shenzhenmuseum.com/p/resize_500x500/userfiles/uploadFile/20191115172622.jpg');">
+                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +fthree[0].thumbPic+')' }">
                                         <dt></dt>
-                                        <dd>识骨寻宗&mdash;&mdash;透过骨骼窥视生物演化</dd>
+                                        <dd>{{fthree[0].name}}</dd>
                                     </dl>
                                 </a>
                                 <a href="v/dhhhh/tour.html" class="min">
-                                    <dl class="bg_color" style="background-image: url('https://www.shenzhenmuseum.com/p/resize_500x500/userfiles/uploadFile/20191115172622.jpg');">
+                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +ffore[0].thumbPic+')' }">
                                         <dt></dt>
-                                        <dd>大汉海昏候&mdash;&mdash;刘贺与他的时代</dd>
+                                        <dd>{{ffore[0].name}}</dd>
                                     </dl>
                                 </a>
                             </div>
                             <div class="minBox clears sw_odl">
                                 <a href="v/nymh/index.html" class="min">
-                                    <dl class="bg_color" style="background-image: url('https://www.shenzhenmuseum.com/p/resize_500x500/userfiles/uploadFile/20191115172622.jpg');">
+                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +ffive[0].thumbPic+')' }">
                                         <dt></dt>
-                                        <dd>南粤墨话&mdash;&mdash;深圳博物馆藏清代广东书画展</dd>
+                                        <dd>{{ffive[0].name}}</dd>
                                     </dl>
                                 </a>
                                 <a href="v/jjzs/index.html" class="min">
-                                    <dl class="bg_color" style="background-image: url('https://www.shenzhenmuseum.com/p/resize_500x500/userfiles/uploadFile/20191115172622.jpg');">
+                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +fsix[0].thumbPic+')' }">
                                         <dt></dt>
-                                        <dd>吉金铸史&mdash;&mdash;青铜器里的古代中国</dd>
+                                        <dd>{{fsix[0].name}}</dd>
                                     </dl>
                                 </a>
                                 <a href="https://wszg.szggm.com/#/" class="min">
-                                    <dl class="bg_color" style="background-image: url('https://www.shenzhenmuseum.com/p/resize_500x500/userfiles/uploadFile/20191115172622.jpg');">
+                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +fsevent[0].thumbPic+')' }">
                                         <dt></dt>
-                                        <dd>大潮起珠江&mdash;&mdash;广东改革开放40周年展览</dd>
+                                        <dd>{{fsevent[0].name}}</dd>
                                     </dl>
                                 </a>
                             </div>
@@ -686,15 +555,44 @@
 <script>
 import header from '../components/header'
 import * as API from 'api/demo';
+import { mapGetters } from 'vuex'
 export default {
     data() {
         return {
+            //语言
+            lang:this.$store.getters.getlang,
             //是否显示banner图 ==>类目的banner
             isBanner: false,
             //轮播的数据
             swiperImg: null,
-            //推荐
-            tuijian:null
+            //推荐列表
+            tuijian:null,
+            //讲座列表
+            jiangzuo:null,
+            //活动列表
+            huodong:null,
+            //常设展览
+            often:null,
+            often_name:null,
+            //专题展览
+            special:null,
+            //通知公告
+            notice:null,
+            //新闻列表
+            news:null,
+            //接待信息
+            reverse:null,
+            //虚拟展厅
+            fictitious:'',
+            fone:null,
+            ftow:null,
+            fthree:null,
+            ffore:null,
+            ffive:null,
+            fsix:null,
+            fsevent:null,
+            //非遗
+            feiyiNews:null
         }
     },
     mounted() {
@@ -709,7 +607,6 @@ export default {
             mouse = 0,
             animate = true,
             n = 0;
-
         /*初始化新闻推荐页面适配*/
         function initRecom() {
 
@@ -758,7 +655,7 @@ export default {
                 initRuins()
             };
             if (num == 2 && !sw_activity_start) {
-                console.log(1212)
+                //console.log(1212)
                 sw_activity_start = true;
                 sw_activity.start()
             }
@@ -864,8 +761,8 @@ export default {
             _this.addClass('action').siblings().removeClass('action');
             oftenNum1 = _this.index();
             $('.sw-oftenOne .oul li').css('display', 'none').eq(oftenNum1).css('display', 'block');
-            var sw_li = $('.sw-oftenOne .oul li').eq(oftenNum1);
-            $('.sw-oftenOne .sw_links').text(sw_li.attr('txt')).attr({ href: sw_li.attr('links') });
+            var sw_li = $('.sw-oftenOne .oul li .texts').eq(oftenNum1);
+            $('.sw-oftenOne .sw_links').text(sw_li.text());
         })
 
         function oftenFn() {
@@ -1015,32 +912,7 @@ export default {
             changeBox: $('.sw-index'),
             changeTime: 3000
         })
-        /*var oftenTimei=null,oftenNumi=0,oftenNumli=0;
-        oftenNumli=$('.sw_indexbox').children().length;
-        function oftenFni(){
-            $('.sw_indexbox li').css('display','none').eq(oftenNumi).css('display','block');
-            oftenNumi++;
-            if(oftenNumi>=oftenNumli){
-                oftenNumi=0;
-            }
-            
-        };
-
-        if(oftenNumli>1){
-            oftenTimei=setInterval(oftenFni,3000);
-            $('.sw-index').on({
-                mouseover  : function(){
-                        clearInterval(oftenTimei);
-                        oftenTimei=null;
-                } ,
-                mouseout : function(){
-                        clearInterval(oftenTimei);
-                        oftenTimei=setInterval(oftenFni,3000);
-            
-                    
-                } 
-            })
-        };*/
+    
         /*左边导航*/
         $('.sw-navico').on('click', function() {
             $('.sw-heanav').css({ left: '0px' })
@@ -1077,19 +949,38 @@ export default {
             window.location.href = $(this).attr('links');
         })
 
-        //数据获取 
+        //数据获取
         //轮播图
-        this.swiperData()
+        this.swiperData();
         //推荐
-        this.Tjian()
+        this.Tjian();
+        //讲座
+        this.Jzuo();
+        //活动
+        this.Huodong();
+        //常设展览
+        this.Cshe();
+        //通知公告
+        this.Tzgg();
+        //新闻列表
+        this.Newslist()
+        //接待信息
+        this.Jdai()
+        //虚拟展厅
+        this.Xnizt()
+        //非遗
+        this.Intangible()
     },
     methods: {
         //轮播图
         swiperData() {
-            API.get('slidePic/page/L0101').then(res => {
+            let data ={
+                lang:this.lang
+            };
+            API.get2('slidePic/page/L0101',data).then(res => {
                 if (res.code == 200) {
                     this.swiperImg = res.data.list;
-                    //console.log(res)
+                    //this.$store.dispatch('commitlang',1)
                 }
             }).catch(err => {
                 
@@ -1097,16 +988,155 @@ export default {
         },
         //推荐
         Tjian(){
-            API.get('recommend/page/L0102').then(res=>{
+            let data ={
+                lang:this.lang
+            };
+            API.get2('recommend/page/L0102',data).then(res=>{
                 if (res.code==200) {
                     this.tuijian=res.data.list;
-                    console.log(res)
+                    //console.log(res)
+                }
+            }).catch(err => {
+
+            })
+        },
+        //讲座
+        Jzuo(){
+            let data ={
+                lang:this.lang
+            };
+            API.get2('active/page/L0502',data).then(res=>{
+                if (res.code==200) {
+                    this.jiangzuo=res.data.list.slice(0,6);
+                    //console.log(this.jiangzuo)
+                }
+            }).catch(err => {
+
+            })
+        },
+        //活动
+        Huodong(){
+            let data ={
+                lang:this.lang
+            };
+            API.get2('active/page/L0501',data).then(res=>{
+                if (res.code==200) {
+                    this.huodong=res.data.list.slice(0,5)
+                    //console.log(this.huodong)
+                }
+            }).catch(err => {
+
+            })
+        },
+        //常设展览
+        Cshe(){
+            let data ={
+                lang:this.lang
+            };
+            API.get2('exhibition/page/L0202',data).then(res=>{
+                if (res.code==200) {
+                    this.often=res.data.list.slice(0,6)
+                    //设置第一个名称
+                    this.often_name=res.data.list[0].name;
+                    //console.log(this.often)
+                }
+            }).catch(err => {
+
+            })
+        },
+        //专题展览
+        Zuanti(){
+            let data ={
+                lang:this.lang
+            };
+            API.get2('exhibition/page/L0202',data).then(res=>{
+                if (res.code==200) {
+                    this.often=res.data.list.slice(0,6)
+                    //设置第一个名称
+                    this.often_name=res.data.list[0].name;
+                    //console.log(this.often)
+                }
+            }).catch(err => {
+
+            })
+        },
+        //通知公告
+        Tzgg(){
+            let data ={
+                lang:this.lang
+            };
+            API.get2('news/page/L11',data).then(res=>{
+                if (res.code==200) {
+                    this.notice=res.data.list 
+                    //console.log(this.notice)
+                }
+            }).catch(err => {
+
+            })
+        },
+        //新闻列表
+        Newslist(){
+            let data ={
+                lang:this.lang
+            };
+            API.get2('news/page/L10',data).then(res=>{
+                if (res.code==200) {
+                    this.news=res.data.list 
+                    //console.log(this.news)
+                }
+            }).catch(err => {
+
+            })
+        },
+        //接待消息
+        Jdai(){
+            let data ={
+                lang:this.lang
+            };
+            API.get2('news/page/L16',data).then(res=>{
+                if (res.code==200) {
+                    this.reverse=res.data.list.slice(0,2) 
+                    //console.log(this.reverse)
+                }
+            }).catch(err => {
+
+            })
+        },
+        //虚拟展厅
+        Xnizt(){
+            let data ={
+                lang:this.lang
+            };
+            API.get2('exhibition/vr/page/L0103',data).then(res=>{
+                if (res.code==200) {
+                    this.fictitious=res.data.list;
+                    this.fone=res.data.list.slice(0,1);
+                    this.ftow=res.data.list.slice(1,2);
+                    this.fthree=res.data.list.slice(2,3);
+                    this.ffore=res.data.list.slice(3,4);
+                    this.ffive=res.data.list.slice(4,5);
+                    this.fsix=res.data.list.slice(5,6);
+                    this.fsevent=res.data.list.slice(6,7)
+                    //console.log(this.fictitious)
+                }
+            }).catch(err => {
+
+            })
+        },
+        //非遗
+        Intangible(){
+            let data ={
+                lang:this.lang
+            };
+            API.get2('intangible/news/page/L0409',data).then(res=>{
+                if (res.code==200) {
+                    this.feiyiNews=res.data.list.slice(0,2) 
+                    console.log(this.feiyiNews)
                 }
             }).catch(err => {
 
             })
         }
-
     },
     components: {
         'header-top': header

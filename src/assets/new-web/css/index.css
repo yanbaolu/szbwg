@@ -334,7 +334,7 @@ body {
 }
 .swiper-wrapper .content_news .ol a {
   display:inline-block;
-  width:70%;
+  width:65%;
   color: #fff;
   overflow: hidden;
   text-overflow: ellipsis;

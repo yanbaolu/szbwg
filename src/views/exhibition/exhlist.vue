@@ -3,7 +3,7 @@
 		<header-top :isBanner="isBanner"></header-top>
 		<div class="mainWarp">
 			<div class="forenotice">
-				<a href="#"><p class="comWidth">深圳博物馆2019年展览安排表（暂定）</p></a>
+			<a href="#"><p class="comWidth">深圳博物馆2019年展览安排表（暂定）</p></a>
 		</div>
 			<div class="permanent" id="exhlist">
 				<div class="active_title">
