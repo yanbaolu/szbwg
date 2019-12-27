@@ -52,6 +52,8 @@
 import header from "../components/header";
 import footer from "../components/footer";
 import changshePic from "../components/exhidetial/changshePic";
+import carousel from "../../assets/js/carousel";
+
 import * as API from "api/demo";
 export default {
   data() {
