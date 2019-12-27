@@ -12,3 +12,5 @@ views->vexhibitionlist 虚拟展厅 -> components ->vExhibitionList 组件
 展览遗留问题 1、时间插件 2、图片放大
 views ->collection 典藏
 
+intangible 非遗
+
