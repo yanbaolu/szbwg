@@ -1,6 +1,6 @@
 <template>
 	<div class="roomContent">
-		<header-top :isBanner="isBanner"></header-top>
+		<header-top :isBanner="isBanner" :bandata="bandata"></header-top>
 		<div class="mainWarp">
 			<div class="forenotice">
 			<a href="#"><p class="comWidth">深圳博物馆2019年展览安排表（暂定）</p></a>
@@ -9,14 +9,14 @@
 				<div class="active_title">
 					<h3>常设展览</h3>
 				</div>
-				<exhi-list :isPage="isPage"></exhi-list>
+				<exhi-list :isPage="isPage" :cList="cList" v-if="cList"></exhi-list>
 			</div>
 			<div class="special" id="review">
 				<ul class="title_list">
 					<li>专题展览</li>
 					<li>展览回顾</li>
 				</ul>
-				<exhi-review :isPageTopic="isPageTopic"></exhi-review>
+				<exhi-review :isPageTopic="isPageTopic" :zList="zList" v-if="zList"></exhi-review>
 			</div>
 		</div>
 		<footer-bottom></footer-bottom>
@@ -31,23 +31,81 @@ import * as API from 'api/demo';
 export default {
     data() {
         return {
+        	lang:this.$store.getters.getlang,
+        	//是否有banner图
 			isBanner: true,
-			isPage:false,
 			isPageTopic:false,
 			totlePageTopic:1,
-			totlePage:1
+			totlePage:1,
+			//轮播数据
+			bandata:'',
+			//常设展览列表
+			cList:'',
+			zList:''
         }
     },
     mounted() {
 		//页数显示与否
 		this.totlePage<=10?this.isPage = false :this.isPage =true;
 		this.totlePageTopic<=10?this.isPageTopic = false :this.isPageTopic =true;
-    },
-    computed:{
-
+		//获取banner
+		this.getBaner()
+		//常设展览列表
+		this.getClist()
+		//专题展览列表
+		this.getZlist()
     },
     methods: {
-		
+		//获取banner
+		getBaner(){
+		    let data ={
+		        lang:this.lang,
+		        pageNo:1,
+		        pageSize:3,
+		        platform:0
+		    };
+		    API.get2('slidePic/page/L0201',data).then(res => {
+		        if (res.code == 0) {
+		            this.bandata = res.data.list;
+		            //console.log(this.bandata)
+		        }
+		    }).catch(err => {
+		        
+		    })
+		},
+		//获取常设展览列表
+		getClist(){
+			let data ={
+			    lang:this.lang,
+			    pageNo:1,
+		        pageSize:3,
+		        platform:0
+			};
+			API.get2('exhibition/page/L0202',data).then(res => {
+			    if (res.code == 0) {
+			        this.cList = res.data.list;
+			        //console.log(this.cList,456)
+			    }
+			}).catch(err => {
+			    
+			})
+		},
+		//获取专题展览列表
+		getZlist(){
+			let data ={
+			    lang:this.lang,
+			    pageNo:1,
+			    pageSize:6,
+			    platform:0
+			};
+			API.get2('exhibition/page/L0203',data).then(res => {
+			    if (res.code == 0) {
+			        this.zList = res.data.list;
+			    }
+			}).catch(err => {
+			    
+			})
+		}
     },
     components: {
         'header-top': header,

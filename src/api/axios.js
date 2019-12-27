@@ -8,7 +8,7 @@ const service = axios.create({
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         "X-Requested-With": "XMLHttpRequest",
     },
-    baseURL: 'http://192.168.64.150:7000/szbwg/api',
+    baseURL: 'http://www.szbwg.ts.artron.net/api',
 });
 const serviceForm = axios.create({
     timeout: 60000,
@@ -16,8 +16,9 @@ const serviceForm = axios.create({
         'Content-Type': 'multipart/form-data; charset=UTF-8',
         "X-Requested-With": "XMLHttpRequest",
     },
-    baseURL: 'http://192.168.64.150:7000/szbwg/api',
+    baseURL: 'http://www.szbwg.ts.artron.net/api',
 });
+//http://www.szbwg.ts.artron.net
 //http request 拦截器
 let request = function (config) {
     const token = getToken();
@@ -36,7 +37,7 @@ let response = function (res) {
     const data = res.data;
     const message = `${data.code}--${data.msg}` || '未知错误'
     if (res.status == 200) {
-        if (data.code == 200) {
+        if (data.code == 0) {
             return data;
         } else {
             Message({

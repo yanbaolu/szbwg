@@ -1,41 +1,13 @@
 <template>
     <div class="warp">
-        <header-top :isBanner="isBanner"></header-top>
+        <header-top :isBanner="isBanner" :bandata="bandata" v-if="bandata"></header-top>
         <div class="mine">
             <ul class="e_list">
-                <li>
+                <li v-for="(item,index) in listd" :key="index">
                     <div class="content">
-                        <h2 class="title">历史民俗馆历史民俗馆历史民俗馆</h2>
-                        <div class="content_text">深圳市福田区福中路184号（ 深圳市当代艺术与城市规划馆 四楼、五楼）</div>
+                        <h2 class="title">{{item.name}}</h2>
+                        <div class="content_text">{{item.descr}}</div>
                         <a href="/roomdetail"> <div class="detaiBtn">查看展览</div></a>
-                    </div>
-                </li>
-                <li>
-                    <div class="content">
-                        <h2 class="title">历史民俗馆历史民俗馆历史民俗馆</h2>
-                        <div class="content_text">深圳市福田区福中路184号（ 深圳市当代艺术与城市规划馆 四楼、五楼）</div>
-                        <div class="detaiBtn">查看展览</div>
-                    </div>
-                </li>
-                <li>
-                    <div class="content">
-                        <h2 class="title">历史民俗馆历史民俗馆历史民俗馆</h2>
-                        <div class="content_text">深圳市福田区福中路184号（ 深圳市当代艺术与城市规划馆 四楼、五楼）</div>
-                        <div class="detaiBtn">查看展览</div>
-                    </div>
-                </li>
-                <li>
-                    <div class="content">
-                        <h2 class="title">历史民俗馆历史民俗馆历史民俗馆</h2>
-                        <div class="content_text">深圳市福田区福中路184号（ 深圳市当代艺术与城市规划馆 四楼、五楼）</div>
-                        <div class="detaiBtn">查看展览</div>
-                    </div>
-                </li>
-                <li>
-                    <div class="content">
-                        <h2 class="title">历史民俗馆历史民俗馆历史民俗馆</h2>
-                        <div class="content_text">深圳市福田区福中路184号（ 深圳市当代艺术与城市规划馆 四楼、五楼）</div>
-                        <div class="detaiBtn">查看展览</div>
                     </div>
                 </li>
             </ul>
@@ -50,14 +22,51 @@ import * as API from 'api/demo';
 export default {
     data(){
         return{
-            isBanner:true
+            isBanner:true,
+            //展馆banner
+            bandata:'',
+            //展馆列表
+            listd:''
         }
     },
     mounted() {
-        
+        this.getBaner();
+        this.getList()
     },
     methods: {
-        
+        //获取banner
+        getBaner(){
+            let data ={
+                lang:this.lang,
+                pageNo:1,
+                pageSize:6,
+                platform:0
+            };
+            API.get2('slidePic/page/L1901',data).then(res => {
+                if (res.code == 0) {
+                    this.bandata = res.data.list;
+                }
+            }).catch(err => {
+                
+            })
+        },
+        //获取展馆列表
+        getList(){
+            let data ={
+                lang:this.lang,
+                pageNo:1,
+                pageSize:6,
+                platform:0
+            };
+            API.get2('exhibition/hall/page/L1701',data).then(res => {
+                if (res.code == 200) {
+                    this.listd = res.data.list;
+                    //console.log(this.listd,123456)
+                }
+            }).catch(err => {
+                
+            })
+        }
     },
     components:{
     	'header-top':header,
@@ -72,7 +81,7 @@ export default {
     .e_list li:after{content:"";width:1px;height:240px;background:#ccc;position: absolute;top:110px;}
     .e_list li:nth-child(4n+1):after{height:0;width:0;}
     .e_list li .content{margin-top:110px;color:#333333;margin-left:40px;}
-    .e_list li .content h2{position:relative;width:209px;font-size:20px;color:#242424;}
+    .e_list li .content h2{position:relative;width:209px;font-size:20px;color:#242424;line-height:25px;}
     .e_list li .content h2:after{content:"";position:absolute;width:42px;height:3px;background:rgba(37,37,37,1);bottom:-18px;left:0;}
     .e_list li:hover{background:#66B8B2;border-radius:100px 0 100px 0;}
     .e_list li:hover .content h2{color:#fff;}

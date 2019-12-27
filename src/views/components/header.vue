@@ -119,11 +119,8 @@
 		<div class="poster_banner" v-if="isBanner">
 			<div class="slider3">
 				<el-carousel trigger="click" :indicator-position="indicator_position">
-				    <el-carousel-item>
-				        <img src="https://www.shenzhenmuseum.com/p/resize_1920x500/userfiles//pf//2017/11/02/20171102025615012.jpg" alt="">		
-				    </el-carousel-item>
-				    <el-carousel-item>
-				        <img src="https://www.shenzhenmuseum.com/p/resize_1920x500/userfiles//pf//2017/11/02/20171102025615012.jpg" alt="">		
+				    <el-carousel-item v-for="(item,index) in bandata">
+				        <img :src="imgurl+item.thumbPic" alt="">		
 				    </el-carousel-item>
 				</el-carousel>
 			</div>
@@ -132,10 +129,11 @@
 </template>
 <script>
     export default {
-    	props:['isBanner'],
+    	props:['isBanner','bandata'],
     	data(){
     		return{
-    			indicator_position:''//轮播图只有一张时设置成none
+    			indicator_position:'',//轮播图只有一张时设置成none
+    			imgurl:this.$store.getters.getImgUrl,
     		}
     	},
     	mounted(){
@@ -202,7 +200,7 @@
 </script>
 <style>
 	a{text-decoration: none;}
-	img{width:100%;object-fit:contain;}
+	img{width:100%;height:100%;object-fit:contain;}
 	.slider3{height:100%;min-height:300px;}
 	.el-carousel--horizontal{height:100%;min-height:300px;}
 	.el-carousel__container{height:100%;min-height:300px;}

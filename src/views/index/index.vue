@@ -8,13 +8,14 @@
                     <!--首页开始-->
                     <div class="swiper-slide  sw-index bg_color">
                         <ul class="sw_indexbox">
-                            <li class="" v-for="item in swiperImg" :style="{ 'background-image': 'url(' + item.thumbPic+ ')' }">
+                            <li class="" v-for="item in swiperImg" :style="{ 'background-image': 'url(' + imgurl+item.thumbPic+ ')' }">
                                 <a href="#" class="sw_a"></a>
                             </li>
                         </ul>
                         <div class="navBox">
                             <ul class="clears navLi">
                                 <li class="allIco action"></li>
+                                <li class="allIco"></li>
                                 <li class="allIco"></li>
                                 <li class="allIco"></li>
                                 <li class="allIco"></li>
@@ -88,13 +89,13 @@
                     <!--推荐-->
                     <div class="swiper-slide sw-recommend">
                         <a href="#" class="leftBox">
-                            <div class="bg bg_color" style="background-image: url('../../assets/new-web/images/qsjs.jpg');">
+                            <div class="bg bg_color">
                                 <p class="ico_p">
                                     <i class="often_ico">
                                     </i>推荐
                                 </p>
                                 <dl class="tjlist" v-for="item in tuijian">
-                                    <dt class="listImg"><img :src="item.thumbPic" alt=""></dt>
+                                    <dt class="listImg"><img :src="imgurl+item.thumbPic" alt=""></dt>
                                     <dd class="imgTitle" v-show="item.name">{{item.name}}</dd>
                                 </dl>
                             </div>
@@ -171,7 +172,7 @@
                                         <i class="kk kk1"></i>
                                         <i class="kk kk2"></i>
                                         <dl :class="{ over: item.isOver }">
-                                            <dt class="bg" :style="{ 'background-image': 'url(' + item.thumbPic+ ')' }"></dt>
+                                            <dt class="bg" :style="{ 'background-image': 'url(' +imgurl+ item.thumbPic+ ')' }"></dt>
                                             <dd>
                                                 <p class="n">讲座预告：{{item.name}}</p>
                                                 <p class="t">活动时间：{{item.dateStr}}</p>
@@ -189,7 +190,7 @@
                             <div class="carouselBox">
                                 <!--轮播图-->
                                 <ul class="clears oul">
-                                    <li class="bg_color" v-for="(item,index) in often" :style="{ 'background-image': 'url(' + item.thumbPic+ ')' }">
+                                    <li class="bg_color" v-for="(item,index) in often" :style="{ 'background-image': 'url(' +imgurl+ item.thumbPic+ ')' }">
                                         <span class="texts" style="color:transparent;">{{item.name}}</span>
                                         <a class="sw_a" href=""></a>
                                     </li>
@@ -231,7 +232,7 @@
                             <div class="carouselBox">
                                 <!--轮播图-->
                                 <ul class="clears oul">
-                                    <li class="bg_color" v-for="(item,index) in special" :style="{ 'background-image': 'url(' + item.thumbPic+ ')' }"></li>
+                                    <li class="bg_color" v-for="(item,index) in special" :style="{ 'background-image': 'url(' +imgurl+ item.thumbPic+ ')' }"></li>
                                 </ul>
                                 <!--轮播导航-->
                                 <div class="navBox ">
@@ -258,7 +259,7 @@
                     </div>
                     <!--虚拟展厅-->
                     <div class="swiper-slide sw-virtual clears" v-if="fictitious">
-                        <a href="#" class="leftBox bg_color" :style="{ 'background-image': 'url(' +fone[0].thumbPic+ ')' }" >
+                        <a href="#" class="leftBox bg_color" :style="{ 'background-image': 'url(' +imgurl+fone[0].thumbPic+ ')' }" >
                         </a>
                         <div class="rightBox">
                             <div class="title clears">
@@ -268,19 +269,19 @@
                             </div>
                             <div class="maxBox clears sw_odl">
                                 <a href="v/cczdsbgj/index.html" class="max">
-                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +ftow[0].thumbPic+')' }">
+                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +imgurl+ftow[0].thumbPic+')' }">
                                         <dt></dt>
                                         <dd>{{ftow[0].name}}</dd>
                                     </dl>
                                 </a>
                                 <a href="v/sgxz/tour.html" class="min">
-                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +fthree[0].thumbPic+')' }">
+                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +imgurl+fthree[0].thumbPic+')' }">
                                         <dt></dt>
                                         <dd>{{fthree[0].name}}</dd>
                                     </dl>
                                 </a>
                                 <a href="v/dhhhh/tour.html" class="min">
-                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +ffore[0].thumbPic+')' }">
+                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +imgurl+ffore[0].thumbPic+')' }">
                                         <dt></dt>
                                         <dd>{{ffore[0].name}}</dd>
                                     </dl>
@@ -288,19 +289,19 @@
                             </div>
                             <div class="minBox clears sw_odl">
                                 <a href="v/nymh/index.html" class="min">
-                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +ffive[0].thumbPic+')' }">
+                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +imgurl+ffive[0].thumbPic+')' }">
                                         <dt></dt>
                                         <dd>{{ffive[0].name}}</dd>
                                     </dl>
                                 </a>
                                 <a href="v/jjzs/index.html" class="min">
-                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +fsix[0].thumbPic+')' }">
+                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +imgurl+fsix[0].thumbPic+')' }">
                                         <dt></dt>
                                         <dd>{{fsix[0].name}}</dd>
                                     </dl>
                                 </a>
                                 <a href="https://wszg.szggm.com/#/" class="min">
-                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +fsevent[0].thumbPic+')' }">
+                                    <dl class="bg_color" :style="{ 'background-image': 'url(' +imgurl+fsevent[0].thumbPic+')' }">
                                         <dt></dt>
                                         <dd>{{fsevent[0].name}}</dd>
                                     </dl>
@@ -311,7 +312,7 @@
                     <!--非遗专区-->
                     <div class="swiper-slide sw-ruins">
                         <div class="leftBox box">
-                            <a class="top bg_color" href="intangible/videoAll?lmType=L0405&amp;vidIndex=0&amp;vidIndex=0" style="background-image: url('https://www.shenzhenmuseum.com/static/new-web/images/fei_v.png');">
+                            <a class="top bg_color" href="#" style="background-image: url('https://www.shenzhenmuseum.com/static/new-web/images/fei_v.png');">
                                 <p class="p_center zan"><i class="p_center allIco"></i></p>
                                 <p class="text_fl">视频库</p>
                             </a>
@@ -322,19 +323,19 @@
                                         <dd class="">非遗法规</dd>
                                     </dl>
                                 </a>
-                                <a href="intangible/intangibleProject?pLm=L04&amp;lmType=L0402" class="item_a">
+                                <a href="#" class="item_a">
                                     <dl class="p_center item xm">
                                         <dt class=""><i class="p_center allIco"></i></dt>
                                         <dd class="">非遗代表性项目</dd>
                                     </dl>
                                 </a>
-                                <a href="intangible/intangibleInheritance?pLm=L04&amp;lmType=L0403" class="item_a">
+                                <a href="#" class="item_a">
                                     <dl class="p_center item cc">
                                         <dt class=""><i class="p_center allIco"></i></dt>
                                         <dd class="">非遗代表性传承人</dd>
                                     </dl>
                                 </a>
-                                <a href="intangible/intangibleRegulat" class="item_a">
+                                <a href="#" class="item_a">
                                     <dl class="p_center item zn">
                                         <dt class=""><i class="p_center allIco"></i></dt>
                                         <dd class="">申报指南</dd>
@@ -345,7 +346,7 @@
                         <div class="rightBox box">
                             <div class="top">
                                 <div class="img-box">
-                                    <a href="https://www.shenzhenmuseum.com/intangible" class="sw_a bg_color" style="background-image: url('static/new-web/images/feiyi.png')">
+                                    <a href="https://www.shenzhenmuseum.com/intangible" class="sw_a bg_color" :style="{ 'background-image': 'url(' +feiimg+ ')' }">
                                         <dl>
                                             <dt class="p_center">
                                                 <i class="often_ico"></i>非遗
@@ -359,13 +360,10 @@
                                         <p class="title clears">
                                             <i class="allIco ico"></i>
                                             <span class="maxTitle1">新闻资讯</span>
-                                            <a href="intangible/intangibleNews?pLm=L04&amp;lmType=L0409&amp;lang=0&amp;pageNo=1&amp;pageSize=10&amp;lx=1">查看更多</a>
+                                            <a href="#">查看更多</a>
                                         </p>
-                                        <p class="ol">
-                                            <a href="intangible/newsDetail?pLm=L04&amp;resType=&amp;resId=15b6d56d4941485ea8f49d9902d2d522&amp;lmType=L0409&amp;lx=1">2019深圳民间文化周暨深圳市第十三届客家文化节重磅来袭</a>
-                                        </p>
-                                        <p class="ol">
-                                            <a href="intangible/newsDetail?pLm=L04&amp;resType=&amp;resId=489f810f92af4df1bbf64ca608547d73&amp;lmType=L0409&amp;lx=1">传古技艺 承记当下&mdash;&mdash;公益讲座&ldquo;手工剪纸的独特个性&rdquo;在深圳博物馆举行</a>
+                                        <p class="ol" v-for="(item,index) in feiyiNews">
+                                            <a href="#">{{item.name}}</a>
                                         </p>
                                     </div>
                                     <div class="content content_news">
@@ -375,15 +373,12 @@
                                             <a href="intangible/intangibleNotice?pLm=L04&amp;lmType=L0410&amp;lx=1">查看更多</a>
                                         </p>
                                         <p class="ol">
-                                            <a href="intangible/newsDetail?pLm=L04&amp;resType=&amp;resId=b9fab32540c7457c87910e2c7fe50a60&amp;lmType=L0410&amp;lx=1">文化和旅游部关于推荐申报第五批国家级非物质文化遗产代表性项目的通知</a>
-                                        </p>
-                                        <p class="ol">
-                                            <a href="intangible/newsDetail?pLm=L04&amp;resType=&amp;resId=b92aa2cb2e404cfbbf78888a405841bd&amp;lmType=L0410&amp;lx=1">广东省人民政府关于批准并公布广东省第七批省级非物质文化遗产代表性项目名录的通知</a>
+                                            <a href="#">文化和旅游部关于推荐申报第五批国家级非物质文化遗产代表性项目的通知</a>
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                            <a class="bot bg_color" href="intangible/pictureAll?pLm=L04&amp;lmType=L0406" style="background-image: url('static/new-web/images/fei_pic.png');">
+                            <a class="bot bg_color" href="intangible/pictureAll?pLm=L04&amp;lmType=L0406" :style="{ 'background-image': 'url(' +fei_pic+ ')' }">
                                 <p class="text_fl">图片库</p>
                             </a>
                         </div>
@@ -548,6 +543,7 @@
                 <span class="swiper-pagination-bullet"></span>
                 <span class="swiper-pagination-bullet"></span>
                 <span class="swiper-pagination-bullet"></span>
+                <span class="swiper-pagination-bullet"></span>
             </div>
         </div>
     </div>
@@ -559,6 +555,7 @@ import { mapGetters } from 'vuex'
 export default {
     data() {
         return {
+            imgurl:this.$store.getters.getImgUrl,
             //语言
             lang:this.$store.getters.getlang,
             //是否显示banner图 ==>类目的banner
@@ -567,6 +564,7 @@ export default {
             swiperImg: null,
             //推荐列表
             tuijian:null,
+            qsjs:require('../../assets/new-web/images/qsjs.jpg'),
             //讲座列表
             jiangzuo:null,
             //活动列表
@@ -592,10 +590,14 @@ export default {
             fsix:null,
             fsevent:null,
             //非遗
-            feiyiNews:null
+            feiyiNews:null,
+            feiimg:require('../../assets/new-web/images/feiyi.png'),
+            fei_pic:require('../../assets/new-web/images/fei_pic.png'),
+            feyigg:null
         }
     },
     mounted() {
+        console.log(this.imgurl,123456)
         //侧边栏下载导航
         $(".icon_nav dl dt").hover(function() {
             $(this).next().show();
@@ -702,8 +704,10 @@ export default {
                     }
                 },
                 direction: 'vertical',
-                //      loop: true,
+                //loop: true,
                 mousewheel: true,
+                observer:true,
+                observeParents:true,
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
@@ -910,7 +914,7 @@ export default {
             box: $('.sw-index .sw_indexbox'),
             nav: $('.sw-index .navBox'),
             changeBox: $('.sw-index'),
-            changeTime: 3000
+            changeTime: 3000,
         })
     
         /*左边导航*/
@@ -970,17 +974,21 @@ export default {
         this.Xnizt()
         //非遗
         this.Intangible()
+        //专题
+        this.Zuanti()
     },
     methods: {
         //轮播图
         swiperData() {
             let data ={
-                lang:this.lang
+                lang:this.lang,
+                pageNo:1,
+                pageSize:6,
+                platform:0
             };
             API.get2('slidePic/page/L0101',data).then(res => {
-                if (res.code == 200) {
+                if (res.code == 0) {
                     this.swiperImg = res.data.list;
-                    //this.$store.dispatch('commitlang',1)
                 }
             }).catch(err => {
                 
@@ -989,12 +997,15 @@ export default {
         //推荐
         Tjian(){
             let data ={
-                lang:this.lang
+                lang:this.lang,
+                pageNo:1,
+                pageSize:3,
+                platform:0
             };
             API.get2('recommend/page/L0102',data).then(res=>{
-                if (res.code==200) {
-                    this.tuijian=res.data.list;
-                    //console.log(res)
+                if (res.code==0) {
+                    this.tuijian=res.data;
+                    //console.log(res,"45666666")
                 }
             }).catch(err => {
 
@@ -1003,10 +1014,13 @@ export default {
         //讲座
         Jzuo(){
             let data ={
-                lang:this.lang
+                lang:this.lang,
+                pageNo:1,
+                pageSize:8,
+                platform:0
             };
             API.get2('active/page/L0502',data).then(res=>{
-                if (res.code==200) {
+                if (res.code==0) {
                     this.jiangzuo=res.data.list.slice(0,6);
                     //console.log(this.jiangzuo)
                 }
@@ -1017,10 +1031,13 @@ export default {
         //活动
         Huodong(){
             let data ={
-                lang:this.lang
+                lang:this.lang,
+                pageNo:1,
+                pageSize:8,
+                platform:0
             };
             API.get2('active/page/L0501',data).then(res=>{
-                if (res.code==200) {
+                if (res.code==0) {
                     this.huodong=res.data.list.slice(0,5)
                     //console.log(this.huodong)
                 }
@@ -1031,10 +1048,13 @@ export default {
         //常设展览
         Cshe(){
             let data ={
-                lang:this.lang
+                lang:this.lang,
+                pageNo:1,
+                pageSize:8,
+                platform:0
             };
             API.get2('exhibition/page/L0202',data).then(res=>{
-                if (res.code==200) {
+                if (res.code==0) {
                     this.often=res.data.list.slice(0,6)
                     //设置第一个名称
                     this.often_name=res.data.list[0].name;
@@ -1047,14 +1067,15 @@ export default {
         //专题展览
         Zuanti(){
             let data ={
-                lang:this.lang
+                lang:this.lang,
+                pageNo:1,
+                pageSize:8,
+                platform:0
             };
-            API.get2('exhibition/page/L0202',data).then(res=>{
-                if (res.code==200) {
-                    this.often=res.data.list.slice(0,6)
-                    //设置第一个名称
-                    this.often_name=res.data.list[0].name;
-                    //console.log(this.often)
+            API.get2('exhibition/page/L0203',data).then(res=>{
+                console.log(res)
+                if (res.code==0) {
+                    this.special=res.data.list.slice(0,6)
                 }
             }).catch(err => {
 
@@ -1063,10 +1084,13 @@ export default {
         //通知公告
         Tzgg(){
             let data ={
-                lang:this.lang
+                lang:this.lang,
+                pageNo:1,
+                pageSize:11,
+                platform:0
             };
             API.get2('news/page/L11',data).then(res=>{
-                if (res.code==200) {
+                if (res.code==0) {
                     this.notice=res.data.list 
                     //console.log(this.notice)
                 }
@@ -1077,10 +1101,13 @@ export default {
         //新闻列表
         Newslist(){
             let data ={
-                lang:this.lang
+                lang:this.lang,
+                pageNo:1,
+                pageSize:8,
+                platform:0
             };
             API.get2('news/page/L10',data).then(res=>{
-                if (res.code==200) {
+                if (res.code==0) {
                     this.news=res.data.list 
                     //console.log(this.news)
                 }
@@ -1091,12 +1118,15 @@ export default {
         //接待消息
         Jdai(){
             let data ={
-                lang:this.lang
+                lang:this.lang,
+                pageNo:1,
+                pageSize:8,
+                platform:0
             };
             API.get2('news/page/L16',data).then(res=>{
-                if (res.code==200) {
+                if (res.code==0) {
                     this.reverse=res.data.list.slice(0,2) 
-                    //console.log(this.reverse)
+                    //console.log(res)
                 }
             }).catch(err => {
 
@@ -1105,10 +1135,13 @@ export default {
         //虚拟展厅
         Xnizt(){
             let data ={
-                lang:this.lang
+                lang:this.lang,
+                pageNo:1,
+                pageSize:8,
+                platform:0
             };
             API.get2('exhibition/vr/page/L0103',data).then(res=>{
-                if (res.code==200) {
+                if (res.code==0) {
                     this.fictitious=res.data.list;
                     this.fone=res.data.list.slice(0,1);
                     this.ftow=res.data.list.slice(1,2);
@@ -1126,16 +1159,35 @@ export default {
         //非遗
         Intangible(){
             let data ={
-                lang:this.lang
+                lang:this.lang,
+                pageNo:1,
+                pageSize:8,
+                platform:0
             };
             API.get2('intangible/news/page/L0409',data).then(res=>{
-                if (res.code==200) {
+                if (res.code==0) {
                     this.feiyiNews=res.data.list.slice(0,2) 
-                    console.log(this.feiyiNews)
+                    //console.log(this.feiyiNews)
                 }
             }).catch(err => {
 
             })
+        },
+        fegg(){
+           let data ={
+               lang:this.lang,
+               pageNo:1,
+                pageSize:8,
+                platform:0
+           };
+           API.get2('intangible/notice/page/L0410',data).then(res=>{
+               if (res.code==0) {
+                   this.feyigg=res.data.list;
+                   //console.log(res)
+               }
+           }).catch(err => {
+
+           }) 
         }
     },
     components: {
