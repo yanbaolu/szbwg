@@ -1,6 +1,6 @@
 <template>
 	<div class="roomContent">
-		<header-top :isBanner="isBanner"></header-top>
+		<header-top :isBanner="isBanner" :bandata="bandata"></header-top>
 		<div class="mainWarp">
 			<div class="topinfo">
 				<div class="active_title">
@@ -54,7 +54,8 @@ import * as API from 'api/demo';
 export default {
     data() {
         return {
-            isBanner: true
+            isBanner: true,
+			bandata:[{}]
         }
     },
     mounted() {

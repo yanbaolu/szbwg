@@ -24,14 +24,18 @@ export default {
         return{
             isBanner:true,
             //展馆banner
-            bandata:'',
+            bandata:[{
+				
+			},{
+				
+			}],
             //展馆列表
-            listd:''
+            listd:[{},{}]
         }
     },
     mounted() {
-        this.getBaner();
-        this.getList()
+        //this.getBaner();
+        //this.getList()
     },
     methods: {
         //获取banner
