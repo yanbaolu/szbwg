@@ -14,7 +14,7 @@
 export default {
     data() {
         return {
-            
+           Height: 0 
         }
     },
     mounted() {    		
@@ -23,5 +23,5 @@ export default {
 }
 </script>
 <style scoped>
-	
+	.footer{position:fixed;bottom: 0;}
 </style>

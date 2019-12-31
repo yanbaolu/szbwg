@@ -56,7 +56,7 @@ export default {
         return {
             isBanner: true,
 			bandata:[{
-				thumbPic:'/userfiles//pf//2017/11/29/20171129095418978.jpg'
+				thumbPic:'https://www.shenzhenmuseum.com/p/resize_1920x500/userfiles//pf//2017/11/29/20171129095418978.jpg'
 			}]
         }
     },
