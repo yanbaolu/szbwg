@@ -64,7 +64,7 @@ export default {
        handleScroll() {
 
        let scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
-console.log(scrolltop)
+
       scrolltop > 30 ? (this.gotop = true) : (this.gotop = false);
     },
       toTop() {

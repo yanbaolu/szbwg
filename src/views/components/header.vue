@@ -16,9 +16,10 @@
 		                    <li><router-link :to="{path:'exhlist'}">展览</router-link></li>
 		                    <li><router-link :to="{path:'collection'}">典藏</router-link></li>
 		                    <li><router-link :to="{path:'intangible'}">非遗</router-link></li>
-		                    <li><a href="#" class="social_c">社教</a></li>
-		                    <li><a href="#" class="acade_c">学术</a></li>
-		                    <li><a href="#" class="cultural_c">文保</a></li>
+							<li><router-link :to="{path:'activity'}">活动</router-link></li>
+		                    <li><router-link :to="{path:'socialisation'}" class="social_c">社教</router-link></li>
+		                    <li><router-link :to="{path:'webPublication'}" class="acade_c">学术</router-link></li>
+		                    <li><router-link :to="{path:'cultural'}" class="cultural_c">文保</router-link></li>
 		                    <li><a href="#" class="creative_c">文创</a></li>
 		                    <li><a href="#" class="aboutus_c">深博</a></li>
 		                </ul>
@@ -46,29 +47,31 @@
 		                        <router-link :to="{path:'intangibleToice'}">通知公告</router-link><span></span>
 		                        <router-link :to="{path:'intangibleProject'}">非遗项目</router-link><span></span>
 		                        <router-link :to="{path:'intangibleInheritance'}">传承人</router-link><span></span>
-		                        <a href="#">非遗法规</a><span></span>
-		                        <a href="#">申报指南</a><span></span>
+		                        <router-link :to="{path:'intangibleLaws'}">非遗法规</router-link><span></span>
+		                       <router-link :to="{path:'intangibleLaws'}">申报指南</router-link><span></span>
 		                        <router-link :to="{path:'videoAll'}">视频库</router-link><span></span>
 		                        <router-link :to="{path:'pictureAll'}">图片库</router-link>
 		                    </li>
-
-		                    <li  class="" style="margin-left:52px;">
-		                        <a href="#">活动</a><span></span>
-		                        <a href="#">讲座</a><span></span>
-		                        <a href="#">小讲解员</a><span></span>
-		                        <a href="#">志愿者</a><span></span>
-		                        <a href="#">活动讲座预约</a>
+                            <!--活动预留-->
+		                    <li class="" style="margin-left:5px;">
+		                    	
+		                    </li>
+		                    <li  class="" style="margin-left:280px;">
+		                       <router-link :to="{path:'socialisation'}" class="active">讲座</router-link><span></span>
+		                       <router-link :to="{path:'ammouncer'}">小小讲解员</router-link><span></span>
+		                       <router-link :to="{path:'volunteers'}">志愿者</router-link><span></span>
+		                       <router-link :to="{path:'reservation'}">活动讲座预约</router-link>
 		                    </li>
 		                    <li  class="" style="margin-left:250px;">
-		                        <a href="#">论坛</a><span></span>
-		                        <a href="#">专著</a><span></span>
-		                        <a href="#">论文</a><span></span>
-		                        <a href="#">馆刊</a><span></span>
-		                        <a href="#">深圳前世今生</a>
+		                        <router-link :to="{path:'webPublication'}">论坛</router-link><span></span>
+		                        <router-link :to="{path:'monograph'}">专著</router-link><span></span>
+		                        <router-link :to="{path:'paper'}">论文</router-link><span></span>
+		                        <router-link :to="{path:'library'}">馆刊</router-link><span></span>
+		                        <router-link :to="{path:'motal'}">深圳前世今生</router-link>
 		                    </li>
-		                    <li  class="" style="margin-left:254px;">
-		                        <a href="#">设备</a><span></span>
-		                        <a href="#">资质</a><span></span>
+		                    <li  class="" style="margin-left:464px;">
+		                        <router-link :to="{path:'cultural'}">设备</router-link><span></span>
+		                        <router-link :to="{path:'qualifications'}">资质</router-link><span></span>
 		                        <a href="#">案例</a><span></span>
 		                        <a href="#">项目</a>
 		                    </li>

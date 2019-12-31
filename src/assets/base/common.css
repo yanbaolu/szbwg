@@ -78,7 +78,7 @@ select{outline: none;}
 .header .logoImg img{width:100%;}
 .header .logoTxt{width:196px;height:50px;}
 
-.navBar{position: absolute;top:0;left:324px;}
+.navBar{position: absolute;top:0;left:264px;}
 .navBar a{font-size:16px; line-height: 80px;color:#e6bb70;}
 
 .navBar .nav-first li{padding:0 20px 0;line-height: 80px; height: 80px; float:left;}
@@ -110,7 +110,7 @@ select{outline: none;}
 .header .infos .personal-center:hover ul{display: block;}
 
 .header .infos .search {cursor: pointer;width:45px;float:left;height:20px;background: url(../img/icons/search.png) no-repeat right center;padding-left:15px;}
-.header .infos ul{background-color:#ffffff;width:98px; border:1px solid #dddddd;box-shadow: 0 0 5px #ffffff;display: none;}
+.header .infos ul{background-color:#ffffff;width:98px; border:1px solid#dddddd;box-shadow: 0 0 5px #ffffff;display: none;}
 .header .infos ul.lang_ul{width:88px;}
 .header .infos ul.active{display: block;}
 .header .infos li{line-height: 30px;text-align: center;}
