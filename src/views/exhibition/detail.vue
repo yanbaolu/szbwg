@@ -6,6 +6,10 @@
       class="detail-poster"
       style="background:url(https://www.shenzhenmuseum.com/p/resize_1920x500/userfiles//pf//2017/11/22/20171122043824166.jpg)no-repeat center center;"
     >
+    <!-- <div
+      class="detail-poster"
+      :style="{ 'background-image': 'url('+detailData.panoramaPic+ ')' }"
+    > -->
       <a class="qjzl" href="https://www.shenzhenmuseum.com/v/gdsz/" style="display:block;">
         <img alt="全景展览" src="../../assets/img/panoramic.png" title="全景展览" />
         <span>全景展览</span>
@@ -18,7 +22,7 @@
       <div class="detailWrap wrap">
         <input type="hidden" id="shoucang" value="false" />
         <h2 class="comWidth" id="comWidth">
-          <span class="detailTitle">世界野生动物标本展</span>
+          <span class="detailTitle">{{detailData.name}}</span>
         </h2>
         <div class="exhi-detail comWidth">
           <h3>
@@ -34,16 +38,14 @@
           <p style="height:1px;background:#dddddd;margin-bottom:20px;"></p>
           <div class="exhi-place clear">
             <span class="exhi-key">展览地点：</span>
-            <p class="exhi-value">深圳历史民俗馆展厅一（一层世界野生动物标本展）</p>
+            <p class="exhi-value">{{detailData.exhibitLocate}}</p>
           </div>
           <div class="exhi-info clear">
             <span class="exhi-key">展览介绍：</span>
             <div class="exhi-article-wrap">
               <div class="exhi-article">
                 <p class="exhi-paragraph">
-                  贝林先生在世界各地收集和制作了很多动物标本，并无偿捐赠给国内外多所博物馆。在此展出的是贝林先生无偿捐赠给深圳博物馆的第一批野生动物标本，包括猎豹、非洲象、北极熊等珍稀物种。标本种类丰富、制作工艺先进，具有极高的收藏、研究和展览价值。
-                  贝林先生的捐赠极大地丰富了深圳博物馆馆藏，填补了深圳市对非洲、美洲、大洋洲动物标本收藏的空白，为建立自然博物馆提供了坚实的展品基础，对建设自然科学知识教育基地、开展科普教育也有积极作用。
-                  本展览按动物的生存环境分为草原、沙漠、森林、极地四个展区，通过还原生态景观、综合运用声、光、影视等方式，反映了动物、人类与自然的关系。动物和人一样，也具有丰富的情感世界，能够感受到快乐和痛苦、幸福和悲伤。看到这些可爱的生灵，希望您会更加热爱自然，珍惜资源，关爱我们共同的家园。
+                  {{detailData.exhibitIntroduce}}
                 </p>
               </div>
               <div class="shandow">
@@ -128,96 +130,53 @@ export default {
       isVideo:false,//是否有视频
       isExhiNews:false,//是否有相关展览
       type:1,
+      //detail数据
+      detailData:''
     };
   },
   mounted() {
-          this.type =  this.$route.params.type;
-       
-          if(this.type == 1){
-            this.isTopic=true
-            this.isChangshe = false
-          }else{
-              this.isTopic=false
-              this.isChangshe = true
-          }
-    //页数显示与否
-    this.totlePage <= 10 ? (this.isPage = false) : (this.isPage = true);
-    // 展览介绍
-    $(".arrowdown").click(function() {
-      $(".exhi-article").css({ transition: "500ms", height: "auto" });
-
-      $(this).hide();
-      $(".arrowup").show();
-      $(".exhi-article-wrap").css({ paddingBottom: "44px" });
-    });
-    $(".arrowup").click(function() {
-      $(".exhi-article").css({ height: "156px", transition: "500ms" });
-      $(this).hide();
-      $(".arrowdown").show();
-      $(".exhi-article-wrap").css({ paddingBottom: "34px" });
-    });
+      this.type = this.$route.query.type;
+      //console.log(this.$route.query,123456)
+      if(this.type == 1){
+        this.isTopic=true
+        this.isChangshe = false
+      }else{
+          this.isTopic=false
+          this.isChangshe = true
+      }
+      //页数显示与否
+      this.totlePage <= 10 ? (this.isPage = false) : (this.isPage = true);
+      // 展览介绍
+      $(".arrowdown").click(function() {
+          $(".exhi-article").css({ transition: "500ms", height: "auto" });
+          $(this).hide();
+          $(".arrowup").show();
+          $(".exhi-article-wrap").css({ paddingBottom: "44px" });
+      });
+      $(".arrowup").click(function() {
+          $(".exhi-article").css({ height: "156px", transition: "500ms" });
+          $(this).hide();
+          $(".arrowdown").show();
+          $(".exhi-article-wrap").css({ paddingBottom: "34px" });
+      });
+      this.getData();
   },
   computed: {},
   methods: {
-    //收藏
-    setShowCang(id) {
-      var dataValue = $("#shoucang").val();
-      var userid = "null";
-      if (userid == null || userid == "null") {
-        $(".loginWrap").show();
-        return;
-      }
-      if (dataValue == "true") {
-        //收藏-》取消收藏
-        $.ajax({
-          url:
-            "/personal-center/cancelCollect?userid=" +
-            userid +
-            "&id=" +
-            id +
-            "&resType=CmsExhibition&lang=0",
-          type: "GET",
-          beforeSend: function(XMLHttpRequest) {},
-          success: function(data) {
-            console.log(data);
-            if (data.error) {
-              alertx("收藏失败");
-            } else {
-              $("#shoucang").val("false");
-              $("#showcangp")
-                .removeClass("shoucang")
-                .addClass("wshoucang");
-              $("#showcangp").html("收藏");
+    //获取数据
+    getData(){
+        let data ={
+            resId:this.$route.query.resId,
+            className:this.$route.query.className
+        };
+        API.get2('exhibition/get',data).then(res => {
+            if (res.code == 0) {
+                this.detailData=res.data;
+                console.log(this.detailData,456)
             }
-          },
-          error: function(XMLHttpRequest) {}
-        });
-      } else {
-        //未收藏-》收藏
-        $.ajax({
-          url:
-            "/personal-center/collect?userid=" +
-            userid +
-            "&id=" +
-            id +
-            "&resType=CmsExhibition&lang=0",
-          type: "GET",
-          beforeSend: function(XMLHttpRequest) {},
-          success: function(data) {
-            console.log(data);
-            if (data.error) {
-              alertx("收藏失败");
-            } else {
-              $("#shoucang").val("true");
-              $("#showcangp")
-                .removeClass("wshoucang")
-                .addClass("shoucang");
-              $("#showcangp").html("已收藏");
-            }
-          },
-          error: function(XMLHttpRequest) {}
-        });
-      }
+        }).catch(err => {
+            
+        })
     }
   },
   components: {

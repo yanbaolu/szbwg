@@ -22,20 +22,21 @@ import * as API from 'api/demo';
 export default {
     data(){
         return{
+            lang:this.$store.getters.getlang,
             isBanner:true,
             //展馆banner
             bandata:[{
-				
+				thumbPic:'/userfiles//pf//2017/11/29/20171129095418978.jpg'
 			},{
-				
+				thumbPic:'/userfiles//pf//2017/11/29/20171129095418978.jpg'
 			}],
             //展馆列表
             listd:[{},{}]
         }
     },
     mounted() {
-        //this.getBaner();
-        //this.getList()
+        this.getBaner();
+        this.getList()
     },
     methods: {
         //获取banner
@@ -63,7 +64,8 @@ export default {
                 platform:0
             };
             API.get2('exhibition/hall/page/L1701',data).then(res => {
-                if (res.code == 200) {
+                if (res.code == 0) {
+                    console.log(res)
                     this.listd = res.data.list;
                     //console.log(this.listd,123456)
                 }

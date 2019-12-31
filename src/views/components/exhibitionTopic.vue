@@ -68,7 +68,7 @@
         <div class="imgList5">
             <ul id="ul_ztExhibi" class="clear">
                 <li class="item" v-for="(item,index) in zList"> 
-                    <router-link :to="{name:'exhibitiondetail',params:{type:'1'}}">
+                    <router-link :to="{name:'exhibitiondetail',query:{type:'1',clazzName:item.clazzName,resId:item.resId}}">
                         <div class="itemImg">
                             <img :src="imgurl+item.thumbPic" onerror="this.src='/static/img/bg-4-3.png'" />
                             <div class="item_title">
@@ -107,7 +107,7 @@ export default {
         };
     },
     mounted() {
-      console.log(this.zList,4566646)
+      //console.log(this.zList,4566646)
         // var Num; //Num计算出日期位置
         //     for(let i=0;i<6;i++) {
         //         document.write('<table id="cal-content"><tr>');

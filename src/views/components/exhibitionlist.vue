@@ -3,7 +3,7 @@
     <div class="imgList4">
       <ul class="clear">
         <li class="item" v-for="(item,index) in cList" :key="index">
-          <router-link :to="{name:'exhibitiondetail',params:{type:'0'}}">
+          <router-link :to="{name:'exhibitiondetail',query:{type:'0',clazzName:item.clazzName,resId:item.resId}}">
             <div class="itemImg">
               <img :src="imgurl+item.thumbPic">
               <div class="itemText">

@@ -84,7 +84,7 @@ export default {
 			API.get2('exhibition/page/L0202',data).then(res => {
 			    if (res.code == 0) {
 			        this.cList = res.data.list;
-			        //console.log(this.cList,456)
+			        console.log(this.cList,456)
 			    }
 			}).catch(err => {
 			    

@@ -7,7 +7,7 @@ const store = new Vuex.Store({
     state: {
         //语言默认中文0，英文1
         lang:0,
-        imgurl:'http://shenbo.artup.com/'
+        imgurl:''
     },
     getters: {
         //全局获取中英文

@@ -55,7 +55,9 @@ export default {
     data() {
         return {
             isBanner: true,
-			bandata:[{}]
+			bandata:[{
+				thumbPic:'/userfiles//pf//2017/11/29/20171129095418978.jpg'
+			}]
         }
     },
     mounted() {
