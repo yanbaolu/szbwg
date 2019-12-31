@@ -30,12 +30,12 @@ $(".small_picture").thumbnailImg({
 
 });
 $(".intang_picture_title p").on("click",function(){
-    $(this).addClass("active");
-    $(this).siblings().removeClass("active");
+    $(".intang_picture_title p").addClass("active");
+    $(".intang_picture_title p").siblings().removeClass("active");
 })
 $(".picture_type_list ul li a").on("click",function(){
-    $(this).addClass("active");
-    $(this).parent().siblings().children("a").removeClass("active");
+    $(".intang_picture_title p").addClass("active");
+    $(".intang_picture_title p").parent().siblings().children("a").removeClass("active");
 })
 $(document).ready(function(){
     $('.slider11').bxSlider({

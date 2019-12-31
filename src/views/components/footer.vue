@@ -17,9 +17,40 @@ export default {
             
         }
     },
-    mounted() {    		
-    	
-    }
+    mounted() {  
+      	
+var footerHeight = 0,
+
+footerTop = 0,
+
+$footer = $(".footer");
+
+positionFooter();
+//定义position Footer function
+
+function positionFooter() {
+
+//取到div.footer高度
+
+footerHeight = $footer.height();
+
+//div#footer离屏幕顶部的距离
+
+footerTop = ( $(window).scrollTop()+$(window).height()-footerHeight)+"px";
+if (($(document.body).height()+footerHeight)<$(window).height()) {
+	$footer.css({position: "absolute",paddingTop:"0"}).stop().animate({"top":footerTop});
+	$footer.find("p").eq(0).css("marginTop","20px");
+} else {
+$footer.css({
+position:"static"});
+$footer.find("p").eq(0).css({"marginTop":"0"});
+$footer.css({"paddingTop":"20px","marginTop":"30px"});
+}
+
+}
+ //window.addEventListener("scroll", this.positionFooter, true);  	
+$(window).scroll(positionFooter).resize(positionFooter);
+  }
 }
 </script>
 <style scoped>
