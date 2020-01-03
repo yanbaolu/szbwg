@@ -10,29 +10,9 @@
 	<div class="exhibitsPics comWidth">
 	</div>	
 		<div class="exhi-atlas">		
-			<!-- <div class="swiper-exhi-atlas">
-			    <div class="swiper-wrapper picShow">
-					<div class="swiper-slide"><img src="https://www.shenzhenmuseum.com/p/userfiles//pf//2017/11/30/20171130021355392.jpg" >	</div>
-					<div class="swiper-slide"><img src="https://www.shenzhenmuseum.com/p/userfiles//pf//2017/11/30/20171130014342128.jpg" ></div>
-					<div class="swiper-slide"><img src="https://www.shenzhenmuseum.com/p/userfiles//pf//2017/11/30/20171130014350910.jpg"></div>
-					<div class="swiper-slide"><img src="https://www.shenzhenmuseum.com/p/userfiles//pf//2017/11/30/20171130014508309.jpg" >	</div>
-          <div class="swiper-slide"><img src="https://www.shenzhenmuseum.com/p/userfiles//pf//2017/11/30/20171130014508309.jpg" >	</div>
-          <div class="swiper-slide"><img src="https://www.shenzhenmuseum.com/p/userfiles//pf//2017/11/30/20171130014508309.jpg" >	</div>
-				
-					</div>
-			  	
-			  <a href="javascript:;" class="exhi-atlas-next" ></a>	
-				<a href="javascript:;" class="exhi-atlas-prev" ></a>
-			</div>
-		 -->
      <div class="swiper-exhi-atlas">
         <div class="swiper-wrapper picShow">
-        	<div class="swiper-slide"><img src="https://www.shenzhenmuseum.com/p/userfiles//pf//2017/11/30/20171130021355392.jpg" >	</div>
-					<div class="swiper-slide"><img src="https://www.shenzhenmuseum.com/p/userfiles//pf//2017/11/30/20171130014342128.jpg" ></div>
-					<div class="swiper-slide"><img src="https://www.shenzhenmuseum.com/p/userfiles//pf//2017/11/30/20171130014350910.jpg"></div>
-					<div class="swiper-slide"><img src="https://www.shenzhenmuseum.com/p/userfiles//pf//2017/11/30/20171130014508309.jpg" >	</div>
-          <div class="swiper-slide"><img src="https://www.shenzhenmuseum.com/p/userfiles//pf//2017/11/30/20171130014508309.jpg" >	</div>
-          <div class="swiper-slide"><img src="https://www.shenzhenmuseum.com/p/userfiles//pf//2017/11/30/20171130014508309.jpg" >	</div>
+        	<div class="swiper-slide" v-for="(item,index) in imgList"><img :src="item.thumbPic" >	</div>
         </div>
         <!-- 分页器 -->
         <div class="swiper-pagination"></div>
@@ -63,19 +43,24 @@ export default {
       totlePage: 1,
       isVideo:true,//是否有视频
       isExhiNews:true,//是否有相关展览
-      icurPic:2
+      icurPic:this.$route.query.index,
+      imgList:''
     };
   },
   mounted() {
+    //console.log(this.$route.query,456)
     //页数显示与否
     this.totlePage <= 10 ? (this.isPage = false) : (this.isPage = true);
     this.swiper(this.icurPic);
+    this.getImg()
   },
   computed: {},
   methods: {
    swiper(n){
      var mySwiper = new Swiper('.swiper-exhi-atlas', {
        initialSlide:n,
+       observer:true,
+       observeParents:true,
        loop:true,
        // 如果需要分页器
         pagination: {
@@ -90,6 +75,16 @@ export default {
           nextEl: '.exhi-atlas-next',
           prevEl: '.exhi-atlas-prev',
         },
+      })
+   },
+   getImg(){
+      API.get2('relation/page',this.$route.query).then(res => {
+          if (res.code == 0) {
+              this.imgList=res.data.list;
+              //console.log(this.imgList,'图片列表')
+          }
+      }).catch(err => {
+          
       })
    }
   },

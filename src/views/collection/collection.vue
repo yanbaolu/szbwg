@@ -18,7 +18,7 @@
                         </div>
                         <router-link :to="{path:'/collectionList'}" class="more">查看更多</router-link>
                     </div>
-                    <collection-list></collection-list>
+                    <collection-list v-if="Ggkfs" :data="Ggkfs"></collection-list>
                 </div>
             </div>
             <div class="collectionWrap">
@@ -32,7 +32,7 @@
                         </div>
                         <a href="#" class="more">查看更多</a>
                     </div>
-                    <collection-list></collection-list>
+                    <collection-list v-if="Gdys" :data="Gdys"></collection-list>
                 </div>
             </div>
             <div class="collectionWrap">
@@ -46,10 +46,10 @@
                         </div>
                         <a href="#" class="more">查看更多</a>
                     </div>
-                    <collection-list></collection-list>
+                    <collection-list v-if="Szwhs" :data="Szwhs"></collection-list>
                 </div>
             </div>
-            <div class="collectionWrap">
+            <div class="collectionWrap" v-if="Zrbb">
                 <div class="collection comWidth" style="padding-top:10px;">
                     <div class="titleBar pb-10">
                         <div class="comTitle">
@@ -60,7 +60,7 @@
                         </div>
                         <a href="#" class="more">查看更多</a>
                     </div>
-                    <collection-list></collection-list>
+                    <collection-list v-if="Zrbb" :data="Zrbb"></collection-list>
                 </div>
             </div>
         </div>
@@ -80,12 +80,24 @@ export default {
             isPage: false,
             totlePage: 1,
             bandata:'',
+            Gdys:'',
+            Ggkfs:'',
+            Zrbb:'',
+            Szwhs:''
         };
     },
     mounted() {
         this.totlePage <= 10 ? this.isPage = false : this.isPage = true;
         //获取banner
         this.getBaner()
+        //古典艺术
+        this.gdys()
+        //改革开放
+        this.ggkfs()
+        //深圳历史文化
+        this.szwhs()
+        //自然标本
+        this.zrbb()
     },
     computed: {},
     methods: {
@@ -100,12 +112,83 @@ export default {
           API.get2('slidePic/page/L0301',data).then(res => {
               if (res.code == 0) {
                   this.bandata = res.data.list;
-                  console.log(this.bandata)
+                  //console.log(this.bandata)
               }
           }).catch(err => {
               
           })
       },
+      //典藏-古典艺术
+      gdys(){
+        let data ={
+            lang:this.lang,
+            pageNo:1,
+            pageSize:4,
+            platform:0,
+            master:''
+        };
+        API.get2('collection/page/L0303',data).then(res => {
+            if (res.code == 0) {
+                this.Gdys = res.data.list;
+                //console.log(this.Gdys,'古典艺术')
+            }
+        }).catch(err => {
+            
+        })
+      },
+      //典藏改革开放史
+      ggkfs(){
+        let data ={
+            lang:this.lang,
+            pageNo:1,
+            pageSize:4,
+            platform:0,
+            master:''
+        };
+        API.get2('collection/page/L0302',data).then(res => {
+            if (res.code == 0) {
+                this.Ggkfs = res.data.list;
+                //console.log(this.Gdys,'典藏改革开放史')
+            }
+        }).catch(err => {
+            
+        })
+      },
+      //典藏-深圳历史文化
+      szwhs(){
+        let data ={
+            lang:this.lang,
+            pageNo:1,
+            pageSize:4,
+            platform:0,
+            master:''
+        };
+        API.get2('collection/page/L0304',data).then(res => {
+            if (res.code == 0) {
+                this.Szwhs = res.data.list;
+                //console.log(this.Gdys,'深圳历史文化')
+            }
+        }).catch(err => {
+            
+        })
+      },
+      zrbb(){
+        let data ={
+            lang:this.lang,
+            pageNo:1,
+            pageSize:4,
+            platform:0,
+            master:''
+        };
+        API.get2('specimen/page/L0305',data).then(res => {
+            if (res.code == 0) {
+                this.Zrbb = res.data.list;
+                console.log(this.Zrbb,'自然标本')
+            }
+        }).catch(err => {
+            
+        })
+      }
     },
     components: {
         "header-top": header,

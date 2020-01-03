@@ -3,91 +3,30 @@
      <div>
        <div class="c_imgList">
             <ul class="clear">
-              <li class="item">
-                <router-link :to="{path:'/detailByView'}">
+              <li class="item" v-for="(item,index) in imgList" :key="index">
+                  <router-link :to="{name:'detailByView',query:{resResClazzName:imgqqD.resResClazzName,resId:imgqqD.resId,lang:imgqqD.lang,platform:0,refResClazzName:'CmsPf',id:item.id,pageSize:'',index:index}}">
                   <div class="itemImg">
                     <img
                       alt
-                      src="https://www.shenzhenmuseum.com/p/resize_500x500/userfiles//pf//2017/11/30/20171130014048290.jpg"
-                      onerror="this.src='/static/img/bg-1-1.png'"
-                    />
-                  </div>
-                </router-link>
-              </li>
-               <li class="item">
-                <router-link :to="{path:'/detailByView'}">
-                
-                  <div class="itemImg">
-                    <img
-                      alt
-                      src="https://www.shenzhenmuseum.com/p/resize_500x500/userfiles//pf//2017/11/30/20171130014048290.jpg"
-                      onerror="this.src='/static/img/bg-1-1.png'"
-                    />
-                  </div>
-                </router-link>
-              </li>
-               <li class="item">
-               <router-link :to="{path:'/detailByView'}">
-                  <div class="itemImg">
-                    <img
-                      alt
-                      src="https://www.shenzhenmuseum.com/p/resize_500x500/userfiles//pf//2017/11/30/20171130014048290.jpg"
-                      onerror="this.src='/static/img/bg-1-1.png'"
-                    />
-                  </div>
-                </router-link>
-              </li>
-               <li class="item">
-               <router-link :to="{path:'/detailByView'}">
-                
-                  <div class="itemImg">
-                    <img
-                      alt
-                      src="https://www.shenzhenmuseum.com/p/resize_500x500/userfiles//pf//2017/11/30/20171130014048290.jpg"
-                      onerror="this.src='/static/img/bg-1-1.png'"
+                      :src="item.thumbPic"
+                      onerror=""
                     />
                   </div>
                 </router-link>
               </li>
             </ul>
           </div>
-      <!--page-->
-      <div class="paginationWrap" style="z-index: 2;position: relative;" v-if="isPage">
-      <div class="pagination">
-        <div class="cultural_page" id="pageContent">
-          <div class="pagination comWidth">
-            <p class="pages">
-              <a class="active" href="javascript:;" onclick="page(1)">1</a>
-            </p>
-            <p class="pages">
-              <a href="javascript:;" onclick="page(2)">2</a>
-            </p>
-            <p class="pages">
-              <a href="javascript:;" onclick="page(3)">3</a>
-            </p>
-            <p class="pages">
-              <a href="javascript:;" onclick="page(4)">4</a>
-            </p>
-            <p class="pages">
-              <a href="javascript:;" onclick="page(5)">5</a>
-            </p>
-            <p class="pages">
-              <a href="javascript:;" onclick="page(6)">6</a>
-            </p>
-            <span class="page-last" onclick="page(2)">下一页</span>
-          </div>
-        </div>
-      </div>
-    </div>
       </div>
 </template>
 <script>
 export default {
-  props: ["isPage"],
+  props: ["isPage","imgList","imgqqD"],
   data() {
     return {};
   },
-  mounted() {}
+  mounted() {
+
+  }
 };
 </script>
 <style scoped>

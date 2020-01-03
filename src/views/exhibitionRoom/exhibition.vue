@@ -3,13 +3,16 @@
         <header-top :isBanner="isBanner" :bandata="bandata" v-if="bandata"></header-top>
         <div class="mine">
             <ul class="e_list">
-                <li v-for="(item,index) in listd" :key="index">
-                    <div class="content">
-                        <h2 class="title">{{item.name}}</h2>
-                        <div class="content_text">{{item.descr}}</div>
-                        <a href="/roomdetail"> <div class="detaiBtn">查看展览</div></a>
-                    </div>
-                </li>
+                    <li v-for="(item,index) in listd" :key="index">
+                        <div class="content">
+                            <h2 class="title">{{item.name}}</h2>
+                            <div class="content_text">{{item.descr}}</div>
+                            <router-link :to="{name:'room',query:{clazzName:item.clazzName,resId:item.resId}}">
+                                <div class="detaiBtn">查看展览</div>
+                            </router-link>
+                        </div>
+                    </li>
+               
             </ul>
         </div>
         <footer-bottom></footer-bottom>
@@ -31,7 +34,7 @@ export default {
 				thumbPic:'https://www.shenzhenmuseum.com/p/resize_1920x500/userfiles//pf//2017/11/29/20171129095418978.jpg'
 			}],
             //展馆列表
-            listd:[{},{}]
+            listd:[{},{}],
         }
     },
     mounted() {

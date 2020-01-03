@@ -57,17 +57,31 @@ export default {
             isBanner: true,
 			bandata:[{
 				thumbPic:'https://www.shenzhenmuseum.com/p/resize_1920x500/userfiles//pf//2017/11/29/20171129095418978.jpg'
-			}]
+			}],
+
         }
     },
     mounted() {
-    	
+    	//this.getData()
     },
     computed:{
 
     },
     methods: {
-
+    	getData(){
+    		let data ={
+    			resId:this.$route.query.resId,
+    		    clazzName:this.$route.query.clazzName
+    		};
+    		console.log(this.$route.query)
+    		API.get2('exhibition/hall/page/L1701',data).then(res => {
+    		    if (res.code == 0) {
+    		        console.log(res,446566666666)
+    		    }
+    		}).catch(err => {
+    		    
+    		})
+    	}
     },
     components: {
         'header-top': header,
