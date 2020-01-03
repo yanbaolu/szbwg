@@ -2,10 +2,13 @@
     <div>
         <div class="social_nav">
             <ul class="clearfix">
-                <li><router-link :to="{path:'cultural'}" class="active">设备</router-link></li>
-                <li><router-link :to="{path:'qualifications'}">资质</router-link></li>
-                <li><router-link :to="{path:'case'}">案例</router-link></li>
-                <li><router-link :to="{path:'project'}">项目</router-link></li>
+                <li><router-link :to="{path:'aboutus'}" class="active">关于深博</router-link></li>
+                <li><router-link :to="{path:'management'}">管理和建设</router-link></li>
+                <li><router-link :to="{path:'mhonor'}">博物馆荣誉</router-link></li>
+                <li><router-link :to="{path:'listdonors'}">捐赠者名录</router-link></li>
+                <li><router-link :to="{path:'visiting'}">参观服务</router-link></li>
+                <li><router-link :to="{path:'contact'}">联系我们</router-link></li>
+             
             </ul>
            
         </div>
@@ -36,7 +39,7 @@ export default {
 .social_nav ul li{
     background:url(../../../assets/img/icons/title-icon.png) no-repeat left center;
     background-size: 14px 14px;
-    padding: 0 40px;
+    padding: 0 20px;
 
 }
 .social_nav ul li:not(:first-child){
@@ -48,7 +51,7 @@ export default {
     line-height: 51px;
     font-size:26px;
     color:#999999;
-    border-bottom:4px solid #fbfbfb;
+    border-bottom:4px solid #f3f3f3;
     cursor: pointer;
 }
 

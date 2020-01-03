@@ -1,19 +1,24 @@
 <template>
   <div class="roomContent">
     <header-top :isBanner="isBanner"></header-top>
-      <c-detial></c-detial>
+    <div class="social_main mt50">
+     <!--导航-->
+         <div class="social_nav">
+           <pu-nav></pu-nav>
+        </div>
+    </div>
     <footer-bottom></footer-bottom>
   </div>
 </template>
 <script>
 import header from "../components/header";
 import footer from "../components/footer";
-import cdetial from "../components/cultural/cdetial";
+import publicationnav from "../components/publicaiton/publicationnav";
 import * as API from "api/demo";
 export default {
   data() {
     return {
-      isBanner:false,
+      isBanner:true,
       isPage: false,
       totlePage: 12
     };
@@ -24,11 +29,10 @@ export default {
   components: {
     "header-top": header,
     "footer-bottom": footer,
-    "c-detial":cdetial
+    'pu-nav':publicationnav,
   }
 };
 </script>
 <style scoped>
-
-
+.mt30{margin-top: 30px;}
 </style>

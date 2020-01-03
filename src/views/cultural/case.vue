@@ -1,19 +1,29 @@
 <template>
   <div class="roomContent">
     <header-top :isBanner="isBanner"></header-top>
-      <c-detial></c-detial>
+    <div class="social_main mt50">
+     <!--导航-->
+         <div class="social_nav">
+           <cu-nav></cu-nav>
+        </div>
+        <!--案例-->
+       <div class="cultural_qualifica">
+           <cu-qlist></cu-qlist>
+       </div>
+    </div>
     <footer-bottom></footer-bottom>
   </div>
 </template>
 <script>
 import header from "../components/header";
 import footer from "../components/footer";
-import cdetial from "../components/cultural/cdetial";
+import socialisitionNav from "../components/cultural/culturalnav";
+import caselist from "../components/cultural/caselist";
 import * as API from "api/demo";
 export default {
   data() {
     return {
-      isBanner:false,
+      isBanner:true,
       isPage: false,
       totlePage: 12
     };
@@ -24,11 +34,14 @@ export default {
   components: {
     "header-top": header,
     "footer-bottom": footer,
-    "c-detial":cdetial
+    'cu-nav':socialisitionNav,
+    'cu-qlist':caselist
   }
 };
 </script>
 <style scoped>
-
-
+.cultural_qualifica {
+    width: 1200px;
+    margin: 33px auto 0;
+}
 </style>
