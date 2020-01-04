@@ -20,8 +20,8 @@
 		                    <li><router-link :to="{path:'socialisation'}" class="social_c">社教</router-link></li>
 		                    <li><router-link :to="{path:'webPublication'}" class="acade_c">学术</router-link></li>
 		                    <li><router-link :to="{path:'cultural'}" class="cultural_c">文保</router-link></li>
-		                    <li><a href="#" class="creative_c">文创</a></li>
-		                    <li><a href="#" class="aboutus_c">深博</a></li>
+		                    <li><router-link :to="{path:'publicationshop'}" class="creative_c">文创</router-link></li>
+		                    <li><router-link :to="{path:'aboutus'}" class="aboutus_c">深博</router-link></li>
 		                </ul>
 		                <ol class="nav-sec">
 		                    <li class="" style="margin-left:-174px;">
@@ -72,22 +72,22 @@
 		                    <li  class="" style="margin-left:464px;">
 		                        <router-link :to="{path:'cultural'}">设备</router-link><span></span>
 		                        <router-link :to="{path:'qualifications'}">资质</router-link><span></span>
-		                        <a href="#">案例</a><span></span>
-		                        <a href="#">项目</a>
+		                        <router-link :to="{path:'case'}">案例</router-link><span></span>
+		                        <router-link :to="{path:'project'}">项目</router-link>
 		                    </li>
-		                    <li class="" style="margin-left:328px;">
-		                        <a href="#">创意商品</a><span></span>
-		                        <a href="#">展会风采</a><span></span>
-		                        <a href="#">获奖荣誉</a><span></span>
-		                        <a href="#">会议培训</a>
+		                    <li class="" style="margin-left:480px;">
+		                        <router-link :to="{path:'publicationshop'}">创意商品</router-link><span></span>
+		                         <router-link :to="{path:'edemeanor'}">展会风采</router-link><span></span>
+		                         <router-link :to="{path:'honor'}">获奖荣誉</router-link><span></span>
+		                        <router-link :to="{path:'meeting'}">会议培训</router-link>
 		                    </li>
-		                    <li  class="" style="margin-left:118px;">
-		                        <a href="#">关于深博</a><span></span>
-		                        <a href="#">管理和建设</a><span></span>
-		                        <a href="#">博物馆荣誉</a><span></span>
-		                        <a href="#">捐赠者名录</a><span></span>
-		                        <a href="#">参观服务</a><span></span>
-		                        <a href="#">联系我们</a>
+		                    <li  class="" style="margin-left:258px;">
+		                        <router-link :to="{path:'aboutus'}">关于深博</router-link><span></span>
+		                        <router-link :to="{path:'management'}">管理和建设</router-link><span></span>
+		                        <router-link :to="{path:'mhonor'}">博物馆荣誉</router-link><span></span>
+		                        <router-link :to="{path:'listdonors'}">捐赠者名录</router-link><span></span>
+		                        <router-link :to="{path:'visiting'}">参观服务</router-link><span></span>
+		                        <router-link :to="{path:'contact'}">联系我们</router-link>
 		                    </li>
 		                </ol>
             		</nav>

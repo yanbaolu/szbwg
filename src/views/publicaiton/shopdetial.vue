@@ -1,14 +1,14 @@
 <template>
   <div class="roomContent">
     <header-top :isBanner="isBanner"></header-top>
-      <c-detial></c-detial>
+    <p-detial></p-detial>
     <footer-bottom></footer-bottom>
   </div>
 </template>
 <script>
 import header from "../components/header";
 import footer from "../components/footer";
-import cdetial from "../components/cultural/cdetial";
+import pshopdetial from "../components/publicaiton/pshopdetial"
 import * as API from "api/demo";
 export default {
   data() {
@@ -20,15 +20,16 @@ export default {
   },
   mounted() {this.totlePage<=10?this.isPage = false :this.isPage =true;},
   computed: {},
-  methods: {},
+  methods: {
+     
+  },
   components: {
     "header-top": header,
     "footer-bottom": footer,
-    "c-detial":cdetial
+    "p-detial":pshopdetial
   }
 };
 </script>
 <style scoped>
-
 
 </style>

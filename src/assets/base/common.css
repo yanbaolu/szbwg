@@ -98,7 +98,7 @@ select{outline: none;}
 .secNav a{font-size:16px;color:#666666; line-height: 60px;vertical-align: middle;}
 .secNav span{background: url(../img/icons/index-nav-line.png) no-repeat center center; width:12px; height: 16px;display: inline-block;margin:0 20px;vertical-align: middle;}
 
-.header .infos{width:228px; position: absolute;height: 20px; right:0px; top:30px;}
+.header .infos{width:228px; position: absolute;height: 20px; right:-20px; top:30px;}
 
 .header .infos .item{float:left;background:url(../img/icons/triangle.png) no-repeat 64px center; width:90px;height: 20px;line-height:20px;text-indent: 20px;}
 .header .infos .personal-center,

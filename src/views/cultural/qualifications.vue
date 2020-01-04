@@ -6,7 +6,7 @@
          <div class="social_nav">
            <cu-nav></cu-nav>
         </div>
-        <!--讲座-->
+        <!--资质-->
        <div class="cultural_qualifica">
            <cu-qlist></cu-qlist>
        </div>

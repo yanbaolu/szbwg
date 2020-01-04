@@ -2,10 +2,10 @@
     <div>
         <div class="social_nav">
             <ul class="clearfix">
-                <li><router-link :to="{path:'cultural'}" class="active">设备</router-link></li>
-                <li><router-link :to="{path:'qualifications'}">资质</router-link></li>
-                <li><router-link :to="{path:'case'}">案例</router-link></li>
-                <li><router-link :to="{path:'project'}">项目</router-link></li>
+                <li><router-link :to="{path:'publicationshop'}" class="active">创意商品</router-link></li>
+                <li><router-link :to="{path:'edemeanor'}">展会风采</router-link></li>
+                <li><router-link :to="{path:'honor'}">获取荣誉</router-link></li>
+                <li><router-link :to="{path:'meeting'}">会议培训</router-link></li>
             </ul>
            
         </div>
