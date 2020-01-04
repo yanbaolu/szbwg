@@ -13,7 +13,7 @@
               <a href="javascript:;" target="_blank" class="title_a">展览照片</a>
             </h3>
           </div>
-          <ex-topic :isPage="isPage"></ex-topic>
+          <ex-topic :isPage="isPage" :imgqqD="imgqqD" :data="imgList" v-if="imgList" :ishover="false"></ex-topic>
         </div>
       </div>
     </div>
@@ -34,7 +34,9 @@ export default {
       isPage: false,
       totlePage: 1,
       isVideo:true,//是否有视频
-      isExhiNews:true//是否有相关展览
+      isExhiNews:true,//是否有相关展览
+      imgqqD:this.$route.query,
+      imgList:''
     };
   },
   mounted() {
@@ -54,6 +56,7 @@ export default {
       $(".arrowdown").show();
       $(".exhi-article-wrap").css({ paddingBottom: "34px" });
     });
+    this.getImg()
   },
   computed: {},
   methods: {
@@ -116,6 +119,15 @@ export default {
           error: function(XMLHttpRequest) {}
         });
       }
+    },
+     getImg(){
+       API.get2('relation/page',this.$route.query).then(res => {
+           if (res.code == 0) {
+               this.imgList=res.data.list;
+           }
+       }).catch(err => {
+           
+       })
     }
   },
   components: {

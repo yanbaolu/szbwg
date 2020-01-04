@@ -9,7 +9,7 @@
                             新闻资讯<router-link :to="{path:'intangibleNews'}">查看更多</router-link>
                         </h3>
                     </div>
-                    <in-info></in-info>
+                    <in-info :data="feiyiNews" v-if="feiyiNews"></in-info>
                 </div>
                 <div class="intang_right">
                     <div class="intang_title">
@@ -17,7 +17,7 @@
                             通知公告<router-link :to="{path:'intangibleToice'}">查看更多</router-link>
                         </h3>
                     </div>
-                    <in-info></in-info>
+                    <in-info :data="feyigg" v-if="feyigg"></in-info>
                 </div>
                 <div class="intang_icon">
                     <ol class="clearfix">
@@ -86,7 +86,9 @@ export default {
             totlePage: 1,
             news: [],
             toice: [],
-            bandata:''
+            bandata:'',
+            feiyiNews:'',
+            feyigg:''
         };
     },
     mounted() {
@@ -95,7 +97,9 @@ export default {
         this.totlePageTopic <= 10 ?
             (this.isPageTopic = false) :
             (this.isPageTopic = true);
-        this.getBaner()
+        this.getBaner();
+        this.Intangible()
+        this.fegg()
     },
     computed: {},
     methods: {
@@ -103,7 +107,6 @@ export default {
             console.log(1111)
             $('.video_Mask').hide();
             $('#video_').get(0).pause();
-
         },
         //获取banner
         getBaner(){
@@ -121,8 +124,40 @@ export default {
             }).catch(err => {
                 
             })
-        }
+        },
+        //非遗新闻
+        Intangible(){
+            let data ={
+                lang:this.lang,
+                pageNo:1,
+                pageSize:8,
+                platform:0
+            };
+            API.get2('intangible/news/page/L0409',data).then(res=>{
+                if (res.code==0) {
+                    this.feiyiNews=res.data.list.slice(0,4) 
+                    //console.log(this.feiyiNews)
+                }
+            }).catch(err => {
 
+            })
+        },
+        fegg(){
+           let data ={
+                lang:this.lang,
+                pageNo:1,
+                pageSize:8,
+                platform:0
+           };
+           API.get2('intangible/notice/page/L0410',data).then(res=>{
+               if (res.code==0) {
+                   this.feyigg=res.data.list.slice(0,4) ;
+                   //console.log(this.feyigg)
+               }
+           }).catch(err => {
+
+           }) 
+        }
     },
     components: {
         "header-top": header,

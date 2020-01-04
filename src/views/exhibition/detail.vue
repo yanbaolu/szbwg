@@ -16,7 +16,7 @@
             <div class="nav-path comWidth" style="padding-bottom:30px;"></div>
         </div>
         <div class="exhibit_cont" style="padding-bottom:40px;">
-            <div class="detailWrap wrap">
+            <div class="detailWrap wrap" v-if="detailData">
                 <input type="hidden" id="shoucang" value="false" />
                 <h2 class="comWidth" id="comWidth">
                     <span class="detailTitle">{{detailData.name}}</span>
@@ -40,8 +40,8 @@
                                 </p>
                             </div>
                             <div class="shandow">
-                                <a href="javascript:;" class="arrowdown"></a>
-                                <a href="javascript:;" class="arrowup"></a>
+                                <a href="javascript:;" class="arrowdown" @click="arrowdown()"></a>
+                                <a href="javascript:;" class="arrowup" @click="arrowup()"></a>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                     <div class="intang_title">
                         <h3 class="clearfix">
                             <a href="#" target="_blank" class="title_a">展览照片</a>
-                            <router-link :to="{path:'exhibitionMore'}" class="more">查看更多</router-link>
+                            <router-link :to="{name:'exhibitionMore',query:{lang:imgqqD.lang,pageNo:imgqqD.pageNo,pageSize:'',platform:imgqqD.platform,resId:imgqqD.resId,resResClazzName:imgqqD.resResClazzName,refResClazzName:imgqqD.refResClazzName}}" class="more">查看更多</router-link>
                         </h3>
                     </div>
                     <ex-pic :isPage="isPage" :imgList="imgList" :imgqqD="imgqqD"></ex-pic>
@@ -65,10 +65,10 @@
                     <div class="intang_title">
                         <h3 class="clearfix">
                             <a href="#" target="_blank" class="title_a">展览照片</a>
-                            <router-link :to="{path:'topicExMore'}" class="more">查看更多</router-link>
+                            <router-link :to="{name:'topicExMore',query:{lang:imgqqD.lang,pageNo:imgqqD.pageNo,pageSize:'',platform:imgqqD.platform,resId:imgqqD.resId,resResClazzName:imgqqD.resResClazzName,refResClazzName:imgqqD.refRes}}" class="more">查看更多</router-link>
                         </h3>
                     </div>
-                    <ex-topic :isPage="isPage"></ex-topic>
+                    <ex-topic :isPage="isPage" :imgqqD="imgqqD" :data="imgList" v-if="imgqqD" :ishover="true"></ex-topic>
                 </div>
             </div>
             <!-- 展览视频 -->
@@ -133,7 +133,8 @@ export default {
                 pageSize: 4,
                 resId: this.$route.query.resId,
                 resResClazzName: this.$route.query.clazzName,
-                refResClazzName: 'CmsPf'
+                refResClazzName: 'CmsPf',
+                refRes:'CmsCollection'
             },
             imgList: ''
         };
@@ -150,24 +151,24 @@ export default {
         }
         //页数显示与否
         this.totlePage <= 10 ? (this.isPage = false) : (this.isPage = true);
-        // 展览介绍
-        $(".arrowdown").click(function() {
-            $(".exhi-article").css({ transition: "500ms", height: "auto" });
-            $(this).hide();
-            $(".arrowup").show();
-            $(".exhi-article-wrap").css({ paddingBottom: "44px" });
-        });
-        $(".arrowup").click(function() {
-            $(".exhi-article").css({ height: "156px", transition: "500ms" });
-            $(this).hide();
-            $(".arrowdown").show();
-            $(".exhi-article-wrap").css({ paddingBottom: "34px" });
-        });
         this.getData();
-        this.getImg();
+        //this.getImg();
     },
     computed: {},
     methods: {
+        //展览介绍
+        arrowdown(){
+            $(".exhi-article").css({ transition: "500ms", height: "auto" });
+            $(".arrowdown").hide()
+            $(".arrowup").show();
+            $(".exhi-article-wrap").css({ paddingBottom: "44px" });
+        },
+        arrowup(){
+            $(".exhi-article").css({ height: "156px", transition: "500ms" });
+            $(".arrowup").hide();
+            $(".arrowdown").show();
+            $(".exhi-article-wrap").css({ paddingBottom: "34px" });
+        },
         //获取数据
         getData() {
             let data = {
@@ -177,27 +178,8 @@ export default {
             API.get2('exhibition/get', data).then(res => {
                 if (res.code == 0) {
                     this.detailData = res.data;
-                    //console.log(this.detailData,456)
-                }
-            }).catch(err => {
-
-            })
-        },
-        //关联关系
-        getImg() {
-            let data = {
-                lang: this.lang,
-                pageNo: 1,
-                pageSize: 4,
-                platform: 0,
-                resId: this.resId,
-                resResClazzName: this.className,
-                refResClazzName: 'CmsPf'
-            };
-            API.get2('relation/page', data).then(res => {
-                if (res.code == 0) {
-                    this.imgList = res.data.list;
-                    //console.log(this.imgList,456)
+                    this.imgList=res.data.relationPicList.slice(0,4);
+                    console.log(this.imgList,456)
                 }
             }).catch(err => {
 

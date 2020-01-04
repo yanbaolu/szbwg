@@ -44,7 +44,7 @@ const routes = [
         }
     },{
         path: '/exhibitionMore',
-        name: 'exhlist',
+        name: 'exhibitionMore',
         component: load('exhibition/exhibitionMore'),
         meta: {
             title: '展览照片'

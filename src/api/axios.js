@@ -7,6 +7,7 @@ const service = axios.create({
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         "X-Requested-With": "XMLHttpRequest",
+        "X-Req-platform":"0"
     },
     baseURL: 'http://www.szbwg.ts.artron.net/api',
 });
@@ -15,6 +16,7 @@ const serviceForm = axios.create({
     headers: {
         'Content-Type': 'multipart/form-data; charset=UTF-8',
         "X-Requested-With": "XMLHttpRequest",
+        "X-Req-platform":"0"
     },
     baseURL: 'http://www.szbwg.ts.artron.net/api',
 });
