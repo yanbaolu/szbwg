@@ -7,7 +7,7 @@
         <!-- 大图 -->
         <div id="pageContent">
             <div id="imgContainer">
-                <img id="imageFullScreen" src="collectionDetail?lmType=L0302&amp;resId=0080c48d427042729862613dbffde8f6" />
+                <img id="imageFullScreen" src="" />
             </div>
             <div class="close" id="scale-close" @click="closeImg()"></div>
         </div>
@@ -18,14 +18,9 @@
                     <div class="carousel">
                         <div class="large_box">
                             <ul id="dataList1">
-                                <li class="active">
+                                <li class="active" v-for="(item,index) in imgList">
                                     <a href="javascript:;">
-                                        <img src="https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20191224090342.jpg" onerror="this.src='/static/img/bg-1-1.png'" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <img src="https://www.shenzhenmuseum.com/p/resize_500x500/userfiles//pf//2017/10/30/20171030020008453.jpg" onerror="this.src='/static/img/bg-1-1.png'" />
+                                        <img :src="item.thumbPic" />
                                     </a>
                                 </li>
                             </ul>
@@ -47,14 +42,9 @@
                             <span class="btn left_btn"></span>
                             <div class="small_list">
                                 <ul class="clear" id="dataList2" style="width: 108px;">
-                                    <li class="active">
-                                        <a href="javascript:;" _src="https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20191224090342.jpg">
-                                            <img alt src="https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20191224090342.jpg" onerror="this._src='/static/img/bg-1-1.png'" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;" _src="https://www.shenzhenmuseum.com/p/resize_500x500/userfiles//pf//2017/10/30/20171030020008453.jpg">
-                                            <img alt src="https://www.shenzhenmuseum.com/p/resize_500x500/userfiles//pf//2017/10/30/20171030020008453.jpg" onerror="this._src='/static/img/bg-1-1.png'" />
+                                    <li class="active" v-for="(item,index) in imgList">
+                                        <a href="javascript:;" :_src="item.thumbPic">
+                                            <img alt :src="item.thumbPic" />
                                         </a>
                                     </li>
                                 </ul>
@@ -70,34 +60,34 @@
                     </div>
                 </div>
                 <input type="hidden" id="shoucang" value="false" />
-                <div class="detailRight fr descript_title" id="detailInfo">
-                    <h2 class="collection-title">红绘牛头形来通</h2>
+                <div class="detailRight fr descript_title" id="detailInfo" v-if="data">
+                    <h2 class="collection-title">{{data.name}}</h2>
                     <p class="wshoucang mb-20" id="showcangp" style="width: 66px;" onclick="setShowCang('6cafe3e5d2284a179c6b3a6bf71d78d2');" data-value="false">收藏</p>
                     <p style="height:1px;background:#dddddd;margin-bottom:24px;margin-top:28px;"></p>
                     <p class="collection-size collection-info clear">
                         <span style="float:left;">藏品名称：</span>
-                        <span style="float:left;width:420px;">红绘牛头形来通</span>
+                        <span style="float:left;width:420px;">{{data.name}}</span>
                     </p>
-                    <p class="collection-size collection-info">具体年代：公元前4世纪</p>
+                    <p class="collection-size collection-info">具体年代：{{data.specificYear}}</p>
                     <p class="collection-size collection-info">
                         类
-                        <em style="display:inline-block;width:32px;"></em>别：展览作品
+                        <em style="display:inline-block;width:32px;"></em>别：{{data.category}}
                     </p>
                     <p class="collection-size collection-info">
                         质
-                        <em style="display:inline-block;width:32px;"></em>地：陶
+                        <em style="display:inline-block;width:32px;"></em>地：{{data.quality}}
                     </p>
                     <p class="collection-size collection-info clear">
                         <span style="float:left;">具体尺寸：</span>
-                        <span style="float:left;width:420px;">高20厘米</span>
+                        <span style="float:left;width:420px;">{{data.size}}</span>
                     </p>
-                    <div class="abstra_content" style="height: 200px;">
-                        <div class="astracts deputy_text" style="height: 200px;">
+                    <div class="abstra_content" style="height:160px;">
+                        <div class="astracts deputy_text" style="height:160px;">
                             <span>
                                 描
                                 <em style="display:inline-block;width:32px;"></em>述：
                             </span>
-                            <p>作为古希腊人在各项仪式中常用的注酒器，来通早期被视为圣物。这件来通的造型为一头公牛头部，主体纹饰以红绘技法描绘了希腊神话中的一幕——变身为天鹅的宙斯（Zeus）正在诱惑绝世美女丽达的场景。公牛崇拜源于地中海东部与两河流域，在古希腊文明的前身米诺斯（Minoan）文化中尤为盛行，后来传播到意大利地区。</p>
+                            <p>{{data.detail}}</p>
                         </div>
                         <div class="arrow">
                             <span class="arrowUp"></span>
@@ -126,7 +116,8 @@ export default {
             totlePage: 1,
             isAudio: false, //是否有音频
             icurPic: 2,
-            data:''
+            data:'',
+            imgList:''
         };
     },
     mounted() {
@@ -191,10 +182,11 @@ export default {
                 resId:this.$route.query.resId,
             };
             API.get2('collection/get', data).then(res => {
-                console.log(res)
+                //console.log(res)
                 if (res.code == 0) {
                     this.data = res.data;
-                    console.log(this.data,456111)
+                    this.imgList=res.data.relationPicList;
+                    //console.log(this.imgList,456111)
                 }
             }).catch(err => {
 
@@ -432,7 +424,7 @@ export default {
     line-height: 18px;
     cursor: pointer;
 }
-
+#imgContainer{height:100%}
 .detailRight .collection-intro {
     padding-top: 14px;
     padding-bottom: 18px;

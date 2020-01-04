@@ -152,7 +152,6 @@ export default {
         //页数显示与否
         this.totlePage <= 10 ? (this.isPage = false) : (this.isPage = true);
         this.getData();
-        //this.getImg();
     },
     computed: {},
     methods: {
@@ -179,27 +178,7 @@ export default {
                 if (res.code == 0) {
                     this.detailData = res.data;
                     this.imgList=res.data.relationPicList.slice(0,4);
-                    console.log(this.imgList,456)
-                }
-            }).catch(err => {
-
-            })
-        },
-        //获取典藏图片
-        getDct(){
-            let data = {
-                lang: this.lang,
-                pageNo: 1,
-                pageSize: 4,
-                platform: 0,
-                resId: this.resId,
-                resResClazzName: this.className,
-                refResClazzName: 'CmsPf'
-            };
-            API.get2('relation/page', data).then(res => {
-                if (res.code == 0) {
-                    this.imgList = res.data.list;
-                    //console.log(this.imgList,456)
+                    //console.log(this.detailData,456)
                 }
             }).catch(err => {
 

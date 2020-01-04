@@ -16,9 +16,9 @@
                                 <strong class="titleName">改革开放史</strong>
                             </a>
                         </div>
-                        <router-link :to="{path:'/collectionList'}" class="more">查看更多</router-link>
+                        <router-link :to="{name:'collectionList',query:{number:'L0302',master:'C010101',type:1}}" class="more">查看更多</router-link>
                     </div>
-                    <collection-list v-if="Ggkfs" :data="Ggkfs"></collection-list>
+                    <collection-list v-if="Ggkfs" :data="Ggkfs" :type="1"></collection-list>
                 </div>
             </div>
             <div class="collectionWrap">
@@ -30,9 +30,9 @@
                                 <strong class="titleName">古代艺术</strong>
                             </a>
                         </div>
-                        <a href="#" class="more">查看更多</a>
+                        <router-link :to="{name:'collectionList',query:{number:'L0303',master:'C010102',type:1}}" class="more">查看更多</router-link>
                     </div>
-                    <collection-list v-if="Gdys" :data="Gdys"></collection-list>
+                    <collection-list v-if="Gdys" :data="Gdys" :type="1"></collection-list>
                 </div>
             </div>
             <div class="collectionWrap">
@@ -44,9 +44,9 @@
                                 <strong class="titleName">深圳历史文化</strong>
                             </a>
                         </div>
-                        <a href="#" class="more">查看更多</a>
+                        <router-link :to="{name:'collectionList',query:{number:'L0304',master:'C010103',type:1}}" class="more">查看更多</router-link>
                     </div>
-                    <collection-list v-if="Szwhs" :data="Szwhs"></collection-list>
+                    <collection-list v-if="Szwhs" :data="Szwhs" :type="1"></collection-list>
                 </div>
             </div>
             <div class="collectionWrap" v-if="Zrbb">
@@ -58,9 +58,9 @@
                                 <strong class="titleName">自然标本</strong>
                             </a>
                         </div>
-                        <a href="#" class="more">查看更多</a>
+                        <router-link :to="{name:'collectionList',query:{number:'L0305',master:'C010104',type:0}}" class="more">查看更多</router-link>
                     </div>
-                    <collection-list v-if="Zrbb" :data="Zrbb"></collection-list>
+                    <collection-list v-if="Zrbb" :data="Zrbb" :type="0"></collection-list>
                 </div>
             </div>
         </div>
@@ -183,7 +183,7 @@ export default {
         API.get2('specimen/page/L0305',data).then(res => {
             if (res.code == 0) {
                 this.Zrbb = res.data.list;
-                console.log(this.Zrbb,'自然标本')
+                //console.log(this.Zrbb,'自然标本')
             }
         }).catch(err => {
             

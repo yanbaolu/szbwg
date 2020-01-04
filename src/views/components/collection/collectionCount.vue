@@ -2,7 +2,7 @@
     <div class="imgList7">
         <ul class="clear">
             <li class="item" v-for="(item,index) in data">
-                <router-link :to="{name:'collectiondetial',query:{clazzName:item.clazzName,resId:item.resId,index:index}}">
+                <router-link :to="{name:'collectiondetial',query:{clazzName:item.clazzName,resId:item.resId,index:index,type:type}}">
                     <div class="itemImg L0302">
                         <img :src="item.thumbPic" alt />
                         <div class="itemText">
@@ -16,12 +16,12 @@
 </template>
 <script>
 export default {
-    props: ["isPage","data"],
+    props: ["isPage","data",'type'],
     data() {
         return {};
     },
     mounted() {
-        console.log(this.data,123456)
+        //console.log(this.data,123456)
     }
 };
 </script>

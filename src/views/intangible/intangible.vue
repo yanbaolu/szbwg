@@ -47,7 +47,7 @@
                     </h3>
                 </div>
                 <div class="video_content videoList" style="margin-top:15px;">
-                    <in-video></in-video>
+                    <in-video :data="videoList" v-if="videoList"></in-video>
                 </div>
                 <div class="intang_title" style="margin-top:34px;">
                     <h3 class="clearfix">
@@ -55,7 +55,7 @@
                     </h3>
                 </div>
                 <div class="intang_picture">
-                    <in-pic></in-pic>
+                    <in-pic v-if="imgList" :data="imgList"></in-pic>
                 </div>
             </div>
         </div>
@@ -88,7 +88,9 @@ export default {
             toice: [],
             bandata:'',
             feiyiNews:'',
-            feyigg:''
+            feyigg:'',
+            videoList:'',
+            imgList:''
         };
     },
     mounted() {
@@ -100,11 +102,13 @@ export default {
         this.getBaner();
         this.Intangible()
         this.fegg()
+        this.getVideo()
+        this.getImg()
     },
     computed: {},
     methods: {
         videoClose() {
-            console.log(1111)
+            //console.log(1111)
             $('.video_Mask').hide();
             $('#video_').get(0).pause();
         },
@@ -142,6 +146,7 @@ export default {
 
             })
         },
+        //非遗公告
         fegg(){
            let data ={
                 lang:this.lang,
@@ -157,7 +162,43 @@ export default {
            }).catch(err => {
 
            }) 
-        }
+        },
+        //视频库
+        getVideo(){
+            let data ={
+                 lang:this.lang,
+                 pageNo:1,
+                 pageSize:3,
+                 master:'',
+                 platform:0
+            };
+            API.get2('intangible/video/page/L0405',data).then(res=>{
+                if (res.code==0) {
+                    this.videoList=res.data.list
+                    //console.log(this.videoList,444444444)
+                }
+            }).catch(err => {
+
+            }) 
+        },
+        getImg(){
+            let data ={
+                 lang:this.lang,
+                 classifyCode:'C06',
+                 platform:0,
+                 pageNo:1,
+                 pageSize:4
+            };
+            API.get2('intangible/picset/master/lmCode/L0406',data).then(res=>{
+                if (res.code==0) {
+                    //console.log(res,44444444484888)
+                    this.imgList=res.data.list.slice(0,4)
+                    console.log(this.imgList,444444444)
+                }
+            }).catch(err => {
+
+            }) 
+        },
     },
     components: {
         "header-top": header,
