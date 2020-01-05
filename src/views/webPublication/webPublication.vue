@@ -1,44 +1,102 @@
 <template>
-  <div class="roomContent">
-    <header-top :isBanner="isBanner"></header-top>
-    <div class="social_main mt50">
-     <!--导航-->
-         <div class="social_nav">
-           <web-nav></web-nav>
+    <div class="roomContent">
+        <header-top :isBanner="isBanner" v-if="bandata" :bandata="bandata" style="margin-bottom:30px"></header-top>
+        <div class="social_main mt50">
+            <!--导航-->
+            <div class="social_nav">
+                <web-nav></web-nav>
+            </div>
+            <!--讲座-->
+            <div class="">
+                <web-forum :isPage="isPage" v-if="dataList" :data="dataList.list"></web-forum>
+            </div>
         </div>
-        <!--讲座-->
-       <div class="">
-            <web-forum :isPage="isPage"></web-forum>
-       </div>
+        <div class="paginationWrap" style="z-index: 1001;position: relative;" v-if="isPage">
+            <div class="pagination">
+                <div class="clear leavePage" id="pageContent">
+                    <div class=" pagination comWidth ">
+                        <span class="page-last" @click="getForum(pageNum-1)" v-if="pageNum>1">上一页</span>
+                        <p class="pages" v-for="(item,index) in dataAll.navigatepageNums"><a :class="{active:num==index}" href="javascript:;" @click="getForum(item)">{{item}}</a> </p>
+                        <span class="page-last" @click="getForum(pageNum+1)">下一页</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer-bottom></footer-bottom>
     </div>
-    <footer-bottom></footer-bottom>
-  </div>
 </template>
 <script>
 import header from "../components/header";
 import footer from "../components/footer";
 import socialisitionNav from "../components/webPublication/webPublicationnav";
-import forum from "../components/webPublication/forum"   
+import forum from "../components/webPublication/forum"
 import * as API from "api/demo";
 export default {
-  data() {
-    return {
-      isBanner:true,
-      isPage: false,
-      totlePage: 12
-    };
-  },
-  mounted() {this.totlePage<=10?this.isPage = false :this.isPage =true;},
-  computed: {},
-  methods: {},
-  components: {
-    "header-top": header,
-    "footer-bottom": footer,
-    'web-nav':socialisitionNav,
-    'web-forum':forum,
-  }
+    data() {
+        return {
+            lang:this.$store.getters.getlang,
+            isBanner: true,
+            isPage: false,
+            totlePage: 12,
+            dataList:'',
+            bandata:'',
+            num:0,
+            dataAll:'',
+            pageNum:1
+        };
+    },
+    mounted() { 
+      this.totlePage <= 10 ? this.isPage = false : this.isPage = true;
+      this.getBaner();
+      this.getForum();
+    },
+    computed: {},
+    methods: {
+        //获取banner
+        getBaner(){
+            let data ={
+                lang:this.lang,
+                pageNo:1,
+                pageSize:3,
+                platform:0
+            };
+            API.get2('slidePic/page/L0605',data).then(res => {
+                if (res.code == 0) {
+                    this.bandata = res.data.list;
+                    //console.log(this.bandata)
+                }
+            }).catch(err => {
+                
+            })
+        },
+        //论坛列表
+        getForum(item){
+            this.num=item-1;
+            this.pageNum=item;
+            let data ={
+                lang:this.lang,
+                pageNum:this.pageNum,
+                pageSize:8,
+                platform:0
+            };
+            API.get2('document/page/L0601',data).then(res => {
+                if (res.code == 0) {
+                    this.dataList = res.data;
+                    this.dataAll=res.data;
+                    console.log(this.dataList)
+                }
+            }).catch(err => {
+                
+            })
+        }
+    },
+    components: {
+        "header-top": header,
+        "footer-bottom": footer,
+        'web-nav': socialisitionNav,
+        'web-forum': forum,
+    }
 };
 </script>
 <style scoped>
-
 </style>

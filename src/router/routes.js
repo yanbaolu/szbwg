@@ -178,6 +178,14 @@ const routes = [
         }
     },
     {
+        path:'/intangibleRegulat',
+        name:'intangibleRegulat',
+        component:load('intangible/intangibleRegulat'),
+        meta:{
+            title:'非遗法规列表'
+        }
+    },
+    {
         path:'/lawsregulatDetail',
         name:'lawsregulatDetail',
         component:load('intangible/lawsregulatDetail'),

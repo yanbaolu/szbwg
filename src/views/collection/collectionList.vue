@@ -57,7 +57,7 @@ export default {
                     this.tabtitle.push(item)
                 })
                 this.data=res.data;
-                console.log(this.tabtitle,'分类信息')
+                //console.log(this.tabtitle,'分类信息')
               }
           }).catch(err => {
               

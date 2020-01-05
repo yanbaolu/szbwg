@@ -26,24 +26,28 @@
                                 <p>非遗法规</p>
                             </a></li>
                         <li>
-                            <router-link :to="{path:'intangibleProject'}">
+                            <router-link :to="{name:'intangibleProject'}">
                                 <div></div>
                                 <p>非遗代表性项目</p>
                             </router-link>
                         </li>
-                        <li><a href="intangibleInheritance?pLm=L04&amp;lmType=L0403">
+                        <li>
+                            <router-link :to="{name:'intangibleInheritance'}">
                                 <div></div>
                                 <p>非遗代表性传承人</p>
-                            </a></li>
-                        <li><a href="intangibleRegulat">
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{name:'intangibleRegulat'}">
                                 <div></div>
                                 <p>申报指南</p>
-                            </a></li>
+                            </router-link>
+                        </li>
                     </ol>
                 </div>
                 <div class="intang_title">
                     <h3 class="clear">
-                        视频库 <router-link :to="{path:'videoAll'}">查看更多</router-link>
+                        视频库 <router-link :to="{path:'/videoAll'}">查看更多</router-link>
                     </h3>
                 </div>
                 <div class="video_content videoList" style="margin-top:15px;">
@@ -51,7 +55,8 @@
                 </div>
                 <div class="intang_title" style="margin-top:34px;">
                     <h3 class="clearfix">
-                        图片库<a href="pictureAll?pLm=L04&amp;lmType=L0406">查看更多</a>
+                        图片库
+                        <router-link :to="{path:'/pictureAll'}">查看更多</router-link>
                     </h3>
                 </div>
                 <div class="intang_picture">
@@ -193,7 +198,7 @@ export default {
                 if (res.code==0) {
                     //console.log(res,44444444484888)
                     this.imgList=res.data.list.slice(0,4)
-                    console.log(this.imgList,444444444)
+                    //console.log(this.imgList,444444444)
                 }
             }).catch(err => {
 

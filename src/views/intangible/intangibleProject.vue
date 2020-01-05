@@ -69,7 +69,7 @@ export default {
                 if (res.code==0) {
                     this.list=res.data.list;
                     this.dataAll=res.data;
-                    console.log(this.list)
+                    //console.log(this.list)
                 }
             }).catch(err => {
 

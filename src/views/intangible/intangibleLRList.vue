@@ -5,7 +5,8 @@
             <div class="navPath_new clear" style="margin-bottom:33px;">
                 <div class="navPath clear">
                     <p class="clear"><i></i><a href="/intangible">非遗</a><i></i></p>
-                    <p class="clear"><i></i><a href="javascript:;">非遗法规</a><i></i></p>
+                    <p class="clear" v-if="this.$route.query.iSf=='true'"><i></i><a href="javascript:;">非遗法规</a><i></i></p>
+                    <p class="clear" v-if="this.$route.query.iSf=='false'"><i></i><a href="javascript:;">非遗申报指南</a><i></i></p>
                 </div>
             </div>
             <div class="news_message">
@@ -49,6 +50,12 @@ export default {
     computed: {},
     methods: {
       getLawer(){
+            if(this.$route.query.iSf=='true'){
+                var url="intangible/regulat/page/L0401"
+            }else {
+                var url="intangible/guide/page/L0408"
+            }
+            console.log(url)
             let data ={
                  lang:this.lang,
                  pageNo:1,
@@ -56,7 +63,7 @@ export default {
                  platform:0,
                  master:this.$route.query.type
             };
-            API.get2('intangible/regulat/page/L0401',data).then(res=>{
+            API.get2(url,data).then(res=>{
                 if (res.code==0) {
                     this.lawer=res.data.list;
                     console.log(res)

@@ -12,7 +12,7 @@
                 <div class="intang_title">
                     <h3 class="clearfix">
                         <a href="#" target="_blank" class="title_a">国家级法规</a>
-                        <router-link target="_blank" :to="{name:'intangibleLRList',query:{type:1,title:'国家级法规'}}" class="more">查看更多</router-link>
+                        <router-link target="_blank" :to="{name:'intangibleLRList',query:{type:1,title:'国家级法规',iSf:true}}" class="more">查看更多</router-link>
                     </h3>
                 </div>
                 <div class="news_content laws_content">
@@ -21,7 +21,7 @@
                 <div class="intang_title">
                     <h3 class="clearfix">
                         <a href="#" target="_blank" class="title_a">省级法规</a>
-                        <router-link target="_blank" :to="{name:'intangibleLRList',query:{type:2,title:'省级法规'}}" class="more">查看更多</router-link>
+                        <router-link target="_blank" :to="{name:'intangibleLRList',query:{type:2,title:'省级法规',iSf:true}}" class="more">查看更多</router-link>
                     </h3>
                 </div>
                 <div class="news_content laws_content">
@@ -30,7 +30,7 @@
                 <div class="intang_title">
                     <h3 class="clearfix">
                         <a href="#" target="_blank" class="title_a">市级法规</a>
-                       <router-link target="_blank" :to="{name:'intangibleLRList',query:{type:3,title:'市级法规'}}" class="more">查看更多</router-link>
+                       <router-link target="_blank" :to="{name:'intangibleLRList',query:{type:3,title:'市级法规',iSf:true}}" class="more">查看更多</router-link>
                     </h3>
                 </div>
                 <div class="news_content laws_content">
@@ -116,7 +116,7 @@ export default {
             API.get2('intangible/regulat/page/L0401',data).then(res=>{
                 if (res.code==0) {
                     this.City=res.data.list;
-                    console.log(this.City)
+                    //console.log(this.City)
                 }
             }).catch(err => {
 
