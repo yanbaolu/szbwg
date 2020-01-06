@@ -4,7 +4,7 @@
             <div class="acade_publication">
                 <ul class="clearfix">
                     <li v-for="(item,ndex) in data">
-                        <router-link :to="{path:'monographdetail'}">
+                        <router-link :to="{name:'monographdetail',query:{resId:item.resId,clazzName:item.clazzName,resType:item.resType}}">
                             <div class="publication_img">
                                 <img :src="item.thumbPic" alt="">
                             </div>

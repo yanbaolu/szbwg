@@ -83,7 +83,7 @@ export default {
                 if (res.code == 0) {
                     this.dataList = res.data;
                     this.dataAll=res.data;
-                    console.log(this.dataList)
+                    //console.log(this.dataList)
                 }
             }).catch(err => {
                 

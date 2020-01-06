@@ -7,6 +7,7 @@
                 <li><router-link :to="{path:'paper'}">论文</router-link></li>
                 <li><router-link :to="{path:'library'}">馆刊</router-link></li>
                 <li><router-link :to="{path:'motal'}">深圳前世今生</router-link></li>
+                <li><router-link :to="{path:'cultural'}">文保</router-link></li>
             </ul>
            
         </div>
