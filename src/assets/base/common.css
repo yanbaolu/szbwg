@@ -75,7 +75,7 @@ select{outline: none;}
 .header .logoImg:hover{-webkit-transform:scale(1.4);-o-transform:scale(1.4);-moz-transform:scale(1.4);transform:scale(1.4);}
 
 
-.header .logoImg img{width:100%;}
+.header .logoImg img{max-width:100%;}
 .header .logoTxt{width:196px;height:50px;}
 
 .navBar{position: absolute;top:0;left:264px;}
@@ -205,16 +205,18 @@ select{outline: none;}
 
 
 /*婵犵數鍋為崹鍫曞箹閳哄倻顩叉繛鍡楄瑜庡鍕拷锝庡厴閺嬫牕顪冮妶鍡樺暗闁稿鍠愭穱濠囧炊椤掍胶鍘介梺鍐叉惈閸犳岸鎮炴ィ鍐╃厱婵炲棙鐟︾�氾拷*/
-.registerWrap{width:100%;height: 100%;background-color:#f3f3f3;position: relative;}
+.registerWrap{width:100%;height: 100%;/*background-color:#f3f3f3;*/position: relative;}
 
- .register{width:500px;position: absolute;top:60px;left:50%;margin-left: -250px;background: #ffffff;padding-bottom: 20px; border-radius: 8px;}
+ .register{width:500px;background: #ffffff;padding-bottom: 20px; border-radius: 8px;margin:90px auto;}
 .register h1{text-align: center;line-height: 90px; font-size:30px;color:#333333;font-weight: normal;width:400px;margin:0 auto 30px;border-bottom:1px solid #dddddd;}
-.register .input-text{background-color:#f3f3f3;color:#999999;font-size: 15px;line-height: 48px; text-indent: 30px;width:398px; height: 48px;border:1px solid #dddddd;margin:0 auto 20px;display: block;border-radius: 6px;overflow: hidden;}
+.register .input-text{background-color:#f3f3f3;color:#999999;font-size: 15px;line-height: 48px; text-indent: 30px;width:398px; height: 48px;border:1px solid #dddddd;margin:0 auto 20px;display: block;border-radius: 6px;overflow: hidden; position: relative;}
 .register .register-submit{display: block;width:400px;height: 56px;line-height:56px;background-color:#333333;font-size: 20px; color:#ffffff;text-align:center;margin:40px auto 0;border-radius: 6px;}
 .register .go-login{font-size: 16px; color:#333333;width:400px; margin:0 auto 24px;line-height: 56px;}
 .register .input-verification-code{border:none; width:258px; height: 48px;float:left;padding:0; text-indent: 30px;}
-.register .verification-code{width:90px;height: 100%; background:#dddddd;color:#ffffff;position:relative;line-height: 48px;float: left;}
-.register .verification-btn{width:50px;height: 48px;float:left; border:none;padding:0;background:url(https://www.shenzhenmuseum.com/img/icons/refresh.png) no-repeat center center #f3f3f3; }
+.register .verification-code{width:90px;height: 100%; background:#dddddd;color:#ffffff;position:relative;
+	line-height: 48px;float: left; display: block; }
+	.register .verification-code img	{margin-left: -30px;}
+.register .verification-btn{width:50px;height: 48px;float:left; border:none;padding:0;background:url(../../assets/img/icons/refresh.png) no-repeat center center #f3f3f3; }
 
 .register .third{font-size: 0;height: 70px;width:400px;margin:0 auto;}
 
@@ -232,13 +234,14 @@ select{outline: none;}
 .register .third-icons .wx{margin-right:0;}
 /*.register .third-icons a.sina{margin-right: 0;background: url(../img/icons/sina.png) no-repeat center center;}*/
 .register .third-icons{font-size:0;width:400px;height: 50px;margin:0 auto;}
+.changeimg{background: url(../img/icons/refresh.png) no-repeat top right; width: 26px; height: 22px; display: block; position: absolute; top: 12px; right: 10px; z-index: 111;}
 
 
 
-/*闂傚倸顭崑鍕洪敃鍌楋拷锕傚醇閵夘喗鏅╅梺鎼炲劗閺咁亪骞忛悜鑺ヮ棃婵炴垶鐟Λ銈夋⒑缂佹澹勯柟鍑ゆ嫹*/
+
 .login_{background:rgba(0,0,0,0.4);position:fixed;z-index: 1002;top:0;width: 100%;height: 100%;}
 .loginWrap_{background: #fbfbfb;position: relative;width:100%;height: 100%;}
-.login_go{position:absolute;top:80px;}
+/* .login_go{position:absolute;top:80px;} */
 .loginWrap  .forget{text-align: right;margin-top:-20px;margin-bottom:-20px;}
 
 .searchWrap{background: rgba(233,233,233,1);position: fixed;left:0;top:80px; right:0;bottom:0;z-index: 999;}
@@ -246,7 +249,7 @@ select{outline: none;}
 .searchWrap input{text-align:left;margin:0;font-size:20px;line-height: 60px; text-indent: 20px;background:#fff; color:#999999;border:none;width:410px;height: 60px;display: inline-block;vertical-align: middle;padding:0;}
 .searchWrap .search-btn{width:90px;height: 60px;background: url(../img/icons/search-1.png) no-repeat center center #ffffff;display: inline-block;vertical-align: middle;}
 
-/**闂傚倷鐒﹂幃鍫曞磿鏉堛劍娅犻柤鎭掑劜濞呯娀鏌″搴″箹缂侊拷閸℃ü绻嗛柕鍫濇噹椤忋儵鏌ㄩ悢鍛婄伄闁瑰嚖鎷� 390*292*3**/
+
 .imgList4{width:1200px;overflow: hidden;}
 .imgList4 ul{width:1212px;}
 .imgList4 li{float:left; margin-right: 12px;margin-bottom:40px; }
@@ -335,8 +338,8 @@ select{outline: none;}
 .imgList7 .itemText{position: absolute;bottom:-2px;left:0;width:100%;background:rgba(0,0,0,0.4);text-align:left;}
 .imgList7 h3{font-size:16px;font-weight:normal;line-height: 48px;height:48px;color:#ffffff;padding:0 30px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 /* 闂傚倷鑳堕…鍫㈡崲閹达附鍋ら柡鍥╁�ｅ☉妯兼殕闁跨喕濮ょ粋鎺楁晝閸屾艾宓嗛梺瀹犳濡瑧绱為敓锟� */
-.mainWrap .items{display:none;}
-.mainWrap .items.active{display:block;}
+/* .mainWrap .items{display:none;}
+.mainWrap .items.active{display:block;} */
 
 /*close*/
 /*闂傚倷娴囬惃顐﹀礃閸撗冩倯婵犵绱曢崑鎾愁熆濮楋拷閸┿垽寮崼婢晠鏌曟径鍫濆姕闁哄鎷�*/
@@ -653,8 +656,8 @@ select{outline: none;}
     padding: 10px;
 }
 .webapp div img{
-	width:100%;
-	height:100%;
+	max-width:100%;
+	max-height:100%;
 	margin:0 auto;
 }
 .wxapp{
@@ -752,37 +755,31 @@ video::-webkit-media-controls-panel {
 .bwgConnect p{
 	float:left;
 }
-.bwgConnect p a{
+.bwgConnect p{
 	color:#999999;
 	font-size:26px;
 	box-sizing:border-box;
 	padding:10px 0;
 	border-bottom:4px solid #fff;
 	cursor:pointer;
+	margin-right: 70px;;
 }
-.bwgConnect p a.active{
+.bwgConnect p.active{
 	color:#333333;
 	border-bottom:4px solid #333333;
 }
-.bwgConnect span{
-	padding: 0 38px;
-    display: inline-block;
-    vertical-align: middle;
-    width: 14px;
-    height: 44px;
-    background-size:12px 13px;
-}
+
 .friend_con{
    	   width:1202px;
    	   box-sizing:border-box;
    	   margin:40px auto 40px;
-   	   display:none;
+   	   /* display:none; */
    	}
 .wgfriend_con{
 	width:1202px;
     box-sizing:border-box;
     margin:40px auto 40px;
-    display:none;
+    /* display:none; */
 }
 .wgfriend_con ul li{
     		float:left;
@@ -796,12 +793,11 @@ video::-webkit-media-controls-panel {
     		border-left:1px solid #dddddd;
 }
 .wgfriend_con ul li a{
-	display:block;
+	display: table-cell;
 	width:400px;
 	height:200px;
-	line-height:200px;
 	text-align:center;
-	font-size:0;
+	font-size:0;vertical-align: middle;
 }
 .wgfriend_con ul li a img{
 	max-width:400px;
@@ -816,11 +812,12 @@ video::-webkit-media-controls-panel {
 	border-left:1px solid #dddddd;
 }
 .friend_con ul li a{
-	display:block;
+	/* display:block; */
+	display: table-cell;
 	width:400px;
 	height:200px;
-	line-height:200px;
 	text-align:center;
+	vertical-align: middle;
 	font-size:0;
 }
 .friend_con ul li a img{

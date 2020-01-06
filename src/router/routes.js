@@ -12,6 +12,77 @@ const routes = [
         }
     },
     {
+        
+        path: '/login',
+        name: 'login',
+        component: load('webLogin/login'),
+        meta: {
+            title: '登陆'
+        }
+    },
+    {
+        
+        path: '/register',
+        name: 'register',
+        component: load('webLogin/register'),
+        meta: {
+            title: '注册'
+        }
+    },
+    {
+        
+        path: '/collectExhibit',
+        name: 'collectExhibit',
+        component: load('personalcenter/collectExhibit'),
+        meta: {
+            title: '我的收藏'
+        }
+    },
+    {
+        
+        path: '/modifypassword',
+        name: 'modifypassword',
+        component: load('personalcenter/modifypassword'),
+        meta: {
+            title: '修改密码'
+        }
+    },
+    {
+        
+        path: '/reservation',
+        name: 'reservation',
+        component: load('personalcenter/reservation'),
+        meta: {
+            title: '我的预约'
+        }
+    }, 
+     {
+        
+        path: '/map',
+        name: 'map',
+        component: load('index/map'),
+        meta: {
+            title: '网站地图'
+        }
+    },
+    {
+       path: '/bqsm',
+        name: 'bqsm',
+        component: load('index/bqsm'),
+        meta: {
+            title: '版权声明'
+        }
+    },
+    {
+        
+        path: '/yqlj',
+        name: 'yqlj',
+        component: load('index/yqlj'),
+        meta: {
+            title: '友情链接'
+        }
+    },
+    {
         path: '/exhibition',
         name: 'exhibition',
         component: load('exhibitionRoom/exhibition'),
@@ -19,6 +90,7 @@ const routes = [
             title: '展馆'
         }
     },
+    
     {
         path: '/roomdetail',
         name: 'room',

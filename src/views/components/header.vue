@@ -95,8 +95,15 @@
 	                	<div class="personal-center item">
 	                    	<span class=""></span>
 	                    	<ul class="no-login ">
-	    	                    <li class="" style="height:30px" ><a href="#"  >登录</a></li>
-	    	                    <li style="height:30px" ><a href="#">注册</a></li>
+	    	                    <li class="" style="height:30px" ><router-link :to="{path:'login'}" >登录</router-link></li>
+	    	                    <li style="height:30px" ><router-link :to="{path:'register'}">注册</router-link></li>
+	    	                </ul>
+							<ul class="no-login ">
+	    	                    <li class="" style="height:30px" ><router-link :to="{path:'collectExhibit'}" >某某</router-link></li>
+	    	                    <li style="height:30px" ><router-link :to="{path:'collectExhibit'}">我的收藏</router-link></li>
+								<li style="height:30px" ><router-link :to="{path:'reservation'}">我的预约</router-link></li>
+								<li style="height:30px" ><router-link :to="{path:'modifypassword'}">修改密码</router-link></li>
+								<li style="height:30px" ><a href="javascript:;">退出</a></li>
 	    	                </ul>
 	                    </div>
 	                	<div class="select-language item">

@@ -50,6 +50,47 @@
                 </div>
             </div>
         </div>
+        <html>
+ <head></head>
+ <body>
+  <div class="pop_up" id="pop_up_"> 
+   <div class="pop_up_content clear" v-for="item in actList"> 
+    <div class="pop_up_left">
+     <img src="https://www.shenzhenmuseum.com/p/userfiles/uploadFile/20190710155807.jpg" /> 
+    </div>
+    <div class="pop_up_right"> 
+     <div class="pop_up_close" @click="closePop()">
+      <img src="../../assets/img/close.png" />
+     </div> 
+     <div class="pop_up_message">
+      <h3></h3>
+      <h3 class="acname">{{item.activeName}}</h3>
+      <p>活动时间：2019年7月14日（星期日）下午15:00-16:30 </p> 
+      <p>费<em style="display:inline-block;width:32px;"></em>用： 免费</p>
+      <p class="already_appoi"><span>正在预约</span>已预约198人</p>
+     </div>
+     <div class="user_infor">
+      <p>姓<em style="display:inline-block;width:32px;"></em>名：<span style="margin-left:0;" class="name">{{item.name}}</span></p>
+      <p>手<em style="display:inline-block;width:8px;"></em>机<em style="display:inline-block;width:8px;"></em>号：<span style="margin-left:0;" class="phone_nember">{{item.mobile}}</span></p>
+      <p>预约人数：<span style="margin-left:0;">{{item.bespeakNum}}人</span></p>
+     </div>
+     <div class="Qr_code">
+      <div class="code_left">
+       <img src="https://www.shenzhenmuseum.com/qrcreate?bg=ffffff&fg=000000&gc=222222&el=L&w=320&m=10&text=CmsActiviteBespeak-006f2a777ba9429ab7fb92dbee791781" width="320" height="320"/>
+      </div>
+      <div class="code_right">
+       <p>预约成功后请将此二维码截图、另存、或打印，</p>
+       <p>参加活动时请向工作人员出示</p>
+       <p>或进入“活动--&gt;活动预约--&gt;查询预约”</p>
+       <p>可再次获取二维码</p>
+       <p class="cancel"><button class="cancelBespeak" _id="006f2a777ba9429ab7fb92dbee791781" @click="cancelBespeak1()">取消预约</button></p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
         <footer-bottom></footer-bottom>
     </div>
 </template>
@@ -65,7 +106,7 @@ export default {
             totlePage: 1,
             actList:'',
             userName:'',
-            phone:''
+            phone:'',
         };
     },
     mounted() {
@@ -85,6 +126,18 @@ export default {
             $('.query_message').show();
             $('.jiangzuonav li').eq(1).addClass('reverv_color').siblings('li').removeClass('reverv_color')
         },
+        closePop(){
+            $('.pop_up').hide();
+        },
+        cancelBespeak1(){
+            alert('确定取消预约')
+                $('.cancel button').html('已取消');
+                $('.cancel button').css({
+                    'background':'#666',
+                    'color':'#fff'
+                })
+
+        },
         //可预约活动列表
         getActList(){
             let data ={
@@ -94,6 +147,7 @@ export default {
                 if (res.code == 0) {
                     this.actList = res.data;
                     //console.log(res)
+                   
                 }
             }).catch(err => {
                 
@@ -108,8 +162,9 @@ export default {
                 };
                 API.get2('active/bespeak',data).then(res => {
                     if (res.code == 0) {
-                        //this.actList = res.data;
-                        console.log(res)
+                        this.actList = res.data;
+                        console.log(res.data)
+                        $('.pop_up').show();
                     }
                 }).catch(err => {
                     
@@ -346,5 +401,136 @@ export default {
 
 .active_title ul .reverv_color {
     color: #333333;
+}
+.active_pop_up{
+    z-index:10;
+}
+.social_main_content>div{
+    display:none;
+}
+.social_main_content>div.active{
+    display:block;
+}
+#alReadyNum{
+	font-weight:normal;
+}
+.pop_up{
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    top:0;
+    overflow-y:scroll;
+    background:rgba(0,0,0,0.7);
+    z-index: 1000;
+    display:none;
+}
+.pop_up_content{
+    width: 1200px;
+    height: auto;
+    background:#fbfbfb;
+    margin:0 auto;
+    position:relative;
+    top:10%;
+}
+.pop_up_left{
+    width: 360px;
+    height: 240px;
+    text-align:center;
+    float:left;
+    clear:both;
+    margin: 40px 0 0 40px;
+    line-height:240px;
+}
+.pop_up_left img{
+    max-width: 360px;
+    max-height: 240px;
+}
+.pop_up_right{
+    float:right;
+    width: 750px;
+}
+.pop_up_close{
+    width: 38px;
+    height: 38px;
+    float:right;
+    margin:20px 20px 0 0;
+    cursor: pointer;
+}
+.pop_up_close img{
+    width: 100%;
+    height: 100%;
+}
+.pop_up_message{
+    clear:both;
+    width: 750px;
+    height: 220px;
+}
+.pop_up_message h3{
+    height: 46px;
+    line-height:46px;
+    font-size:18px;
+}
+.pop_up_message p{
+    font-size:15px;
+    color:#717171;
+    height:35px;
+    line-height:35px;
+}
+.pop_up_message p:last-child{
+    color:#333333;
+}
+.pop_up_message p span{
+    color:#4bac35;
+    margin-right:25px;
+}
+.code_left img{width: 200px; height: 200px;}
+.user_infor{
+    margin-top:40px;
+}
+.user_infor p{
+    height:45px;
+    line-height:45px;
+    font-size:15px;
+    white-space: pre;
+}
+.user_infor p span{
+    margin-left:40px;
+    font-size:15px;
+    color:#333333;
+}
+.Qr_code{
+    margin-top:20px;
+}
+.code_left{
+    float: left;
+    width: 200px;
+    height: 200px;
+}
+.code_right{
+    float:left;
+    margin-left:40px;
+}
+.code_right p{
+    font-size: 14px;
+    color:#7c7c7c;
+}
+.deter_m_right p{
+    height:25px;
+    line-height:25px;
+    font-size: 16px;
+    color: #7c7c7c;
+}
+.cancel{
+    margin-top: 25px;
+}
+.cancel button{
+    width: 120px;
+    height: 30px;
+    color:#fff;
+    background:#999999;
+    font-size:16px;
+    border:none;
+    outline:none;
+    border-radius:5px;
 }
 </style>
