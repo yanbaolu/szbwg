@@ -1,66 +1,88 @@
 <template>
     <div>
-        <div class="social_nav">
-            <ul class="clearfix">
-                <li><router-link :to="{path:'cultural'}" class="active">设备</router-link></li>
-                <li><router-link :to="{path:'qualifications'}">资质</router-link></li>
-                <li><router-link :to="{path:'case'}">案例</router-link></li>
-                <li><router-link :to="{path:'project'}">项目</router-link></li>
-            </ul>
-           
-        </div>
+        <ul class="motal_nav clear">
+            <li v-for="(item,index) in data" :key="index" :class="{active:'/'+item.url==url}">
+                <router-link :to="{path:item.url}">{{item.name}}</router-link>
+            </li>
+        </ul>
     </div>
 </template>
 <script>
 export default {
-    data(){
-        return{
-          
+    data() {
+        return {
+            data:[{
+                url:'cultural',
+                name:'设备'
+            },{
+                url:'qualifications',
+                name:'资质'
+            },{
+                url:'case',
+                name:'案例'
+            },{
+                url:'project',
+                name:'项目'
+            }],
+            url:this.$route.path,
         }
     },
-    methods:{
-      
+    mounted(){
+        //console.log(this.url)
+    },
+    methods: {
+
     }
 }
 </script>
 <style scope>
-.social_nav{
+.navPath {
+    margin: 0 auto !important;
+}
+
+.motal_nav {
     width: 1200px;
-    height:auto;
-    margin: 0 auto;
-}
-
-.social_nav ul li{
-    float:left;
-}
-.social_nav ul li{
-    background:url(../../../assets/img/icons/title-icon.png) no-repeat left center;
-    background-size: 14px 14px;
+    margin: 20px auto 0;
+    box-sizing: border-box;
     padding: 0 40px;
+    border-top: 1px solid #dddddd;
+}
 
+.motal_nav li {
+    float: left;
+    margin-left: 30px;
+    margin-top: 10px;
 }
-.social_nav ul li:not(:first-child){
-	padding-left:54px;
+
+.motal_nav li:first-child {
+    margin-left: 0;
 }
-.social_nav ul li a{
-    display:block;
-    height:51px;
-    line-height: 51px;
-    font-size:26px;
-    color:#999999;
-    border-bottom:4px solid #fbfbfb;
+
+.motal_nav li a{
+    font-size: 14px;
+    color: #999999;
     cursor: pointer;
 }
 
-.social_nav ul li:first-child{
-    background:none;
+.motal_nav li.active,
+.motal_nav li a:hover {
+    color: #333333!important;
 }
-.social_nav ul li a:hover{
-    border-bottom: 4px solid #333333;
-    color:#333333;
+.motal_nav li.active a{color:#000!important;}
+.motal_content {
+    margin: 26px auto 23px;
 }
-.social_nav ul li .router-link-active{
-    border-bottom: 4px solid #333333;
-    color:#333333;
+
+.motal_content {
+    box-sizing: border-box;
+    padding: 0 30px;
+}
+
+.motal_content ul {
+    display: none;
+}
+
+.motal_content ul.active {
+    display: block;
 }
 </style>

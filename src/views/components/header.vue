@@ -19,7 +19,6 @@
 							<li><router-link :to="{path:'activity'}">活动</router-link></li>
 		                    <li><router-link :to="{path:'socialisation'}" class="social_c">社教</router-link></li>
 		                    <li><router-link :to="{path:'webPublication'}" class="acade_c">学术</router-link></li>
-		                    <li><router-link :to="{path:'cultural'}" class="cultural_c">文保</router-link></li>
 		                    <li><router-link :to="{path:'publicationshop'}" class="creative_c">文创</router-link></li>
 		                    <li><router-link :to="{path:'aboutus'}" class="aboutus_c">深博</router-link></li>
 		                </ul>
@@ -57,23 +56,18 @@
 		                    	
 		                    </li>
 		                    <li  class="" style="margin-left:280px;">
-		                       <router-link :to="{path:'socialisation'}" class="active">讲座</router-link><span></span>
-		                       <router-link :to="{path:'ammouncer'}">小小讲解员</router-link><span></span>
-		                       <router-link :to="{path:'volunteers'}">志愿者</router-link><span></span>
-		                       <router-link :to="{path:'reservation'}">活动讲座预约</router-link>
+		                       	<router-link :to="{path:'socialisation'}" class="active">讲座</router-link><span></span>
+		                       	<router-link :to="{path:'ammouncer'}">小小讲解员</router-link><span></span>
+		                       	<router-link :to="{path:'volunteers'}">志愿者</router-link><span></span>
+		                       	<router-link :to="{path:'reservation'}">活动讲座预约</router-link>
 		                    </li>
 		                    <li  class="" style="margin-left:250px;">
+		                    	<router-link :to="{path:'cultural'}">文保</router-link><span></span>
 		                        <router-link :to="{path:'webPublication'}">论坛</router-link><span></span>
 		                        <router-link :to="{path:'monograph'}">专著</router-link><span></span>
 		                        <router-link :to="{path:'paper'}">论文</router-link><span></span>
 		                        <router-link :to="{path:'library'}">馆刊</router-link><span></span>
 		                        <router-link :to="{path:'motal'}">深圳前世今生</router-link>
-		                    </li>
-		                    <li  class="" style="margin-left:464px;">
-		                        <router-link :to="{path:'cultural'}">设备</router-link><span></span>
-		                        <router-link :to="{path:'qualifications'}">资质</router-link><span></span>
-		                        <router-link :to="{path:'case'}">案例</router-link><span></span>
-		                        <router-link :to="{path:'project'}">项目</router-link>
 		                    </li>
 		                    <li class="" style="margin-left:480px;">
 		                        <router-link :to="{path:'publicationshop'}">创意商品</router-link><span></span>

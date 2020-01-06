@@ -11,8 +11,8 @@
                     </div>
                     <div class="acade_infor">
                         <h3>{{item.name}}</h3>
-                        <div class="acade_infor_detail deputy_text active" v-html="">
-                            {{item.content}}
+                        <div class="acade_infor_detail deputy_text active" v-html="item.content">
+                           
                         </div>
                         <router-link class="look_detail" :to="{path:'academicDetail'}">查看详情</router-link>
                     </div>

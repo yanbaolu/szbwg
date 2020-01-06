@@ -4,32 +4,29 @@
         <div class="news_message">
         <div class="news_content">
             <ul id="list1" class="clearfix">
-                <li class="item"><router-link :to="{path:'monographdetail'}"><h3>首届非物质文化遗产创意作品展在深圳中心书城拉开帷幕</h3><span>2019-12-20</span></router-link></li>
-                <li class="item"><router-link :to="{path:'monographdetail'}"><h3>首届非物质文化遗产创意作品展在深圳中心书城拉开帷幕</h3><span>2019-12-20</span></router-link></li>
-                <li class="item"><router-link :to="{path:'monographdetail'}"><h3>首届非物质文化遗产创意作品展在深圳中心书城拉开帷幕</h3><span>2019-12-20</span></router-link></li>
-                <li class="item"><router-link :to="{path:'monographdetail'}"><h3>首届非物质文化遗产创意作品展在深圳中心书城拉开帷幕</h3><span>2019-12-20</span></router-link></li>
-                <li class="item"><router-link :to="{path:'monographdetail'}"><h3>首届非物质文化遗产创意作品展在深圳中心书城拉开帷幕</h3><span>2019-12-20</span></router-link></li>
-                <li class="item"><router-link :to="{path:'monographdetail'}"><h3>首届非物质文化遗产创意作品展在深圳中心书城拉开帷幕</h3><span>2019-12-20</span></router-link></li>
-                <li class="item"><router-link :to="{path:'monographdetail'}"><h3>首届非物质文化遗产创意作品展在深圳中心书城拉开帷幕</h3><span>2019-12-20</span></router-link></li>
-                <li class="item"><router-link :to="{path:'monographdetail'}"><h3>首届非物质文化遗产创意作品展在深圳中心书城拉开帷幕</h3><span>2019-12-20</span></router-link></li>
-                <li class="item"><router-link :to="{path:'monographdetail'}"><h3>首届非物质文化遗产创意作品展在深圳中心书城拉开帷幕</h3><span>2019-12-20</span></router-link></li>
-                <li class="item"><router-link :to="{path:'monographdetail'}"><h3>首届非物质文化遗产创意作品展在深圳中心书城拉开帷幕</h3><span>2019-12-20</span></router-link></li>
+                <li class="item" v-for="(item,index) in data" :key="index">
+                    <router-link :to="{path:'monographdetail'}"><h3>{{item.name}}</h3><span>{{item.dateStr}}</span></router-link>
+                </li>
             </ul>
         </div>
-        </div>
-        </div>
-        <div class=" paginationWrap" style="z-index: 1001;position: relative;" v-if="isPage">
-        <div class="pagination">
-        <div class="clear leavePage" id="pageContent"><div class=" pagination comWidth "><p class="pages"><a class="active" href="javascript:;" onclick="page(1)">1</a> </p><p class="pages"><a href="javascript:;" onclick="page(2)">2</a> </p><p class="pages"><a href="javascript:;" onclick="page(3)">3</a> </p><p class="pages"><a href="javascript:;" onclick="page(4)">4</a> </p>  <span class="page-last" onclick="page(2)">下一页</span></div></div>
         </div>
         </div>
     </div>
 </template>
 <script>
+import * as API from "api/demo";
 export default {
-    props:['isPage'],
+    props:['isPage','data'],
     data(){
-        return{}
+        return{
+
+        }
+    },
+    mounted(){
+            
+    },
+    methods:{
+        
     }
 }
 </script>
