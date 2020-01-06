@@ -7,3 +7,4 @@ RUN npm config set registry http://registry.npm.taobao.org/ \
 
 FROM nginx:latest
 COPY --from=0 /src/dist /usr/share/nginx/html/
+COPY default.conf /etc/nginx/conf.d/
