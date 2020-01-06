@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-html="data.content">
     <p>深圳博物馆成立于1981年，现有历史民俗馆、古代艺术馆、东江游击队指挥部旧址纪念馆和深圳改革开放展览馆4处馆址，建筑面积6万多平方米，是集收藏、保护、研究、展示、教育为一体的大型总分馆制博物馆，国家一级博物馆、全国红色旅游经典景区和全国社会科学普及基地。</p>
     <h2>一、成立背景</h2>
     <p>1980年8月26日，深圳经济特区成立。1981年8月，广东省博物馆文物工作队赴深，会同深圳市图书馆等单位工作人员，在全市开展文物普查，并对部分遗址和古墓群进行考古发掘，出土和征集了大量文物。为收藏、研究这些文物，展示深圳的历史和文化，1981年10月17日，深圳市编制委员会批准设立深圳市经济特区博物馆，后更名为深圳市博物馆，2008年初改为深圳博物馆。</p>
@@ -52,13 +52,15 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props: ['data'],
+};
 </script>
 <style scoped>
 h2 {
   margin: 20px 0 20px 0;
 }
-p {
+>>>p {
   font-size: 16px !important;
   line-height: 30px !important;
   color: #666666 !important;
@@ -66,6 +68,6 @@ p {
   font-family: Arial, Helvetica, "PingFang SC", "Microsoft Yahei",
     "Microsoft Yahei" !important;
   text-indent: 2em;
-  margin-bottom: 20px;
+ 
 }
 </style>

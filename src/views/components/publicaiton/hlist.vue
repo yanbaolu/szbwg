@@ -4,7 +4,7 @@
             <ul id="list3" class="clear">
                 <li v-for="(item,index) in data" :key="index">
                     <router-link :to="{path:'newsDetail'}">
-                        <div class="honor_img"><img src="https://www.shenzhenmuseum.com/p/userfiles/uploadFile/20180209152849.JPG">
+                        <div class="honor_img"><img :src="item.thumbPic">
                             <p class="honor_title">{{item.name}}</p>
                         </div>
                     </router-link>
