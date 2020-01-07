@@ -107,7 +107,7 @@
 		                        <li style="height:30px;"><a href="#">EN</a></li>      
 		                    </ul>
 	                	</div>
-		                <div class="search item" id="search"> 
+		                <div class="search item" id="search" @click="search()"> 
 		                </div>
             		</div>
 				</div>
@@ -129,6 +129,15 @@
 				</el-carousel>
 			</div>
 		</div>
+		<!--搜索-->
+		<div class="searchWrap search_hide" >            
+		<form action="http://shenbo.artup.com/search" method="post" id="solrSearchForm">
+       <p>
+        <input type="text" placeholder="请输入搜索关键词" name="qKey" autocomplete="off">
+    	 <a href="javascript:;" class="search-btn"></a>
+          </p>
+        </form>
+      </div>
 	</div>
 </template>
 <script>
@@ -137,7 +146,8 @@
     	data(){
     		return{
     			indicator_position:'',//轮播图只有一张时设置成none
-    			imgurl:this.$store.getters.getImgUrl,
+				imgurl:this.$store.getters.getImgUrl,
+				onoff :true,
     		}
     	},
     	mounted(){
@@ -199,7 +209,17 @@
 	                }        
 	             }
 	        })
-    	}
+		},
+		methods:{
+			search(){
+				if(this.onoff){
+					$('.searchWrap').show();
+				}else{
+					$('.searchWrap').hide();
+				}
+				this.onoff = !this.onoff
+			}
+		}
     }
 </script>
 <style>
