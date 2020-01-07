@@ -12,7 +12,7 @@
                     <router-link :to="{path:'/intangibleInheritance'}">非遗代表性传承人</router-link>
                     <i></i>
                 </p>
-                <p class="clear"><i></i><a href="javascript:;">吴天其</a><i></i></p>
+                <p class="clear"><i></i><a href="javascript:;"></a><i></i></p>
             </div>
         </div>
         <div class="news_message">
@@ -75,7 +75,7 @@ export default {
                 if (res.code==0) {
                     this.list=res.data.list;
                     this.dataAll=res.data;
-                    console.log(this.list)
+                   // console.log(this.list)
                 }
             }).catch(err => {
 

@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul>
-            <li class="item videoItem" v-for="(item,index) in data">
+            <li class="item videoItem" v-for="(item,index) in data" :key="index">
                 <div class="v-box">
                     <video :poster="item.thumbPic"></video>
                 </div>

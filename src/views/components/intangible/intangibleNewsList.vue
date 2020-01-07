@@ -4,8 +4,8 @@
             <div class="news_message">
                 <div class="news_content">
                     <ul id="list1" class="clearfix">
-                        <li class="item" v-for="(item,index) in data">
-                            <router-link :to="{path:'newsDetail'}">
+                        <li class="item" v-for="(item,index) in data" :key="index">
+                            <router-link :to="{path:'newsDetail',query:{resId:item.resId,clazzName:item.clazzName}}">
                                 <h3>{{item.name}}</h3><span>2019-12-20</span>
                             </router-link>
                         </li>

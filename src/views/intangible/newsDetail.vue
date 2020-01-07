@@ -9,38 +9,21 @@
                 <div class="navPath clear">
                     <p class="clear"><i></i><a href="/intangible">非遗</a><i></i></p>
                     <p class="clear"><i></i><a href="/intangible/intangibleNews?lmType=L0409&amp;lx=1">新闻资讯</a><i></i></p>
-                    <p class="" clear=""><i></i><a href="javascript:;">首届非物质文化遗产创意作品展在深圳中心书城拉开帷幕</a><i></i></p>
+                    <p class="" clear=""><i></i><a href="javascript:;">{{data.title}}</a><i></i></p>
                 </div>
             </div>
             <div class="news_detail_main deputy_text">
                 <h1>
-                    <center>首届非物质文化遗产创意作品展在深圳中心书城拉开帷幕</center>
+                    <center>{{data.title}}</center>
                 </h1>
                 <h4 style="text-align:center;font-size:20px;color:#333333;line-height:30px;"></h4>
                 <!-- 附加信息 -->
                 <div class="new_sub">
-                    <span class="subtitle">供稿：深职院 图片:王斯远 黄自策 刘芳菲 蔡馥回 编辑：贾莉莎 邱莉斯</span>
-                    <span class="dataTime">2019-12-20</span>
+                    <span class="subtitle">{{data.subTitle}}</span>
+                    <span class="dataTime">{{data.dateStr}}</span>
                     <span></span>
                 </div>
-                <p>　　12月18日至25日，为庆祝中华人民共和国成立70周年与深圳建市40周年，结合深圳建设中国特色社会主义先行示范区以及粤港澳大湾区建设，鼓励非物质文化遗产传承人以非物质文化遗产技艺为创作手段，讲好深圳故事、讴歌伟大祖国，我的深圳·我的祖国首届非物质文化遗产创意作品展在深圳中心书城展出。70件（组）由非遗传承人制作的创意作品，多角度呈现指尖上的非遗作品。</p>
-                <p style="text-align: center;">&nbsp;<img src="https://www.shenzhenmuseum.com/szbwg-cms/userfiles/ueditor/jsp/upload/image/20191220/1576833413444056349.jpg" title="1576833413444056349.jpg" alt="01嘉宾为作品展启幕.jpg"></p>
-                <p style="text-align: center;">嘉宾为作品展启幕</p>
-                <p>　　开幕式上，深圳出版集团有限公司党委委员、副总经理丘干颁发本次作品展作品入选证书，深圳市文物管理办公室(非遗办)主任乔永清颁发合作伙伴单位证书；深圳博物馆副馆长、市非遗保护中心副主任蔡惠尧颁发深圳职业技术学院2019年武术类非遗传承人群研培班优秀学员证书。本次作品展由深圳职业技术学院、深圳出版集团有限公司资产运营分公司主办，广东省非物质文化遗产深职院研究基地、深职院非物质文化遗产协同创新与研究中心承办，多家文化创意单位协办。是深圳市第15届创意十二月重点项目。</p>
-                <p style="text-align: center;">&nbsp;<img src="https://www.shenzhenmuseum.com/szbwg-cms/userfiles/ueditor/jsp/upload/image/20191220/1576833413444056349.jpg" title="1576833437963051196.jpg" alt="02丘干副总经理为作者颁发本次作品展作品入选证书.jpg"></p>
-                <p style="text-align: center;">丘干副总经理为作者颁发本次作品展作品入选证书</p>
-                <p style="text-align: center;">&nbsp;</p>
-                <p style="text-align: center;">&nbsp;<img src="https://www.shenzhenmuseum.com/szbwg-cms/userfiles/ueditor/jsp/upload/image/20191220/1576833413444056349.jpg" title="1576833445946004378.jpg" alt="03乔永清主任为合作企业颁发合作伙伴单位证书.jpg"></p>
-                <p style="text-align: center;">乔永清主任为合作企业颁发合作伙伴单位证书</p>
-                <p style="text-align: center;">&nbsp;</p>
-                <p style="text-align: center;">&nbsp;<img src="https://www.shenzhenmuseum.com/szbwg-cms/userfiles/ueditor/jsp/upload/image/20191220/1576833413444056349.jpg" title="1576833454100037113.jpg" alt="04蔡惠尧副馆长颁发2019年武术类非遗传承人群研培班优秀学员证书.jpg"></p>
-                <p style="text-align: center;">蔡惠尧副馆长颁发2019年武术类非遗传承人群研培班优秀学员证书</p>
-                <p>&nbsp;</p>
-                <p>　　开幕展现场，14幅由国家级非物质文化遗产传承人宁雷制作的鱼皮画吸引了不少市民的眼光。作品展览期间，共展出内画、瓷板画、鱼皮画、水拓画、麦金画、篆刻画、皮雕、潮绣、珠绣、水书、剪纸、剪影、潮汕嵌瓷、棉塑等非遗项目传承人创作的精彩作品，为市民送上一份创意文化大餐。</p>
-                <p style="text-align: center;">&nbsp;<img src="https://www.shenzhenmuseum.com/szbwg-cms/userfiles/ueditor/jsp/upload/image/20191220/1576833413444056349.jpg" title="1576833474871033836.jpg" alt="05作品展示.jpg"></p>
-                <p style="text-align: center;">部分作品展示</p>
-                <p><br></p>
-                <p></p>
+                <p v-html="data.content"></p>
             </div>
         </div>
         <footer-bottom></footer-bottom>
@@ -60,15 +43,30 @@ export default {
             totlePage: 20,
             news: [],
             toice: [],
+            data:'',
         };
     },
     mounted() {
         //页数显示与否
         this.totlePage <= 5 ? (this.isPage = false) : (this.isPage = true);
         window.addEventListener("scroll", this.handleScroll, true);
+        this.getDetail();
     },
     computed: {},
     methods: {
+        getDetail(){
+            let data =this.$route.query;
+            //console.log(data)
+            API.get2('news/get',data).then(res => {
+                if (res.code == 0) {
+                    this.data = res.data;
+                    //console.log(this.data.dateStr)
+                    console.log(res,44444)
+                }
+            }).catch(err => {
+                
+            })
+        },
         handleScroll() {
 
             let scrolltop = document.documentElement.scrollTop || document.body.scrollTop;

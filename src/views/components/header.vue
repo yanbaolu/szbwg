@@ -134,7 +134,7 @@
 		<form action="http://shenbo.artup.com/search" method="post" id="solrSearchForm">
        <p>
         <input type="text" placeholder="请输入搜索关键词" name="qKey" autocomplete="off">
-    	 <a href="javascript:;" class="search-btn"></a>
+    	  <router-link :to="{path:'search'}" class="search-btn"></router-link>
           </p>
         </form>
       </div>

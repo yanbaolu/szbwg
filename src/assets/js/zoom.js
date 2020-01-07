@@ -1,5 +1,6 @@
+let settings,transformStr,css3dSupported,containerDiv ;
 
-console.log(111)
+
 function transitionEnd() {
     var e = document.createElement("bootstrap");
     var t = {
@@ -431,6 +432,7 @@ function transitionEnd() {
         var i = {
             init: function(t) {
                 if (n.data("smartZoomData")) return;
+           
                 settings = e.extend({
                     top: "0",
                     left: "0",
@@ -453,8 +455,8 @@ function transitionEnd() {
                     touchMoveEnabled: true,
                     containerBackground: "#FFFFFF",
                     containerClass: ""
-                },
-                t);
+                }, t);
+                
                 var r = n.attr("style");
                 var i = "smartZoomContainer" + (new Date).getTime();
                 var u = e('<div id="' + i + '" class="' + settings.containerClass + '"></div>');
