@@ -10,7 +10,7 @@
                 <a href="javascript:;" class="register-submit" @click="loginWeb();">提交</a>
                 <p class="go-login">没有账号？<a href="/register">去注册</a></p>
                 <p class="third"><span class="line"></span><strong>第三方登录</strong><span class="line"></span></p>
-                <p class="third-icons"><a href="/oauth/qqLogin" class="qq"></a><a href="/oauth/wxLogin" class="wx"></a></p>
+                <p class="third-icons"><a href="javascript:;" class="qq" @click="logoqq()"></a><a href="/oauth/wxLogin" class="wx"></a></p>
             </div>
         </div>
         <footer-bottom></footer-bottom>
@@ -70,6 +70,20 @@ export default {
                     //console.log(res,'用户信息')
                     this.$store.dispatch("comUserInfo",res.data);
                     this.$router.push({path: '/'}+new Date())
+                }
+            }).catch(err => {
+                
+            })
+        },
+        //第三方登录
+        logoqq(){
+            let data ={
+                
+            };
+            API.get2('oauth/qqLogin',data).then(res => {
+              console.log(11111111111)
+                if (res.code == 0) {
+                    
                 }
             }).catch(err => {
                 

@@ -13,6 +13,7 @@ import mousewhell from './assets/new-web/js/mousewhell'
 import Swiper from 'swiper';
 import 'swiper/dist/css/swiper.min.css';
 import timelinejs from './assets/new-web/js/timelinejs'
+import captcha from './assets/js/captcha-pc.min'
 window.Swiper = Swiper;
 Vue.mixin(mixins);
 Vue.config.productionTip = false;

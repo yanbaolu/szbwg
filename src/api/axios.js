@@ -14,7 +14,7 @@ const service = axios.create({
 const serviceForm = axios.create({
     timeout: 60000,
     headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
         "X-Requested-With": "XMLHttpRequest",
         "X-Req-platform":"0",
     },

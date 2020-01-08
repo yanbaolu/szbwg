@@ -12,3 +12,6 @@ export function get2(url,data) {
 export function post(url,data) {
 	return service.post(url, data);
 }
+export function post2(url,data) {
+	return serviceForm.post(url, data);
+}

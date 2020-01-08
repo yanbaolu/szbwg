@@ -93,11 +93,11 @@
 	    	                    <li style="height:30px" ><router-link :to="{path:'register'}">注册</router-link></li>
 	    	                </ul>
 							<ul class="no-login " v-show="isLogoin">
-	    	                    <li class="" style="height:30px" v-if="isLogoin"><router-link :to="{path:'collectExhibit'}" >{{UserInfo.username}}</router-link></li>
+	    	                    <li class="" style="height:30px" v-if="isLogoin"><router-link :to="{path:'/'}" >{{UserInfo.username}}</router-link></li>
 	    	                    <li style="height:30px" ><router-link :to="{path:'collectExhibit'}">我的收藏</router-link></li>
 								<li style="height:30px" ><router-link :to="{path:'reservation'}">我的预约</router-link></li>
 								<li style="height:30px" ><router-link :to="{path:'modifypassword'}">修改密码</router-link></li>
-								<li style="height:30px" ><a href="javascript:;">退出</a></li>
+								<li style="height:30px" @click="logout()"><a href="javascript:;">退出</a></li>
 	    	                </ul>
 	                    </div>
 	                	<div class="select-language item">
@@ -142,6 +142,7 @@
 </template>
 <script>
 	import { mapGetters } from 'vuex'
+	import * as API from "api/demo";
     export default {
     	props:['isBanner','bandata'],
     	data(){
@@ -154,6 +155,7 @@
     		}
     	},
     	mounted(){
+    		//console.log(typeof(this.isLogoin))
     		if(typeof(this.$store.getters.UserInfo)=='string'){
     			this.UserInfo=JSON.parse(this.$store.getters.UserInfo)
     		}else {
@@ -226,6 +228,20 @@
 					$('.searchWrap').hide();
 				}
 				this.onoff = !this.onoff
+			},
+			logout(){
+				let data ={
+				    
+				}
+				API.post('user/logout',data).then(res => {
+				    localStorage.removeItem('isLogoin')
+				    localStorage.removeItem('UserInfo')
+				    localStorage.removeItem('userId')
+				    localStorage.removeItem('token')
+				    this.isLogoin=false;
+				}).catch(err => {
+
+				})
 			}
 		}
     }

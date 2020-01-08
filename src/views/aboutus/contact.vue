@@ -1,77 +1,54 @@
 <template>
-  <div class="roomContent">
-    <header-top :isBanner="isBanner"></header-top>
-   
-     
-    <div class="aboutUsTextWrap">
-       <div class="social_main mt50">
-     <!--导航-->
-         <div class="social_nav">
-           <ab-nav></ab-nav>
+    <div class="roomContent">
+        <header-top :isBanner="isBanner" v-if="bandata" :bandata="bandata"></header-top>
+        <div class="aboutUsTextWrap">
+            <div class="social_main mt50">
+                <!--导航-->
+                <div class="social_nav">
+                    <ab-nav></ab-nav>
+                </div>
+            </div>
+            <!--关于深博-->
+            <div class="wrapbox">
+                <div class="aboutUsTextTabs">
+                    <div class="aboutUsTextTab aboutUsTextTab-2 deputy_text active" style="padding-top:16px;">
+                        <div>
+                            <h2> 联系我们</h2>
+                            <p>微信：iszbwg</p>
+                            <p>微博：weibo.com/shenzhenmuseum</p>
+                            <p>邮箱：shenzhenmuseum@qq.com</p>
+                        </div>
+                        <div>
+                            <h2>历史民俗馆</h2>
+                            <p>地址：广东省深圳市福田区福中路市民中心A区</p>
+                            <p>邮编：518026</p>
+                            <p>电话：0755-88125550 (服务时间：非闭馆日10:00-18:00)</p>
+                            <p>传真：0755-88125226、0755-88125829</p>
+                        </div>
+                        <div>
+                            <h2>古代艺术馆（暂时闭馆）</h2>
+                            <p>地址：广东省深圳市福田区同心路6号</p>
+                            <p>邮编：518027</p>
+                        </div>
+                        <div>
+                            <h2>东江游击队指挥部旧址纪念馆</h2>
+                            <p>地址：广东省深圳市罗湖区南庆街13号</p>
+                            <p>邮编：518001</p>
+                            <p>电话：0755-25100385 (服务时间：非闭馆日10:00-18:00)</p>
+                        </div>
+                        <div>
+                            <h2>深圳改革开放展览馆</h2>
+                            <p>地址：深圳市福田区福中路184号（深圳市当代艺术与城市规划馆四楼、五楼）</p>
+                            <p>邮编：518026</p>
+                            <p>电话：0755-82738315/0755-83254753 (服务时间：非闭馆日10:00-18:00)</p>
+                            <p>传真：0755-82735438</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      
-        
+        <footer-bottom></footer-bottom>
     </div>
-     <!--关于深博-->
-           <div class="wrapbox">
-              <div class="aboutUsTextTabs">
-             <div class="aboutUsTextTab aboutUsTextTab-2 deputy_text active" style="padding-top:16px;">
-            <div>
-            <h2> 联系我们</h2>
-            <p>微信：iszbwg</p>
-            <p>微博：weibo.com/shenzhenmuseum</p>
-            <p>邮箱：shenzhenmuseum@qq.com</p>
-            </div>
-
-
-
-<div><h2>历史民俗馆</h2>
-
-<p>地址：广东省深圳市福田区福中路市民中心A区</p>
-
-<p>邮编：518026</p>
-
-<p>电话：0755-88125550 (服务时间：非闭馆日10:00-18:00)</p>
-
-<p>传真：0755-88125226、0755-88125829</p></div>
-
- 
-
-<div><h2>古代艺术馆（暂时闭馆）</h2>
-
-<p>地址：广东省深圳市福田区同心路6号</p>
-
-<p>邮编：518027</p></div>
-
- 
-
-<div>
-    <h2>东江游击队指挥部旧址纪念馆</h2>
-
-<p>地址：广东省深圳市罗湖区南庆街13号</p>
-
-<p>邮编：518001</p>
-
-<p>电话：0755-25100385 (服务时间：非闭馆日10:00-18:00)</p>
-</div>
-
- 
-
-<div><h2>深圳改革开放展览馆</h2>
-
-<p>地址：深圳市福田区福中路184号（深圳市当代艺术与城市规划馆四楼、五楼）</p>
-
-<p>邮编：518026</p>
-
-<p>电话：0755-82738315/0755-83254753 (服务时间：非闭馆日10:00-18:00)</p>
-
-<p>传真：0755-82735438</p></div>
-			 </div>
-            </div>
-           </div>
-        </div>
-    <footer-bottom></footer-bottom>
-  </div>
 </template>
 <script>
 import header from "../components/header";
@@ -84,31 +61,31 @@ export default {
             isBanner: true,
             isPage: false,
             totlePage: 12,
-            lang:this.$store.getters.getlang,
-            bandata:'',
+            lang: this.$store.getters.getlang,
+            bandata: '',
         };
     },
-    mounted() { 
-      this.totlePage <= 10 ? this.isPage = false : this.isPage = true;
-      this.getBaner()
+    mounted() {
+        this.totlePage <= 10 ? this.isPage = false : this.isPage = true;
+        this.getBaner()
     },
     computed: {},
     methods: {
         //获取banner 
-        getBaner(){
-            let data ={
-                lang:this.lang,
-                pageNo:1,
-                pageSize:3,
-                platform:0
+        getBaner() {
+            let data = {
+                lang: this.lang,
+                pageNo: 1,
+                pageSize: 3,
+                platform: 0
             };
-            API.get2('slidePic/page/L0902',data).then(res => {
+            API.get2('slidePic/page/L0902', data).then(res => {
                 if (res.code == 0) {
                     this.bandata = res.data.list;
-                    //console.log(this.bandata)
+                    console.log(this.bandata)
                 }
             }).catch(err => {
-                
+
             })
         },
     },
