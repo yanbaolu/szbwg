@@ -13,26 +13,25 @@
 			<a href="/intangible/intangibleProject?&amp;pLm=:L04:L0402">非遗代表性项目</a>
 			<i></i>
 		 </p>
-	<p class="clear"><i></i><a href="javascript:;">陈仙姑的故事</a><i></i></p>
+	<p class="clear"><i></i><a href="javascript:;">{{indata.name}}</a><i></i></p>
 	    </div>
     </div>
 		<div class="news_detail_main">
 			<div class="news_main" style="margin-bootom:40px;">
         <div class="news_message">
         <p class="inheri_name">
-       		陈仙姑的故事</p>
+       		{{indata.name}}</p>
         <div class="inheri_title">
-			<p>项目类别：
-		   	 				民间音乐</p>
+			<p>项目类别：{{indata.itemCategory}}</p>
  	 			</div>
         <div class="project_content deputy_text">
-           <p></p><p style="text-indent:37px;line-height:150%"><span style="line-height: 150%; font-family: 微软雅黑, 'Microsoft YaHei'; font-size: 14px;">这是一个以真人真事写成的故事,在宝安、东莞一带流传了一百多年。故事的主人公陈仙姑原名陈端和,生于清代咸丰年间的公明水贝村（现深圳市宝安区西部），当时水贝村的大沘河河水泛滥，瘟疫盛行。陈端和年纪虽小，但看到民不聊生的惨状，立志要改变村民们长期受疾病侵害的现状，不顾家人的反对，经常到东莞、增城一带求医问药，为当地群众驱除病魔的折磨。</span></p><p style="text-indent:37px;line-height:150%"><span style="font-family: 微软雅黑, 'Microsoft YaHei'; line-height: 150%; font-size: 14px;">传说在同治年间，陈端和死后升天成为仙人,惩治了大沘河二河神到家，使当地乡亲摆脱了水灾之害和瘟疫之患。乡亲们为了颂扬她那种舍已为众、不畏艰难的崇高情操与无私奉献的品格，为她修建了一座庙,并编成故事，代代相传。</span></p><p style="text-indent:37px;line-height:150%"><span style="font-family: 微软雅黑, 'Microsoft YaHei'; line-height: 150%; font-size: 14px;"><br></span></p><p style="text-align: center;"><img src="https://www.shenzhenmuseum.com//szbwg-cms/userfiles/ueditor/jsp/upload/image/20171019/1508404925692080248.jpg" title="1508404925692080248.jpg" alt="陈仙姑庙全景.jpg"></p><p></p>
+           <p v-html="indata.content"></p>
         </div>
- <div class="inheri_video videoList" style="height: 325px;">
-            <p class="clear">相关视频:<a href="/intangible/intangibleVideo?lmType=L0402&amp;name=应人石的传说&amp;entityId=82409dbb7500403c833e572156ad2c2e&amp;className=CmsHeritagePro">查看更多</a></p>
+ <div class="inheri_video videoList" style="height: 325px;" v-show="isVideo">
+            <p class="clear">相关视频:<a href="#">查看更多</a></p>
            <!--相关视频-->
            <div class="mt30">
-             <in-video></in-video>
+             <in-video :data='data'></in-video>
            </div>
         </div>
  		</div>
@@ -62,20 +61,47 @@ export default {
       isBanner: false,
       gotop: false,
       isPage: false,
+      isVideo:false,
       totlePage: 20,
       news:[],
       toice:[],
+      indata:'',
+      data:'',
     };
   },
   mounted() {
     //页数显示与否
     this.totlePage <=5 ? (this.isPage = false) : (this.isPage = true);
        window.addEventListener("scroll", this.handleScroll, true);
+        this.getDetail();
   },
   computed: {},
   methods: {
+      getDetail(){
+            let data =this.$route.query;
+            //console.log(data)
+            API.get2('intangible/items/get',data).then(res => {
+                if (res.code == 0) {
+                    this.indata = res.data;
+                    console.log(this.indata)
+                    //console.log(this.data.dateStr)
+                    //console.log(res,44444)
+                    //是否有视频
+                    
+                    if(res.data.videoList.length == 0){
+                        this.isVideo = false
+                    }else{
+                        this.isVideo = true;
+                        this.data =res.data.videoList;
+                        //console.log(this.data)
+                    }
+                }
+            }).catch(err => {
+                
+            })
+        },
      videoClose(){
-                console.log(1111)
+            
 		        $('.video_Mask').hide();
 		        $('#video_').get(0).pause();
 		   

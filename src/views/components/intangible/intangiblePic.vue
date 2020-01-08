@@ -2,10 +2,12 @@
     <div>
         <ol class="clear">
             <!--传承人和非遗项目用这个projectDetail底层页-->
-            <li v-for="(item,index) in data">
-                <router-link :to="{path:'pictureNewDetail'}"> 
+            <li v-for="(item,index) in data" :key="index">
+                <router-link :to="{path:'projectDetail',query:{resId:item.resId,clazzName:item.clazzName}}"> 
+                    
                     <img :src="item.thumbPic">
-                    <p>{{item.name}}</p>
+                    <p>{{item.name}}
+                    </p>
                 </router-link>
             </li>
         </ol>
@@ -16,7 +18,7 @@ export default {
     props: ['isPage','data'],
     data() {
         return {
-
+            
         }
     },
     mounted() {

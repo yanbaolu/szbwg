@@ -56,6 +56,14 @@ const routes = [
             title: '我的预约'
         }
     }, 
+    {
+       path: '/search',
+        name: 'search',
+        component: load('search/search'),
+        meta: {
+            title: '搜索'
+        }
+    },
      {
         
         path: '/map',

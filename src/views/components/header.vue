@@ -71,6 +71,7 @@
                                 <router-link :to="{path:'pictureAll'}">图片库</router-link>
                             </li>
                             <!--活动预留-->
+<<<<<<< HEAD
                             <li class="" style="margin-left:5px;">
                             </li>
                             <li class="" style="margin-left:280px;">
@@ -168,6 +169,95 @@
             </form>
         </div>
     </div>
+=======
+		                    <li class="" style="margin-left:5px;">
+		                    	
+		                    </li>
+		                    <li  class="" style="margin-left:280px;">
+		                       	<router-link :to="{path:'socialisation'}" class="active">讲座</router-link><span></span>
+		                       	<router-link :to="{path:'ammouncer'}">小小讲解员</router-link><span></span>
+		                       	<router-link :to="{path:'volunteers'}">志愿者</router-link><span></span>
+		                       	<router-link :to="{path:'reservation'}">活动讲座预约</router-link>
+		                    </li>
+		                    <li  class="" style="margin-left:250px;">
+		                    	<router-link :to="{path:'cultural'}">文保</router-link><span></span>
+		                        <router-link :to="{path:'webPublication'}">论坛</router-link><span></span>
+		                        <router-link :to="{path:'monograph'}">专著</router-link><span></span>
+		                        <router-link :to="{path:'paper'}">论文</router-link><span></span>
+		                        <router-link :to="{path:'library'}">馆刊</router-link><span></span>
+		                        <router-link :to="{path:'motal'}">深圳前世今生</router-link>
+		                    </li>
+		                    <li class="" style="margin-left:480px;">
+		                        <router-link :to="{path:'publicationshop'}">创意商品</router-link><span></span>
+		                         <router-link :to="{path:'edemeanor'}">展会风采</router-link><span></span>
+		                         <router-link :to="{path:'honor'}">获奖荣誉</router-link><span></span>
+		                        <router-link :to="{path:'meeting'}">会议培训</router-link>
+		                    </li>
+		                    <li  class="" style="margin-left:258px;">
+		                        <router-link :to="{path:'aboutus'}">关于深博</router-link><span></span>
+		                        <router-link :to="{path:'management'}">管理和建设</router-link><span></span>
+		                        <router-link :to="{path:'mhonor'}">博物馆荣誉</router-link><span></span>
+		                        <router-link :to="{path:'listdonors'}">捐赠者名录</router-link><span></span>
+		                        <router-link :to="{path:'visiting'}">参观服务</router-link><span></span>
+		                        <router-link :to="{path:'contact'}">联系我们</router-link>
+		                    </li>
+		                </ol>
+            		</nav>
+            		<div class="infos">
+	                	<div class="personal-center item">
+	                    	<span class=""></span>
+	                    	<ul class="no-login ">
+	    	                    <li class="" style="height:30px" ><router-link :to="{path:'login'}" >登录</router-link></li>
+	    	                    <li style="height:30px" ><router-link :to="{path:'register'}">注册</router-link></li>
+	    	                </ul>
+							<ul class="no-login ">
+	    	                    <li class="" style="height:30px" ><router-link :to="{path:'collectExhibit'}" >某某</router-link></li>
+	    	                    <li style="height:30px" ><router-link :to="{path:'collectExhibit'}">我的收藏</router-link></li>
+								<li style="height:30px" ><router-link :to="{path:'reservation'}">我的预约</router-link></li>
+								<li style="height:30px" ><router-link :to="{path:'modifypassword'}">修改密码</router-link></li>
+								<li style="height:30px" ><a href="javascript:;">退出</a></li>
+	    	                </ul>
+	                    </div>
+	                	<div class="select-language item">
+		                    <span id="langua">CN</span>
+		                    <ul class="lang_ul">     
+		                        <li style="height:30px;"><a href="#" id="StranLink">繁體</a></li>
+		                        <li style="height:30px;"><a href="#">EN</a></li>      
+		                    </ul>
+	                	</div>
+		                <div class="search item" id="search" @click="search()"> 
+		                </div>
+            		</div>
+				</div>
+			</div>
+		</div>
+		<!--划过导航背景-->	
+		<div class="secNavWrap">
+		    <div class="secNav">
+				
+		    </div>
+		</div>
+		<!--轮播图-->			
+		<div class="poster_banner" v-if="isBanner">
+			<div class="slider3">
+				<el-carousel trigger="click" :indicator-position="indicator_position">
+				    <el-carousel-item v-for="(item,index) in bandata">
+				        <img :src="imgurl+item.thumbPic" alt="">		
+				    </el-carousel-item>
+				</el-carousel>
+			</div>
+		</div>
+		<!--搜索-->
+		<div class="searchWrap search_hide" >            
+		<form action="http://shenbo.artup.com/search" method="post" id="solrSearchForm">
+       <p>
+        <input type="text" placeholder="请输入搜索关键词" name="qKey" autocomplete="off">
+    	  <router-link :to="{path:'search'}" class="search-btn"></router-link>
+          </p>
+        </form>
+      </div>
+	</div>
+>>>>>>> bd27bcf2b7821e4a62671ca5dc687fe845820cfb
 </template>
 <script>
 export default {

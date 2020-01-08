@@ -33,6 +33,11 @@
                                     <span class="collection-voice-icons collection-voice-icons-video collection-icons" id="cllection-audio-icon" @click="audioPlay()"></span>
                                     <span class="collection-voice-text collection-text">音频</span>
                                 </a>
+                                <a href="https://www.shenzhenmuseum.com/3d/index.html?model=https://www.shenzhenmuseum.com/v/pmc/web/" class="collection-3d" target="_blank">
+		                		<span class="collection-3d-icons collection-icons"></span>
+		                		<span class="collection-video-text collection-text">3D</span>
+		                	  </a>
+                             
                                 <!-- 放音频 -->
                                 <audio src="https://www.shenzhenmuseum.com/p/userfiles//pf//2017/10/10/20171010085556515.mp3" id="collection-audio" style="display: none;">您的浏览器不支持 audio 标签。
                                 </audio>
@@ -114,10 +119,11 @@ export default {
             isBanner: false,
             isPage: false,
             totlePage: 1,
-            isAudio: false, //是否有音频
+            isAudio: true, //是否有音频
             icurPic: 2,
             data:'',
-            imgList:''
+            imgList:'',
+             is3d:true,
         };
     },
     mounted() {
@@ -151,6 +157,7 @@ export default {
                 // $('.mask').find('.load').hide();
                 console.log(_src);
                 $("#imageFullScreen").attr({ src: _src }).show();
+               
                 $("#imageFullScreen").smartZoom({
                     containerClass: "zoomableContainer"
                 });
@@ -543,59 +550,30 @@ export default {
 
 /** 放大图片 **/
 #pageContent {
-    /*width: 980px;
-  height: 500px;*/
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    margin: 0 auto;
-    position: fixed;
-    left: 0;
-    top: 0;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 1001;
-    display: none;
+	/*width: 980px;
+	height: 500px;*/
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	margin:0 auto;
+	position: fixed;left:0;top:0;
+	background:rgba(0,0,0,0.95);
+	z-index: 1001;
+	display: none;
 }
-#pageContent #imgContainer{width:100%!important;height:100%!important;}
-.close {
-    cursor: pointer;
-    width: 38px;
-    height: 38px;
-    background: url(../../assets/img/icons/close.png) no-repeat center center;
-    position: absolute;
-    right: 16px;
-    top: 40px;
-}
+#imgContainer {
+	width: 100%;
+	height: 100%;
 
-.videoMask {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 1001;
-    display: none;
-    overflow-y: scroll;
 }
+#imageFullScreen{
 
-.videoWrap {
-    width: auto;
-    height: auto;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    margin: 10% auto;
-    background: rgba(0, 0, 0, 0);
-    text-align: center;
 }
+.close{cursor:pointer;width:38px;height: 38px;background:url(../../assets/img/icons/close.png) no-repeat center center; position: absolute;right:16px; top:40px;}
 
-.videoWrap video {
-    max-height: 100%;
-    max-width: 100%;
-}
+.videoMask{position: fixed;left: 0;top: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.8);z-index: 1001;display: none;overflow-y: scroll;}
+.videoWrap{width: auto;height: auto;position: absolute;left: 0;top: 0;right: 0;bottom: 0;margin:10% auto;background: rgba(0,0,0,0);text-align:center;}
+.videoWrap video{max-height: 100%;max-width: 100%;}
 
 /* չ��չƷ��ҳ */
 .exhibit_turn {

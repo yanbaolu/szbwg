@@ -523,12 +523,12 @@
                     <div class="sw_footerLink p_center">
                         <p class="bottomLink_sw">
                             <a class="sm_pageNum" style="display:inline-block;margin-right:-20px;border-right:none!important"></a>
-                            <a target="_black" href="index/map">网站地图</a>
-                            <a target="_black" href="index/yqlj">友情链接</a>
-                            <a href="intangible/newsDetail?lmType=L0806&amp;pLm=:L08:L0801&amp;lx=3&amp;resId=&quot;+data.entitys[i].resId+&quot;">隐私政策</a>
-                            <a href="index/bqsm">版权声明</a>
-                            <a href="aboutus/index?type=about&amp;curIndex=4&amp;visIndex=1#exhibitMap">展厅地图</a>
-                            <a href="aboutus/index?type=about&amp;curIndex=5" style="border-right:none!important">联系我们</a>
+                            <router-link target="_black" :to="{path:'map'}">网站地图</router-link>
+                            <router-link target="_black" :to="{path:'yqlj'}">友情链接</router-link>
+                           <router-link :to="{path:'aboutus'}">隐私政策</router-link>
+                            <router-link target="_black" :to="{path:'bqsm'}">版权声明</router-link>
+                            <router-link target="_black" :to="{path:'visiting'}">展厅地图</router-link>
+                            <router-link :to="{path:'contact'}">联系我们</router-link>
                             <i class="allIco p_center sw_fotico sw_foticot" sid='2'></i>
                         </p>
                     </div>
