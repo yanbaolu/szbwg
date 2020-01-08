@@ -122,7 +122,7 @@ export default {
           API.get2('about/get/L090101',data).then(res => {
               if (res.code == 0) {
                   this.speak = res.data;
-                  console.log( this.speak,7899999999)
+                  //console.log( this.speak,7899999999)
               }
           }).catch(err => {
               

@@ -3,10 +3,6 @@
         <header-top :isBanner="isBanner"></header-top>
         <!--全景展览海报图-->
         <div class="detail-poster" style="background:url(https://www.shenzhenmuseum.com/p/resize_1920x500/userfiles//pf//2017/11/22/20171122043824166.jpg)no-repeat center center;">
-            <!-- <div
-      class="detail-poster"
-      :style="{ 'background-image': 'url('+detailData.panoramaPic+ ')' }"
-    > -->
             <a class="qjzl" href="https://www.shenzhenmuseum.com/v/gdsz/" style="display:block;">
                 <img alt="全景展览" src="../../assets/img/panoramic.png" title="全景展览" />
                 <span>全景展览</span>
@@ -24,7 +20,7 @@
                 <div class="exhi-detail comWidth">
                     <h3>
                         <span class="comWidth"></span>
-                        <span class="wshoucang mb-20" id="showcangp" style="width: 66px;" onclick="setShowCang('a8d54f2e85fa4ae6b4c0b349b875d658');" data-value="false">收藏</span>
+                        <span :class="[detailData.isCollection ? shoucang : '', wshoucang]" id="showcangp" style="width: 66px;" @click="setShowCang();" data-value="false">收藏</span>
                     </h3>
                     <p style="height:1px;background:#dddddd;margin-bottom:20px;"></p>
                     <div class="exhi-place clear">
@@ -178,11 +174,22 @@ export default {
                 if (res.code == 0) {
                     this.detailData = res.data;
                     this.imgList=res.data.relationPicList.slice(0,4);
-                    //console.log(this.detailData,456)
+                    console.log(this.detailData,456)
                 }
             }).catch(err => {
 
             })
+        },
+        setShowCang(){
+            if(true){
+                $('#showcangp').addClass('wshoucang').removeClass("shoucang")
+                isClect=false;
+                console.log(isClect,123)
+            }else {
+                $('#showcangp').addClass('shoucang').removeClass("wshoucang")
+                isClect=false;
+                console.log(isClect,456)
+            }
         }
     },
     components: {

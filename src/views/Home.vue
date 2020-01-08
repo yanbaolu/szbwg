@@ -30,6 +30,7 @@ export default {
             let data =new URLSearchParams;
                 data.append('param',1)
                 API.post(data).then(res => {
+                    
             }).catch(err => {
 
             })

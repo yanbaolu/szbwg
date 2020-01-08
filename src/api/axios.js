@@ -1,31 +1,33 @@
 import axios from 'axios';
 import { getToken } from 'service/cookie';
 import { Message } from 'element-ui';
-
+//var token=localStorage.getItem("token");
 const service = axios.create({
     timeout: 60000,
     headers: {
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'Content-Type': 'application/json',
         "X-Requested-With": "XMLHttpRequest",
-        "X-Req-platform":"0"
+        "X-Req-platform":"0",
     },
     baseURL: 'http://www.szbwg.ts.artron.net/api',
 });
 const serviceForm = axios.create({
     timeout: 60000,
     headers: {
-        'Content-Type': 'multipart/form-data; charset=UTF-8',
+        'Content-Type': 'application/json',
         "X-Requested-With": "XMLHttpRequest",
-        "X-Req-platform":"0"
+        "X-Req-platform":"0",
     },
     baseURL: 'http://www.szbwg.ts.artron.net/api',
 });
 //http://www.szbwg.ts.artron.net
 //http request 拦截器
 let request = function (config) {
-    const token = getToken();
+    const token = localStorage.getItem("token");
+    //console.log(token,55555555)
+    const key="X-Req-Auth";
     if (token) { // 判断是否存在token，如果存在的话，则每个http header都加上token
-        config.headers.token = token;
+        config.headers[key] = token;
     }
     return config;
 };

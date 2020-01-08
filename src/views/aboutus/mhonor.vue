@@ -89,7 +89,7 @@ export default {
             API.get2('about/event/page/L0903',data).then(res => {
                 if (res.code == 0) {
                     this.data = res.data.list;
-                    console.log(this.data,123456789)
+                    //console.log(this.data,123456789)
                 }
             }).catch(err => {
                 

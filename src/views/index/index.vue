@@ -597,8 +597,9 @@ export default {
         }
     },
     mounted() {
-        console.log(this.imgurl,123456)
+        //console.log(this.imgurl,123456)
         //侧边栏下载导航
+        
         $(".icon_nav dl dt").hover(function() {
             $(this).next().show();
         }, function(event) {
@@ -937,7 +938,7 @@ export default {
         /*底部显示隐藏*/
         $('.sw_fotico').click(function() {
             var _this = $(this)
-            console.log(_this.attr('sid'))
+            //console.log(_this.attr('sid'))
             if (_this.attr('sid') == 1) {
                 $('.sw_footerLink').css({ 'margin-bottom': '40px' })
                 _this.css({ display: 'none' })
@@ -1073,7 +1074,7 @@ export default {
                 platform:0
             };
             API.get2('exhibition/page/L0203',data).then(res=>{
-                console.log(res)
+                //console.log(res)
                 if (res.code==0) {
                     this.special=res.data.list.slice(0,6)
                 }

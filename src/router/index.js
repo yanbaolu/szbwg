@@ -5,7 +5,7 @@ Vue.use(Router);
 
 // 路由配置
 const router = new Router({
-   //mode: 'history',
+   mode: 'history',
    base: process.env.BASE_URL,
    routes,
    scrollBehavior(to, from, savedPosition) {

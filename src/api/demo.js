@@ -10,5 +10,5 @@ export function get2(url,data) {
 }
 /* post请求带参数 */
 export function post(url,data) {
-	return service.post('api/post', data);
+	return service.post(url, data);
 }
