@@ -1,0 +1,41 @@
+@charset "utf-8";
+/*弹出式样式定义*/
+.popupCode #container_wrap_modal{width:320px; height:380px; background: #fff; overflow: hidden; position:fixed!important; top:50%!important; left:50%!important;padding:0!important;margin-top:-190px; margin-left:-160px; }
+.popupCode #container_head{overflow: hidden;padding:15px 20px;border-bottom: 1px solid #d4d4d4;}
+.popupCode #container_head .closeBtn{float:right; width:20px; height:20px;overflow: hidden;background:url(../img/captcha_close.png) 50% 50% no-repeat;cursor: pointer;}
+.popupCode #container_head .refreshBtn{float:left; width:20px; height:20px;overflow: hidden;cursor: pointer;}
+.popupCode #container_head .refresh_bg {height: 20px;width: 20px;display: block;background:url(../img/captcha_refresh.png) 50% 50% no-repeat;}
+.popupCode #container_head .title {line-height: 20px;font-size: 16px;color: #000;text-align: center;margin:0 20px;}
+.popupCode #container_wrap_modal .container_box {margin:20px 20px 0;background: #e7e7e7}
+.popupCode #drag {position: relative;height: 40px;line-height: 40px;text-align: center;margin:20px 20px 0;background: #cfe6ce;font-size:14px; }
+.popupCode #drag .handler {position: absolute;top: 0px;left: 0px;width:66px; height:40px; box-shadow:2px 2px 15px rgba(0,0,0,0.3), -2px -2px 15px rgba(0,0,0,0.3) ; background:#fff url(../img/captcha_drag.png) 50% 50% no-repeat;overflow: hidden;z-index:10;}
+.popupCode #drag .drag_bg {background-color: #cfe6ce;height: 40px;width: 0px;}
+.popupCode #drag .drag_placeholder {height: 40px;position:absolute; left: 0; top:0; width:100%;overflow: hidden;text-align: center;color: #0f820c;}
+.popupCode #drag .drag_text {font-size: 14px;color: #0f820c;position: absolute;top: 0px;-moz-user-select: none;-webkit-user-select: none;user-select: none;-o-user-select: none;-ms-user-select: none;}
+.popupCode #drag .drag_text_err {background:none; font-size:14px; color:#c00;top:100%;}
+.popupCode #drag .drag_text_ok {z-index:1000;background:rgb(0,0,0);background:rgba(0,0,0,.7); font-size:14px; color:#fff;top:-50px; text-align: left; height:30px; line-height: 30px;}
+.popupCode #drag .drag_text_ok .right_icon{display:inline-block;background:url(../img/captcha_right.png) 50% 50% no-repeat;width:22px; height:22px;margin:0 10px; vertical-align: -20%;}
+.popupCode .cut_bg {float: left;margin: 0 !important;border: 0px;padding: 0 !important;}
+.popupCode .xy_img_bord {-webkit-box-shadow: 0 0 15px #0CC;-moz-box-shadow: 0 0 15px #0CC;box-shadow: 0 0 15px #0CC;top: 32px;left: 0px;display: none;border: 1px solid rgb(255, 255, 255);}
+.popupCode #xy_img {z-index: 999;width: 40px;height: 40px;position: relative;}
+.popupCode .vcode-hints {position: absolute;z-index: 0;text-align: center;color: #999999;font-size: 15px;}
+/*2px 2px 15px rgba(0,0,0,0.3), -2px -2px 15px rgba(0,0,0,0.3)*/
+/*嵌入式样式定义*/
+
+.embedCode #container_wrap_modal{width:320px;  background: #fff; overflow: hidden; }
+.embedCode .refreshBtn{float:left; width:20px; height:20px;overflow: hidden;right:10px ;left:auto !important;}
+.embedCode .refresh_bg {height: 20px;width: 20px;display: block;background:url(../img/captcha_refresh.png) 50% 50% no-repeat;}
+.embedCode #container_head .title {line-height: 20px;font-size: 16px;color: #000;text-align: center;margin:0 20px;}
+.embedCode #container_wrap_modal .container_box {margin:20px 20px 0;background: #e7e7e7}
+.embedCode #drag {position: relative;height: 40px;line-height: 40px;text-align: center;margin:20px 20px 0;background: #cfe6ce;font-size:14px; }
+.embedCode #drag .handler {position: absolute;top: 0px;left: 0px;width:66px; height:40px; box-shadow:2px 2px 15px rgba(0,0,0,0.3), -2px -2px 15px rgba(0,0,0,0.3); background:#fff url(../img/captcha_drag.png) 50% 50% no-repeat;overflow: hidden;z-index:10;}
+.embedCode #drag .drag_bg {background-color: #cfe6ce;height: 40px;width: 0px;}
+.embedCode #drag .drag_placeholder {height: 40px;position:absolute; left: 0; top:0; width:100%;overflow: hidden;text-align: center;color: #0f820c;}
+.embedCode #drag .drag_text {font-size: 14px;color: #0f820c;position: absolute;top: 0px;-moz-user-select: none;-webkit-user-select: none;user-select: none;-o-user-select: none;-ms-user-select: none;}
+.embedCode #drag .drag_text_err {color:#c00;font-size:14px; color:#fff;top:-30px; text-align: left; height:30px; line-height: 30px;}
+.embedCode #drag .drag_text_ok {background:rgb(0,0,0);background:rgba(0,0,0,.7); font-size:14px; color:#fff;top:-30px; text-align: left; height:30px; line-height: 30px;}
+.embedCode #drag .drag_text_ok .right_icon{display:inline-block;background:url(../img/captcha_right.png) 50% 50% no-repeat;width:22px; height:22px;margin:0 10px; vertical-align: -20%;}
+.embedCode .cut_bg {float: left;margin: 0 !important;border: 0px;padding: 0 !important;}
+.embedCode .xy_img_bord {-webkit-box-shadow: 0 0 15px #0CC;-moz-box-shadow: 0 0 15px #0CC;box-shadow: 0 0 15px #0CC;top: 32px;left: 0px;display: none;border: 1px solid rgb(255, 255, 255);}
+.embedCode #xy_img {z-index: 999;width: 40px;height: 40px;position: relative;}
+.embedCode .vcode-hints {position: absolute;z-index: 0;text-align: center;color: #999999;font-size: 15px;}
