@@ -47,9 +47,9 @@
 		                        <router-link :to="{path:'intangibleProject',query:{type:'inproject'}}">非遗项目</router-link><span></span>
 		                        <router-link :to="{path:'intangibleInheritance',query:{type:'inproson'}}">传承人</router-link><span></span>
 		                        <router-link :to="{path:'intangibleLaws'}">非遗法规</router-link><span></span>
-		                       <router-link :to="{path:'intangibleLaws'}">申报指南</router-link><span></span>
+		                       <router-link :to="{path:'intangibleRegulat'}">申报指南</router-link><span></span>
 		                        <router-link :to="{path:'videoAll'}">视频库</router-link><span></span>
-		                        <router-link :to="{path:'pictureAll'}">图片库</router-link>
+		                        <router-link :to="{path:'pictureAll',query:{type:'picall'}}">图片库</router-link>
 		                    </li>
                             <!--活动预留-->
 		                    <li class="" style="margin-left:5px;">

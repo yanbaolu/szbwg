@@ -12,20 +12,19 @@
 			<router-link :to="{path:'ammouncer'}">小讲解员</router-link>
 			<i></i>
 		 </p>
-	     <p class="clear"><i></i><a href="javascript:;">胡凌霄</a><i></i></p>
+	     <p class="clear"><i></i><a href="javascript:;">{{data.name}}</a><i></i></p>
         </div>
         </div>
         <div class="little_people_m">
             <div class="little_infor clear">
                 <div class="little_infor_left  video_content videoList">
-                    <h3>胡凌霄</h3>
+                    <h3>{{data.name}}</h3>
                     <p>
 	                    	<span>
-	                    		
-	                    			男
+	                    			{{data.sex}}
 		                        </span>
 	                    	<span>
-	                    		11岁
+	                    		{{data.name}}岁
 	                    		</span>
 	                    	<span></span>
 	                    </p>
@@ -34,7 +33,7 @@
                 	</div>
                     </div>
 				<div class="little_infor_right">
-					<img src="https://www.shenzhenmuseum.com/p/userfiles//pf//2017/11/03/20171103035628407.jpg" onerror="this.src='/static/img/bg-3-4.png'">
+					<img :src="data.photo" onerror="this.src='/static/img/bg-3-4.png'">
                 </div>
             </div>
             
@@ -63,12 +62,25 @@ export default {
       isBanner:false,
       isPage: false,
       isShow:false,
-      totlePage:1
+      totlePage:1,
+      data:'',
     };
   },
-  mounted() {this.totlePage<=10?this.isPage = false :this.isPage =true;},
+  mounted() {this.totlePage<=10?this.isPage = false :this.isPage =true;
+  this.getDetail()},
   computed: {},
-  methods: {},
+  methods: { getDetail(){
+            let data =this.$route.query;
+           // console.log(data)
+            API.get2('volunteer/get',data).then(res => {
+                if (res.code == 0) {
+                    this.data = res.data;
+                   
+                }
+            }).catch(err => {
+                
+            })
+        }},
   components: {
     "header-top": header,
     "footer-bottom": footer,

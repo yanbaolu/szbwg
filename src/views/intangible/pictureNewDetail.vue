@@ -19,22 +19,55 @@
           </p>
           <p class="clear">
             <i></i>
-            <a href="javascript:;">文化和自然遗产日</a>
+            <a href="javascript:;"></a>
             <i></i>
           </p>
         </div>
      
       </div>
          <div class="intang_picture_title clear" style="margin-top:30px;">
-          <p v-for="(item,index) in yearAll" :key="index" @click="num =index" :class="{active:num==index}">
-            <a href="#">{{item}}</a>
+          <p v-for="(item,index) in dataPic" :key="index" @click="num =index" :class="{active:num==index}">
+            <a href="#">{{item.name}}</a>
           </p>
           <span></span>
           
         </div>
      <!--图片切换组件-->
-        <div class="tabimg" v-for="(item,index) in yearAll" :key="index" v-show="num ==index">{{item}}------此处文字是为了显示切换效果可删除
-            <tab-img></tab-img>
+        <div class="tabimg" >
+            <!-- <tab-img :dataImg="dataImg"></tab-img> -->
+              <div class="picture_detail_main" v-for="(item,index) in dataPic" :key="index" v-show="num ==index">
+                <h1>{{item.name}}</h1>
+                <h3>—— {{item.dateStr}}</h3>
+                <div class="picture_img">
+                  <div class="picture_frame">
+                    <ul class="clear">
+                      <li id="curImg">
+                        <img src=""  /> 
+                        <div class="carousel-caption picture_title"></div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="bto_left" @click="bto_prev()"  :curN="curNumber"></div>
+                  <div class="bto_right" @click="bto_next()" :curN="curNumber"></div>
+                  <p class="img_page">
+                    <span class="icurrpage"></span>/<span class="totleimg"></span>
+                  </p>
+                </div>
+                <div class="small_picture">
+                  <div class="small_frame">
+                    <ul class="clear">
+                    <li v-for="(item,i) in dataImg" :key="i" @click="curImg(i,item)">
+                        <img :src="item.thumbPic"/> 
+                        <h3>{{item.thumbPic}}</h3>
+                        <div class="carousel-caption picture_title">{{item.name}}</div>
+                      </li>
+                      
+                    </ul>
+                  </div>
+                  <div class="small_btn_left" @click="bto_prev()" :curN="curNumber"></div>
+                  <div class="small_btn_right" @click="bto_next()" :curN="curNumber"></div>
+                </div>
+              </div>
         </div>
     </div>
  <div class="yeartab">
@@ -122,6 +155,7 @@ import * as API from "api/demo";
 export default {
   data() {
     return {
+      lang:this.$store.getters.getlang,
       isBanner: false,
       gotop: false,
       isPage: false,
@@ -130,111 +164,62 @@ export default {
       toice: [],
       curNumber:0,
       num:0,
-      yearAll:['2019','2018','2017','2016','2015','2014','2013','2012','2011','2010'],
-      dataImg:[
-          {
-              imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092419.jpg',
-              name:'1111',
-          },
-          {
-              imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092354.jpg',
-              name:'2222',
-          },
-          {
-              imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092427.jpg',
-              name:'33333',
-          },
-          {
-            imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092354.jpg',
-              name:'114444411',
-          },
-          {
-              imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092419.jpg',
-              name:'55555',
-          },
-          {
-              imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092427.jpg',
-              name:'66666',
-          },
-          {
-             imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092354.jpg',
-              name:'77777',
-          },
-          {
-              imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092427.jpg',
-              name:'88888',
-          },
-          {
-              imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092419.jpg',
-              name:'99999',
-          }
-      ]
+      dataPic:'',
+      // yearAll:['2019','2018','2017','2016','2015','2014','2013','2012','2011','2010'],
+      dataImgall:[],
+      dataImg:[]
     };
   },
   mounted() {
+    console.log(this.dataPic)
     //页数显示与否
     this.totlePage <= 5 ? (this.isPage = false) : (this.isPage = true);
     window.addEventListener("scroll", this.handleScroll, true);
     //
-    this.init();
+    //this.init();
     this.tabimg();
+    this.IntangiblePicList();
+   // console.log(this.$route.query)
+
   },
-  computed: {},
+  computed: {
+ 
+  },
   methods: {
-   
+   //图片集
+        IntangiblePicList(name){
+            let data ={
+                lang:this.lang,
+                master:this.$route.query.master,
+                platform:0
+            };
+           // console.log(data)
+            API.get2('intangible/picset/page/L0406',data).then(res=>{
+                if (res.code==0) {
+                  // console.log(res.data)
+                  this.dataPic = res.data
+                 console.log(this.dataPic)
+                  for (let value of this.dataPic) {
+                     console.log(value.picList);
+                     this.dataImgall = value.picList
+                     
+                    }
+                   for (let value of this.dataImgall) {
+                     // this.dataImg = value;
+                     // console.log(this.dataImg)
+                    }
+                }
+            }).catch(err => {
+
+            })
+        },
  init(){
-    $('#curImg img').attr('src',this.dataImg[0].imgSrc);
+    $('#curImg img').attr('src',this.dataImg[0].thumbPic);
     $('.picture_title').html(this.dataImg[0].name);
     $('.icurrpage').html(this.curNumber+1);
     $('.totleimg').html(this.dataImg.length)
      $('.small_frame ul li').eq(0).addClass('active')
  },
-//     //大图点击上一张
-//   bto_prev(){
-//       let pCurr = Number($(".bto_left").attr("curN")) - 1;
-//       if(pCurr <=0){
-//           pCurr =0;
-//           this.curNumber = pCurr;
-//       }
-//       if(pCurr<this.dataImg.length && pCurr>=0){
-//            this.curNumber = pCurr;
-//              $('.icurrpage').html(pCurr+1);
-//           //console.log(pCurr);
-//           $('#curImg img').attr('src',this.dataImg[pCurr].imgSrc)
-//           $('.picture_title').html(this.dataImg[pCurr].name)
-//         $('.small_frame ul').css({
-//               left: -pCurr *116+'px',
-//           })
-//           $('.small_frame ul li').eq(pCurr).addClass('active').siblings().removeClass('active');
-//       }
-//   },
-//   //大图点击下一张
-//   bto_next(){
-//        let nCurr = Number($(".bto_left").attr("curN")) + 1;
-//       if(nCurr >=this.dataImg.length){
-//           nCurr =this.dataImg.length-1;
-//           this.curNumber = nCurr;
-//       }
-//       if(nCurr<this.dataImg.length){
-//            this.curNumber = nCurr;
-//            // console.log(nCurr);
-//           $('.icurrpage').html(nCurr+1);
-//           $('#curImg img').attr('src',this.dataImg[nCurr].imgSrc)
-//           $('.picture_title').html(this.dataImg[nCurr].name);
-//           $('.small_frame ul').css({
-//               left: -nCurr *116+'px',
-//           })
-//           $('.small_frame ul li').eq(nCurr).addClass('active').siblings().removeClass('active');
-//       }
-//   },
-//     //点击缩略小图
-//   curImg(i,val){
-//          this.curNumber =i;
-//          $('.icurrpage').html(i+1);
-//           $('#curImg img').attr('src',this.dataImg[i].imgSrc)
-//           $('.picture_title').html(this.dataImg[i].name)
-//           $('.small_frame ul li').eq(i).addClass('active').siblings().removeClass('active');
-//   },
 //tabimg切换
 tabimg(){
     tabSwiper="";

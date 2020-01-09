@@ -1,14 +1,12 @@
 <template>
     <div>
         <ol class="clear">
-            <!--传承人和非遗项目用这个projectDetail底层页-->
             <li v-for="(item,index) in data" :key="index">
-                <router-link :to="{path:'projectDetail',query:{resId:item.resId,clazzName:item.clazzName}}"> 
-                    
+                 <a href="javascript:;" @click="linkdetial(index)"> 
                     <img :src="item.thumbPic">
                     <p>{{item.name}}
                     </p>
-                </router-link>
+                </a>
             </li>
         </ol>
     </div>
@@ -18,13 +16,46 @@ export default {
     props: ['isPage','data'],
     data() {
         return {
-            
+         type:'',
+         query:{},
         }
     },
     mounted() {
-
+       let typestr = this.$router.history.current.query.type;
+       this.type = typestr;
     },
-    methods: {}
+    methods: {
+        
+            linkdetial(i){
+               if(this.type == 'inproject'){
+                //    console.log(this.data[i].resId+'-----'+this.data[i].clazzName)
+                   this.$router.push({
+                    path:'/projectDetail',
+                    query:{
+                      resId:this.data[i].resId,
+                      clazzName:this.data[i].clazzName
+                     }
+                    })
+               }else if(this.type == 'inproson'){
+                   this.$router.push({
+                    path:'/inheritanceDetail',
+                    query:{
+                      resId:this.data[i].resId,
+                      clazzName:this.data[i].clazzName
+                     }
+                    })
+                   
+               }else if(this.type == 'picall'){
+                    this.$router.push({
+                    path:'/pictureNewDetail',
+                    query:{
+                       master:this.data[i].code
+                     }
+                    })
+               }
+
+            }
+    }
 }
 </script>
 <style scope>

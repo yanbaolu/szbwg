@@ -2,7 +2,7 @@
     <div>
         <ul>
             <li v-for="(item,index) in data">
-                <router-link :to="{path:'/lawsregulatDetail'}">
+                <router-link :to="{path:'/lawsregulatDetail',query:{clazzName:item.clazzName,resId:item.resId,index:index}}">
                     <h3>{{item.name}}</h3><span>2014-09-29</span>
                 </router-link>
             </li>

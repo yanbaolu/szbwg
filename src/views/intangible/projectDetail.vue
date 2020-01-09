@@ -28,7 +28,7 @@
            <p v-html="indata.content"></p>
         </div>
  <div class="inheri_video videoList" style="height: 325px;" v-show="isVideo">
-            <p class="clear">相关视频:<a href="#">查看更多</a></p>
+            <p class="clear">相关视频:<router-link :to="{path:'intangiblevideo'}">查看更多</router-link></p>
            <!--相关视频-->
            <div class="mt30">
              <in-video :data='data'></in-video>

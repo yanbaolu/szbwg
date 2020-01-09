@@ -7,7 +7,7 @@
             </router-link>
         </div>
         <ul class="clearfix">
-            <li v-for="(item,index) in data">
+            <li v-for="(item,index) in data" :key="index" >
                 <router-link :to="{name:'volunteerDetail',query:{resId:item.resId,clazzName:item.clazzName}}">
                     <div class="little_child_img">
                         <img :src="item.photo" alt />
