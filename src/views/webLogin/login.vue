@@ -10,7 +10,7 @@
                 <a href="javascript:;" class="register-submit" @click="loginWeb();">提交</a>
                 <p class="go-login">没有账号？<a href="/register">去注册</a></p>
                 <p class="third"><span class="line"></span><strong>第三方登录</strong><span class="line"></span></p>
-                <p class="third-icons"><a href="javascript:;" class="qq" @click="logoqq()"></a><a href="/oauth/wxLogin" class="wx"></a></p>
+                <p class="third-icons"><a href="https://graph.qq.com/oauth2.0/show?which=Login&display=pc&client_id=101392492&redirect_uri=http://shenbo.artup.com/oauth/qqCallBack&response_type=code&state=e39c01fbb7df5ffedfa659052fea4694&scope=get_user_info,add_topic,add_one_blog,add_album,upload_pic,list_album,add_share,check_page_fans,add_t,add_pic_t,del_t,get_repost_list,get_info,get_other_info,get_fanslist,get_idollist,add_idol,del_ido,get_tenpay_addr" class="qq"></a><a href="/oauth/wxLogin" class="wx"></a></p>
             </div>
         </div>
         <footer-bottom></footer-bottom>

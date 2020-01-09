@@ -3,58 +3,62 @@
         <div class="data_list">
             <div class="buttonBox">
                 <div class="yearBtnBox">
-                    <div class="yearbtn">2015</div>
-                    <div class="yearlist"></div>
+                    <div class="yearbtn" id="year" @click="yearbtn()"><em>{{curY}}</em></div>
+                    <ul class="yearlist">
+                            <li v-for="(item,index) in yearall" :key="index" @click="yearlist(item)">{{item}}</li>
+                     </ul>
                 </div>
                 <div class="mouthBtnBox">
-                    <div class="mouthBtn">12 月</div>
-                    <div class="mouthList"></div>
+                    <div class="mouthBtn" id="month" @click="monbtn()"><em>{{curM}}</em> 月</div>
+                    <ul class="mouthList">
+                        <li v-for="(item,index) in mounthall" :key="index" @click="mounthlist(item)">{{item}}</li>
+                    </ul>
                 </div>
             </div>
             <ul class="dataList">
                 <span class="leftBtn" @click="leftBtn()"></span>
-                <li>
+                <li v-for="(item,index) in dataArr" :key="index">
                     <dl>
-                        <dt>30</dt>
-                        <dd>Mon</dd>
+                        <dt>{{item.date}}</dt>
+                        <dd>{{item.week}}</dd>
                     </dl>
                 </li>
-                <li>
+                <!-- <li>
                     <dl>
-                        <dt>31</dt>
+                        <dt>{{dataArr[1]}}</dt>
                         <dd>Tue</dd>
                     </dl>
                 </li>
                 <li>
                     <dl>
-                        <dt>1</dt>
+                        <dt>{{dataArr[2]}}</dt>
                         <dd>Wed</dd>
                     </dl>
                 </li>
                 <li>
                     <dl>
-                        <dt>2</dt>
+                        <dt>{{dataArr[3]}}</dt>
                         <dd>Thu</dd>
                     </dl>
                 </li>
                 <li>
                     <dl>
-                        <dt>3</dt>
+                        <dt>{{dataArr[4]}}</dt>
                         <dd>Fri</dd>
                     </dl>
                 </li>
                 <li>
                     <dl>
-                        <dt>4</dt>
+                        <dt>{{dataArr[5]}}</dt>
                         <dd>Sat</dd>
                     </dl>
                 </li>
                 <li>
                     <dl>
-                        <dt>5</dt>
+                        <dt>{{dataArr[6]}}</dt>
                         <dd>Sun</dd>
                     </dl>
-                </li>
+                </li> -->
                 <span class="rightBtn" @click="rightBtn()"></span>
             </ul>
         </div>
@@ -93,7 +97,7 @@
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination swiper-p2"></div>
-            <table id="monitor">
+            <table id="monitor" style="display: none;">
                 <tr>
                     <td>111111</td>
                     <td></td>
@@ -111,14 +115,58 @@
 export default {
     data() {
         return {
+            //假定数据
             cells: '',
-
+            clen:'',
+            //当前日期
+            currentFirstDate:'',
+            //周数据获取
+            dataArr:[{
+                date:'',
+                week:'Sun'
+            },{
+                date:'',
+                week:'Mon'
+            },{
+                date:'',
+                week:'Tue'
+            },{
+                date:'',
+                week:'Wed'
+            },{
+                date:'',
+                week:'Thu'
+            },{
+                date:'',
+                week:'Fri'
+            },{
+                date:'',
+                week:'Sat'
+            }],
+            //所有年
+            yearall:[],
+            //所有月
+            mounthall:[1,2,3,4,5,6,7,8,9,10,11,12],
+            //当前年
+            curY:'',
+            //当前月
+            curM:'',
+            //当前天
+            curDay:'',
+            isShowyear:false,
+            isShowmouth:false
         }
     },
     mounted() {
-        var cells = document.getElementById('monitor').getElementsByTagName('td');
-        var clen = cells.length;
-        var currentFirstDate;
+        //创建年
+        for (var i = 1900; i <=2050; i++) {
+            this.yearall.push(i)
+        }
+        //假定数据
+        this.cells = document.getElementById('monitor').getElementsByTagName('td');
+        this.clen = this.cells.length;
+        //初始化日期
+        this.setDate(new Date());
         var swiper = new Swiper('.swiper_tow', {
             slidesPerView: 2.3,
             centeredSlides: true,
@@ -131,40 +179,105 @@ export default {
         });
     },
     methods:{
-        //获取数据
-        getWeek(){
+        //获取周
+        getWeek(target){
             let now = new Date(target);
             let now_day= now.getDay();
             let now_time = now.getTime();
-            let result = [0,1,2,3,4,5,6]
-            return result.map(i => (new Date(now_time + 24*60*60*1000*(i - now_day))).getDate())
+            let result = [0,1,2,3,4,5,6];
+            const m =(now.getMonth() + 1)
+            //let lastDay=new Date(this.curY,this.curM,0).getDate();
+            //console.log(lastDay,123456)
+            result.map(i => (new Date(now_time + 24*60*60*1000*(i - now_day))).getDate()).map((item,index)=>{
+                if(this.dataArr[index].month==m){
+                    this.dataArr[index].date=item;
+                }else {
+                    this.dataArr[index].date='';
+                }
+                
+            })
+            console.log(this.dataArr,78787878787)
         },
-        addDate(){
-            console.log(date,454454544554)
+        //添加日期
+        addDate(date,n){
+            //console.log(date,454454544554)
             date.setDate(date.getDate() + n);
             return date;
         },
-        setDate(){
-            var week = date.getDay() - 1;
+        //创建日期
+        setDate(date){
+            var week = date.getDay();
             date = this.addDate(date, week * -1);
-            currentFirstDate = new Date(date);
-            console.log(this.getWeek(currentFirstDate))
-            for (var i = 0; i < clen; i++) {
-                cells[i].innerHTML = this.formatDate(i == 0 ? date : this.addDate(date, 1));
+            //console.log(date,'454454544554111111111')
+            this.currentFirstDate = new Date(date);
+            this.getWeek(this.currentFirstDate)
+            for (var i = 0; i < this.clen; i++) {
+                this.cells[i].innerHTML = this.formatDate(i == 0 ? date : this.addDate(date, 1),i);
             }
         },
-        formatDate(){
+        //过滤数据，打印测试
+        formatDate(date,i){
+            this.curY=date.getFullYear();
             var year = date.getFullYear() + '年';
-            var month = (date.getMonth() + 1) + '月';
+            var month = (date.getMonth() + 1);
+            this.curM=(date.getMonth() + 1);
             var day = date.getDate() + '日';
+            this.dataArr[i].month=month;
             var week = '(' + ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'][date.getDay()] + ')';
+            console.log(year + month + day + ' ' + week)
             return year + month + day + ' ' + week;
         },
+        //上一周
         leftBtn(){
-            this.setDate(this.addDate(currentFirstDate, -7));
+            this.setDate(this.addDate(this.currentFirstDate, -7));
         },
+        //下一周
         rightBtn(){
-            this.setDate(this.addDate(currentFirstDate, 7));
+            //console.log(this.currentFirstDate,11111111)
+            this.setDate(this.addDate(this.currentFirstDate, 7));
+        },
+        //点击年
+        yearbtn(){
+            if(this.isShowyear){
+                $('.yearlist').hide()
+                this.isShowyear=false;
+                //console.log(this.isShowyear,1)
+            }else {
+                $('.yearlist').show();
+                this.isShowyear=true;
+                //console.log(this.isShowyear,2)
+            }
+        },
+        //点击月
+        monbtn(){
+            if(this.isShowmouth){
+                $('.mouthList').hide()
+                this.isShowmouth=false;
+                console.log(this.isShowmouth,1)
+            }else {
+                $('.mouthList').show();
+                this.isShowmouth=true;
+                console.log(this.isShowmouth,2)
+            }
+        },
+        //年下拉点击
+        yearlist(item){
+            this.curY=item;
+            const date = new Date();
+            const current_date = date.getDate();
+            const cueDate=this.curY + '-' + this.curM + '-' + current_date;
+            this.setDate(new Date(cueDate));
+            $('.yearlist').hide();
+        }, 
+        //月下拉点击
+        mounthlist(item){
+            this.curM=item;
+            const date = new Date();
+            const current_date = date.getDate();
+            const cueDate=this.curY + '-' + this.curM + '-' + current_date;
+            this.setDate(new Date(cueDate));
+            $('.mouthList').hide();
+            //console.log(current_date,1111111111111)
         }
     }
 }
@@ -275,8 +388,16 @@ export default {
     border-radius: 10px;
     cursor: pointer;
 }
-
-.data_list {
+.buttonBox{float: left; width: 350px; position: relative;z-index: 100;margin-right: 20px;}
+.yearBtnBox {position: relative; width: 150px; float: left; }
+.mouthBtnBox{position: relative; width: 150px; float: left; margin-left:30px; }
+.yearBtnBox .yearbtn{width:150px;height:68px;background:url(../../assets/img/niany.png) no-repeat;border-radius:20px;line-height:81px;text-align:left;text-indent:20px;font-size:26px;color:#666;margin-right:40px;cursor:pointer;background-size:100%;}
+.yearBtnBox .yearlist{position: absolute; z-index: 2;  width:124px; height: 350px; overflow-y: auto; top: 58px; left: 13px;background: #fff;  padding-bottom: 30px; border-radius: 0 0 5px 5px; display: none;}
+.yearBtnBox .yearlist li,.mouthBtnBox .mouthList li{height: 35px; color: #666; font-size: 26px;margin-bottom: 15px;}
+.mouthBtnBox .mouthBtn{width:150px;height:68px;background:#fff;line-height:81px;text-align:
+left;text-indent:20px;font-size:26px;color:#666;cursor:pointer;background:url(../../assets/img/niany.png) no-repeat;background-size:100%}
+.mouthBtnBox .mouthList{position: absolute; z-index: 2;  width:124px; height: 350px; overflow-y: auto; top: 58px; left: 13px;background: #fff;  padding-bottom: 30px; border-radius: 0 0 5px 5px; display: none;}
+/* .data_list {
     display: flex;
 }
 
@@ -317,7 +438,7 @@ export default {
     cursor: pointer;
     background: url(../../assets/img/niany.png) no-repeat;
     background-size: 100%
-}
+} */
 
 .dataList {
     display: flex;
