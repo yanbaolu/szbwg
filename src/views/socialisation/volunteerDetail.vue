@@ -24,7 +24,7 @@
 	                    			{{data.sex}}
 		                        </span>
 	                    	<span>
-	                    		{{data.name}}岁
+	                    		{{data.age}}岁
 	                    		</span>
 	                    	<span></span>
 	                    </p>
