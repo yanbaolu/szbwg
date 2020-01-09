@@ -1,8 +1,7 @@
 <template>
   <div>
     <ul class="intang_up">
-
-      <li v-for="(item,index) in data">
+      <li v-for="(item,index) in data" :key="index">
         <router-link :to="{name:'newsDetail',query:{clazzName:item.clazzName,resId:item.resId,index:index}}">
           <h3>{{item.name}}</h3>
           <span>2019-11-23</span>

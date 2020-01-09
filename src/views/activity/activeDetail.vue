@@ -28,8 +28,7 @@
                     <h3>活动详情</h3>
                 </div>
                 <div class="deputy_text">
-                    <p></p>
-                    {{data.activeDetails}}
+                    <p v-html="data.activeDetails"></p>
                 </div>
             </div>
         </div>

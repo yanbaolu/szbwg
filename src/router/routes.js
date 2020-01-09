@@ -226,6 +226,15 @@ const routes = [
         }
     },
     {
+        
+        path:'/ehuigu',
+        name:'ehuigu',
+        component:load('exhibition/ehuigu'),
+        meta:{
+            title:'展览回顾'
+        }
+    },
+    {
         path:'/intangibleProject',
         name:'intangibleProject',
         component:load('intangible/intangibleProject'),
@@ -239,6 +248,15 @@ const routes = [
         component:load('intangible/intangibleInheritance'),
         meta:{
             title:'传承人'
+        }
+    },
+    {
+        
+        path:'/inheritanceDetail',
+        name:'inheritanceDetail',
+        component:load('intangible/inheritanceDetail'),
+        meta:{
+            title:'传承人底层'
         }
     },
     {
@@ -262,7 +280,7 @@ const routes = [
         name:'intangibleRegulat',
         component:load('intangible/intangibleRegulat'),
         meta:{
-            title:'非遗法规列表'
+            title:'非遗指南列表'
         }
     },
     {
@@ -271,6 +289,15 @@ const routes = [
         component:load('intangible/lawsregulatDetail'),
         meta:{
             title:'非遗法规指南资讯详情'
+        }
+    },
+    {
+        
+        path:'/intangiblevideo',
+        name:'intangiblevideo',
+        component:load('intangible/intangiblevideo'),
+        meta:{
+            title:'相关视频'
         }
     },
     {

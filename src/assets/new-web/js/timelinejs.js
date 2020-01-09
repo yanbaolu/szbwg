@@ -18,8 +18,8 @@
             opt.dateArr=$(opt.dateArr);
             opt.conBox=$(opt.conBox);
             opt.conArr=$(opt.conArr);
-            var liNum=opt.conArr.length;
-
+            var liNum=opt.dateArr.length;
+//console.log(liNum)
             opt.conArr.each(function(i){
                 $(this).css("left",opt.w*i+"px");
             })
@@ -30,11 +30,14 @@
             })
             
             opt.btnNext.on("click",function(){
+               
                 if(opt.n<liNum){
                     opt.n++;
-                    (opt.n>=liNum)&&(opt.n=0);
+                   (opt.n>=liNum)&&(opt.n=0)
+                   
                     updata();
-                }
+               }
+               
             })
             opt.btnPrev.on("click",function(){
                 opt.n--;
@@ -44,7 +47,9 @@
             function updata(){
                 opt.conBox.stop();
                 opt.dateBox.stop();
-                opt.conBox.animate({left:-(opt.w*opt.n+(opt.n*50))+'px'},300);
+                // opt.conBox.animate({left:-(opt.w*opt.n+(opt.n*50))+'px'},300);
+                opt.conBox.animate({left:-(opt.w*opt.n)+'px'},300);
+               // $(opt.conArr[opt.n]).addClass("c_active").siblings().removeClass("c_active");
                 opt.dateBox.animate({left:-((84)*opt.n+(opt.n*50))+'px'},300);
                 $(opt.dateArr[opt.n]).addClass("year-active").siblings().removeClass("year-active");
             }

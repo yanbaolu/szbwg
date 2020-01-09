@@ -22,7 +22,8 @@
           <div class="small_frame">
             <ul class="clear">
             <li v-for="(item,i) in dataImg" :key="i" @click="curImg(i,item)">
-                <img :src="item.imgSrc"/> 
+                <img :src="item.thumbPic"/> 
+                <h3>{{item.thumbPic}}</h3>
                  <div class="carousel-caption picture_title">{{item.name}}</div>
               </li>
               
@@ -36,54 +37,16 @@
 </template>
 <script>
 export default {
+  props:['dataImg'],
     data(){
         return{
             curNumber:0,
-      dataImg:[
-          {
-              imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092419.jpg',
-              name:'1111',
-          },
-          {
-              imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092354.jpg',
-              name:'2222',
-          },
-          {
-              imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092427.jpg',
-              name:'33333',
-          },
-          {
-            imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092354.jpg',
-              name:'114444411',
-          },
-          {
-              imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092419.jpg',
-              name:'55555',
-          },
-          {
-              imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092427.jpg',
-              name:'66666',
-          },
-          {
-             imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092354.jpg',
-              name:'77777',
-          },
-          {
-              imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092427.jpg',
-              name:'88888',
-          },
-          {
-              imgSrc :'https://www.shenzhenmuseum.com/p/userfiles/uploadPic/20180116092419.jpg',
-              name:'99999',
-          }
-      ]
+            // dataImg:[]
         }
     },
- 
-   
  methods:{
    init(){
-    $('#curImg img').attr('src',this.dataImg[0].imgSrc);
+    $('#curImg img').attr('src',this.dataImg[0].thumbPic);
     $('.picture_title').html(this.dataImg[0].name);
     $('.icurrpage').html(this.curNumber+1);
     $('.totleimg').html(this.dataImg.length)
