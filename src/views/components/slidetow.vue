@@ -123,25 +123,32 @@ export default {
             //周数据获取
             dataArr:[{
                 date:'',
-                week:'Sun'
+                week:'Sun',
+                month:''
             },{
                 date:'',
-                week:'Mon'
+                week:'Mon',
+                month:''
             },{
                 date:'',
-                week:'Tue'
+                week:'Tue',
+                month:''
             },{
                 date:'',
-                week:'Wed'
+                week:'Wed',
+                month:''
             },{
                 date:'',
-                week:'Thu'
+                week:'Thu',
+                month:''
             },{
                 date:'',
-                week:'Fri'
+                week:'Fri',
+                month:''
             },{
                 date:'',
-                week:'Sat'
+                week:'Sat',
+                month:''
             }],
             //所有年
             yearall:[],
@@ -187,8 +194,9 @@ export default {
             let result = [0,1,2,3,4,5,6];
             const m =(now.getMonth() + 1)
             //let lastDay=new Date(this.curY,this.curM,0).getDate();
-            //console.log(lastDay,123456)
+            console.log(this.dataArr,78787878787)
             result.map(i => (new Date(now_time + 24*60*60*1000*(i - now_day))).getDate()).map((item,index)=>{
+                //console.log(this.dataArr[index].month,7777777777777)
                 if(this.dataArr[index].month==m){
                     this.dataArr[index].date=item;
                 }else {
@@ -196,7 +204,6 @@ export default {
                 }
                 
             })
-            console.log(this.dataArr,78787878787)
         },
         //添加日期
         addDate(date,n){
@@ -210,10 +217,10 @@ export default {
             date = this.addDate(date, week * -1);
             //console.log(date,'454454544554111111111')
             this.currentFirstDate = new Date(date);
-            this.getWeek(this.currentFirstDate)
             for (var i = 0; i < this.clen; i++) {
                 this.cells[i].innerHTML = this.formatDate(i == 0 ? date : this.addDate(date, 1),i);
             }
+            this.getWeek(this.currentFirstDate)
         },
         //过滤数据，打印测试
         formatDate(date,i){
